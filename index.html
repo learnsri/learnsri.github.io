@@ -1,1745 +1,1196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LEARN37 | Cybersecurity Programme & Annual General Meeting</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --c-navy: #171A6C;
-      --c-purple: #841B72;
-      --c-magenta: #C93967;
-      --c-coral: #F47356;
-      --c-orange: #FFB550;
-      --c-yellow: #F9F871;
-      
-      --gradient-main: linear-gradient(135deg, #171A6C 0%, #841B72 30%, #C93967 60%, #F47356 100%);
-      --gradient-bright: linear-gradient(135deg, #C93967 0%, #F47356 50%, #FFB550 100%);
-      --gradient-accent: linear-gradient(135deg, #F47356 0%, #FFB550 50%, #F9F871 100%);
-      --gradient-subtle: linear-gradient(135deg, rgba(23,26,108,0.03) 0%, rgba(201,57,103,0.05) 100%);
-      
-      --bg-white: #ffffff;
-      --bg-light: #f8fafc;
-      --text-main: #0f172a;
-      --text-muted: #475569;
-      --text-light: #94a3b8;
-      
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --radius-full: 9999px;
-      
-      --shadow-sm: 0 4px 6px -1px rgba(23, 26, 108, 0.05);
-      --shadow-md: 0 10px 25px -5px rgba(23, 26, 108, 0.08);
-      --shadow-lg: 0 20px 30px -10px rgba(132, 27, 114, 0.15);
-      --shadow-glow: 0 0 40px rgba(244, 115, 86, 0.25);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: var(--text-main);
-      background-color: var(--bg-white);
-      overflow-x: hidden;
-    }
-
-    body {
-      line-height: 1.6;
-      background-color: var(--bg-white);
-    }
-
-    h1, h2, h3, h4, .font-heading {
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    /* Container */
-    .container {
-      width: 100%;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* Gradient Text */
-    .text-gradient {
-      background: var(--gradient-main);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .text-gradient-bright {
-      background: var(--gradient-bright);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.85rem 1.75rem;
-      border-radius: var(--radius-full);
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--gradient-main);
-      color: white;
-      box-shadow: 0 4px 15px rgba(132, 27, 114, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 8px 25px rgba(201, 57, 103, 0.4);
-    }
-
-    .btn-secondary {
-      background: rgba(23, 26, 108, 0.05);
-      color: var(--c-navy);
-      border: 1px solid rgba(23, 26, 108, 0.15);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(23, 26, 108, 0.1);
-      transform: translateY(-2px);
-    }
-
-    .btn-accent {
-      background: var(--gradient-bright);
-      color: white;
-      box-shadow: 0 4px 15px rgba(244, 115, 86, 0.3);
-    }
-
-    .btn-accent:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(244, 115, 86, 0.5);
-    }
-
-    /* Navbar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      transition: all 0.3s ease;
-      padding: 1.25rem 0;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    }
-
-    .navbar.scrolled {
-      padding: 0.8rem 0;
-      box-shadow: var(--shadow-md);
-    }
-
-    .nav-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-    }
-
-    .logo-text {
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: var(--c-navy);
-    }
-
-    .logo-text span {
-      background: var(--gradient-bright);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-main);
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: color 0.2s ease;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gradient-bright);
-      transition: width 0.3s ease;
-      border-radius: 2px;
-    }
-
-    .nav-links a:hover {
-      color: var(--c-magenta);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--c-navy);
-      cursor: pointer;
-    }
-
-    /* Hero Section */
-    .hero {
-      padding-top: 9rem;
-      padding-bottom: 5rem;
-      position: relative;
-      overflow: hidden;
-      background: radial-gradient(circle at 90% 10%, rgba(249, 248, 113, 0.2) 0%, transparent 40%),
-                  radial-gradient(circle at 10% 90%, rgba(132, 27, 114, 0.08) 0%, transparent 40%);
-    }
-
-    /* Colorful ambient blobs */
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      z-index: -1;
-      opacity: 0.6;
-      animation: float 10s infinite alternate ease-in-out;
-    }
-
-    .blob-1 {
-      top: 10%;
-      right: -5%;
-      width: 400px;
-      height: 400px;
-      background: rgba(244, 115, 86, 0.25);
-    }
-
-    .blob-2 {
-      bottom: 5%;
-      left: -5%;
-      width: 450px;
-      height: 450px;
-      background: rgba(132, 27, 114, 0.15);
-      animation-delay: -5s;
-    }
-
-    @keyframes float {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(30px, 40px) scale(1.08); }
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1rem;
-      border-radius: var(--radius-full);
-      background: rgba(201, 57, 103, 0.08);
-      border: 1px solid rgba(201, 57, 103, 0.2);
-      color: var(--c-magenta);
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-title {
-      font-size: 3.5rem;
-      line-height: 1.1;
-      margin-bottom: 1.25rem;
-      letter-spacing: -1px;
-    }
-
-    .hero-subtitle {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-      max-width: 600px;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-      padding: 1.25rem;
-      background: white;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-md);
-      border: 1px solid rgba(0,0,0,0.04);
-    }
-
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .meta-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--gradient-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--c-magenta);
-      font-size: 1.2rem;
-    }
-
-    .meta-text label {
-      display: block;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-light);
-      font-weight: 700;
-    }
-
-    .meta-text span {
-      font-weight: 700;
-      color: var(--c-navy);
-      font-size: 0.95rem;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* Hero Card Visual */
-    .hero-visual {
-      position: relative;
-    }
-
-    .glass-card-hero {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-    }
-
-    .glass-card-hero::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      border-radius: calc(var(--radius-lg) + 2px);
-      background: var(--gradient-main);
-      z-index: -1;
-      opacity: 0.3;
-    }
-
-    .hero-feature-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .feature-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 1rem;
-      border-radius: var(--radius-md);
-      background: white;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.3s ease;
-    }
-
-    .feature-item:hover {
-      transform: translateX(5px);
-    }
-
-    .feature-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: var(--gradient-bright);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-weight: bold;
-    }
-
-    /* Sections Shared */
-    section {
-      padding: 5rem 0;
-    }
-
-    .section-title-wrap {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 3.5rem auto;
-    }
-
-    .section-tag {
-      font-size: 0.85rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--c-magenta);
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      color: var(--c-navy);
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-    }
-
-    /* About Section */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .about-card {
-      background: white;
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-md);
-      border-left: 6px solid var(--c-magenta);
-      position: relative;
-    }
-
-    .about-card p {
-      margin-bottom: 1.25rem;
-      color: var(--text-muted);
-      font-size: 1.05rem;
-    }
-
-    .glance-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .glance-card {
-      background: white;
-      padding: 2rem;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .glance-card::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--gradient-main);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .glance-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .glance-card:hover::after {
-      opacity: 1;
-    }
-
-    .glance-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      display: inline-block;
-    }
-
-    .glance-card h3 {
-      color: var(--c-navy);
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Theme Banner */
-    .theme-banner {
-      background: var(--gradient-main);
-      color: white;
-      border-radius: var(--radius-lg);
-      padding: 3.5rem 2.5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      margin: 3rem 0;
-    }
-
-    .theme-banner h2 {
-      font-size: 2.2rem;
-      margin-bottom: 2rem;
-      color: white;
-    }
-
-    .theme-tags {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .theme-tag-item {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      transition: background 0.3s ease;
-    }
-
-    .theme-tag-item:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    /* Agenda / Timeline Section */
-    .agenda-section {
-      background: var(--bg-light);
-    }
-
-    .agenda-filter {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-    }
-
-    .filter-btn {
-      padding: 0.6rem 1.5rem;
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(23, 26, 108, 0.15);
-      background: white;
-      color: var(--c-navy);
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--c-navy);
-      color: white;
-      border-color: var(--c-navy);
-    }
-
-    .timeline {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 140px;
-      width: 3px;
-      background: linear-gradient(to bottom, var(--c-navy), var(--c-coral), var(--c-yellow));
-      border-radius: 2px;
-    }
-
-    .timeline-item {
-      display: flex;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-
-    .time-col {
-      width: 120px;
-      flex-shrink: 0;
-      font-weight: 800;
-      color: var(--c-magenta);
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem;
-      padding-top: 0.25rem;
-    }
-
-    .timeline-marker {
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      background: white;
-      border: 4px solid var(--c-magenta);
-      position: absolute;
-      left: 133px;
-      top: 6px;
-      z-index: 2;
-    }
-
-    .timeline-content {
-      margin-left: 2.5rem;
-      background: white;
-      padding: 1.5rem 1.75rem;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      flex-grow: 1;
-      border: 1px solid rgba(0,0,0,0.03);
-    }
-
-    .timeline-content h4 {
-      font-size: 1.2rem;
-      color: var(--c-navy);
-      margin-bottom: 0.4rem;
-    }
-
-    .timeline-badge {
-      display: inline-block;
-      padding: 0.2rem 0.6rem;
-      border-radius: var(--radius-sm);
-      font-size: 0.75rem;
-      font-weight: 700;
-      background: rgba(244, 115, 86, 0.1);
-      color: var(--c-coral);
-      margin-top: 0.5rem;
-    }
-
-    /* Working Groups */
-    .wg-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
-    .wg-card {
-      background: white;
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-md);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .wg-card-header {
-      margin-bottom: 1.5rem;
-    }
-
-    .wg-icon-wrapper {
-      width: 60px;
-      height: 60px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.75rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .wg-agri .wg-icon-wrapper {
-      background: rgba(249, 248, 113, 0.4);
-      color: #2e7d32;
-    }
-
-    .wg-ai .wg-icon-wrapper {
-      background: rgba(132, 27, 114, 0.1);
-      color: var(--c-purple);
-    }
-
-    .wg-card h3 {
-      font-size: 1.4rem;
-      color: var(--c-navy);
-      margin-bottom: 0.75rem;
-    }
-
-    .wg-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* Key Topic Banner */
-    .topic-card {
-      background: var(--bg-light);
-      border-radius: var(--radius-lg);
-      padding: 3rem;
-      margin-top: 4rem;
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      border: 2px dashed rgba(132, 27, 114, 0.2);
-    }
-
-    .topic-icon {
-      font-size: 3.5rem;
-      background: white;
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-md);
-      flex-shrink: 0;
-    }
-
-    /* Speakers Section */
-    .speaker-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-    }
-
-    .speaker-card {
-      background: white;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-
-    .speaker-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .speaker-img-placeholder {
-      height: 220px;
-      background: linear-gradient(135deg, #171A6C, #C93967);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 3rem;
-      position: relative;
-    }
-
-    .speaker-info {
-      padding: 1.5rem;
-    }
-
-    .speaker-name {
-      font-size: 1.2rem;
-      color: var(--c-navy);
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-
-    .speaker-title {
-      font-size: 0.85rem;
-      color: var(--c-magenta);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .speaker-org {
-      font-size: 0.8rem;
-      color: var(--text-light);
-      margin-bottom: 1rem;
-    }
-
-    .speaker-topic {
-      font-size: 0.85rem;
-      background: var(--bg-light);
-      padding: 0.5rem 0.75rem;
-      border-radius: var(--radius-sm);
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    /* Sponsors Matrix */
-    .sponsors-section {
-      background: var(--bg-light);
-    }
-
-    .sponsors-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-
-    .sponsor-tier-card {
-      background: white;
-      border-radius: var(--radius-md);
-      padding: 2rem 1.5rem;
-      box-shadow: var(--shadow-sm);
-      border-top: 5px solid var(--c-navy);
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .tier-platinum { border-color: #E5E4E2; }
-    .tier-gold { border-color: #FFD700; }
-    .tier-silver { border-color: #C0C0C0; }
-    .tier-bronze { border-color: #CD7F32; }
-
-    .sponsor-tier-card h3 {
-      font-size: 1.3rem;
-      color: var(--c-navy);
-      margin-bottom: 0.25rem;
-    }
-
-    .sponsor-price {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--c-magenta);
-      margin-bottom: 1.5rem;
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .sponsor-features {
-      list-style: none;
-      margin-bottom: 2rem;
-      flex-grow: 1;
-    }
-
-    .sponsor-features li {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-
-    .sponsor-features li::before {
-      content: '✓';
-      color: var(--c-coral);
-      font-weight: bold;
-    }
-
-    .sponsor-features li.disabled {
-      opacity: 0.4;
-    }
-
-    .sponsor-features li.disabled::before {
-      content: '–';
-      color: var(--text-light);
-    }
-
-    .sponsor-note {
-      text-align: center;
-      background: white;
-      padding: 1.5rem;
-      border-radius: var(--radius-md);
-      max-width: 800px;
-      margin: 0 auto;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-
-    /* About LEARN & Footer */
-    .learn-about-banner {
-      background: white;
-      border-radius: var(--radius-lg);
-      padding: 3rem;
-      box-shadow: var(--shadow-md);
-      margin-bottom: 5rem;
-      border: 1px solid rgba(23, 26, 108, 0.08);
-    }
-
-    .footer {
-      background: var(--c-navy);
-      color: white;
-      padding: 4rem 0 2rem 0;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-
-    .footer-brand h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: white;
-    }
-
-    .footer-brand p {
-      color: rgba(255, 255, 255, 0.7);
-      max-width: 400px;
-      font-size: 0.95rem;
-    }
-
-    .footer-heading {
-      font-size: 1.1rem;
-      margin-bottom: 1.25rem;
-      color: var(--c-orange);
-    }
-
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.75rem;
-    }
-
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      transition: color 0.2s ease;
-      font-size: 0.9rem;
-    }
-
-    .footer-links a:hover {
-      color: white;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .social-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .social-btn:hover {
-      background: var(--gradient-bright);
-      transform: translateY(-3px);
-    }
-
-    .social-btn svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 2rem;
-      text-align: center;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 0.85rem;
-    }
-
-    /* Modal */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(5px);
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal-card {
-      background: white;
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      width: 100%;
-      max-width: 500px;
-      box-shadow: var(--shadow-lg);
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
-      position: relative;
-    }
-
-    .modal-overlay.active .modal-card {
-      transform: translateY(0);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--text-light);
-    }
-
-    .form-group {
-      margin-bottom: 1.25rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-      color: var(--c-navy);
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius-sm);
-      border: 1px solid #cbd5e1;
-      font-family: inherit;
-      font-size: 0.95rem;
-      transition: border-color 0.2s ease;
-    }
-
-    .form-control:focus {
-      outline: none;
-      border-color: var(--c-magenta);
-    }
-
-    /* Scroll animations */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsive */
-    @media (max-width: 992px) {
-      .hero-grid, .about-grid, .footer-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-title {
-        font-size: 2.8rem;
-      }
-
-      .timeline::before {
-        left: 20px;
-      }
-
-      .time-col {
-        width: 100%;
-        margin-bottom: 0.25rem;
-      }
-
-      .timeline-marker {
-        left: 13px;
-      }
-
-      .timeline-item {
-        flex-direction: column;
-        padding-left: 2.5rem;
-      }
-
-      .timeline-content {
-        margin-left: 0;
-      }
-
-      .topic-card {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        padding: 1.5rem;
-        box-shadow: var(--shadow-md);
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .mobile-menu-btn {
-        display: block;
-      }
-
-      .hero-title {
-        font-size: 2.2rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Background Decorative Blobs -->
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-
-  <!-- Header / Navigation -->
-  <header class="navbar" id="navbar">
-    <div class="container nav-container">
-      <a href="#" class="logo">
-        <span class="logo-text">LEARN<span>37</span></span>
-      </a>
-
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">☰</button>
-
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#programme">Programme</a></li>
-        <li><a href="#working-groups">Working Groups</a></li>
-        <li><a href="#speakers">Speakers</a></li>
-        <li><a href="#sponsors">Sponsors</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#" class="btn btn-primary" style="color:white;" onclick="openModal('registerModal')">Registration</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="container hero-grid">
-      <div class="hero-content reveal">
-        <div class="hero-badge">
-          <span>🛡️</span> Cybersecurity Programme & AGM
-        </div>
-        <h1 class="hero-title">
-          LEARN<span class="text-gradient">37</span>
-        </h1>
-        <p class="hero-subtitle">
-          Bringing Sri Lanka's education and research community together to strengthen cybersecurity, collaboration, and digital innovation.
-        </p>
-
-        <div class="hero-meta">
-          <div class="meta-item">
-            <div class="meta-icon">📅</div>
-            <div class="meta-text">
-              <label>Date</label>
-              <span>29 October 2026</span>
-            </div>
-          </div>
-          <div class="meta-item">
-            <div class="meta-icon">📍</div>
-            <div class="meta-text">
-              <label>Venue</label>
-              <span>To be Confirmed</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-cta">
-          <button class="btn btn-primary" onclick="openModal('registerModal')">Register Now</button>
-          <a href="#programme" class="btn btn-secondary">View Programme</a>
-        </div>
-      </div>
-
-      <div class="hero-visual reveal" style="transition-delay: 0.2s;">
-        <div class="glass-card-hero">
-          <h3 style="color: var(--c-navy); margin-bottom: 1.5rem; font-size: 1.3rem;">Event Highlights</h3>
-          <div class="hero-feature-list">
-            <div class="feature-item">
-              <div class="feature-icon">1</div>
-              <div>
-                <strong style="color: var(--c-navy);">Emerging Threats</strong>
-                <p style="font-size:0.85rem; color:var(--text-muted);">Practical cybersecurity strategies for institutions.</p>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">2</div>
-              <div>
-                <strong style="color: var(--c-navy);">LEARN AGM</strong>
-                <p style="font-size:0.85rem; color:var(--text-muted);">Annual General Meeting for official representatives.</p>
-              </div>
-            </div>
-            <div class="feature-item">
-              <div class="feature-icon">3</div>
-              <div>
-                <strong style="color: var(--c-navy);">Knowledge Exchange</strong>
-                <p style="font-size:0.85rem; color:var(--text-muted);">Expert presentations and interactive discussions.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about">
-    <div class="container">
-      <div class="section-title-wrap reveal">
-        <span class="section-tag">About The Event</span>
-        <h2 class="section-title">Fostering Secure Digital Innovation</h2>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-card reveal">
-          <p>
-            <strong>LEARN37</strong> is part of the Lanka Education And Research Network (LEARN), bringing together representatives from Sri Lanka's education, research, and technology communities.
-          </p>
-          <p>
-            This year's programme will place a special focus on cybersecurity in education and research, providing a platform to discuss emerging cyber threats, institutional preparedness, incident response, practical solutions, and collaboration.
-          </p>
-          <p>
-            The programme will also include the <strong>LEARN Annual General Meeting (AGM)</strong> for official representatives of LEARN member institutions.
-          </p>
-        </div>
-
-        <div class="reveal" style="transition-delay: 0.2s;">
-          <div class="glance-grid" style="margin-top:0;">
-            <div class="glance-card">
-              <span class="glance-icon">🔒</span>
-              <h3>Cybersecurity</h3>
-              <p style="font-size:0.9rem; color:var(--text-muted);">Emerging threats, preparedness and practical strategies.</p>
-            </div>
-            <div class="glance-card">
-              <span class="glance-icon">🏛️</span>
-              <h3>LEARN AGM</h3>
-              <p style="font-size:0.9rem; color:var(--text-muted);">Annual General Meeting for member institutions.</p>
-            </div>
-            <div class="glance-card">
-              <span class="glance-icon">💡</span>
-              <h3>Knowledge Exchange</h3>
-              <p style="font-size:0.9rem; color:var(--text-muted);">Expert presentations & industry perspectives.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Main Theme Banner -->
-      <div class="theme-banner reveal">
-        <span style="text-transform:uppercase; font-weight:700; letter-spacing:2px; font-size:0.85rem; opacity:0.9;">Main Theme</span>
-        <h2>Strengthening Cybersecurity in Education & Research</h2>
-        <div class="theme-tags">
-          <span class="theme-tag-item">Emerging Threats</span>
-          <span class="theme-tag-item">Institutional Preparedness</span>
-          <span class="theme-tag-item">Incident Response</span>
-          <span class="theme-tag-item">Collaboration</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Programme / Agenda Section -->
-  <section class="agenda-section" id="programme">
-    <div class="container">
-      <div class="section-title-wrap reveal">
-        <span class="section-tag">Schedule</span>
-        <h2 class="section-title">Programme & Agenda</h2>
-        <p style="color:var(--text-muted); margin-top:0.5rem;">One-day programme featuring parallel AGM and Cybersecurity sessions.</p>
-      </div>
-
-      <div class="timeline reveal">
-        
-        <div class="timeline-item">
-          <div class="time-col">08:30 - 09:00</div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h4>Registration</h4>
-            <p style="font-size:0.9rem; color:var(--text-muted);">Participant arrival and badge collection.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="time-col">09:00 - 09:20</div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h4>Opening Ceremony</h4>
-            <p style="font-size:0.9rem; color:var(--text-muted);">Welcome & Introduction to LEARN37.</p>
-            <span class="timeline-badge">Plenary Session</span>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="time-col">09:20 - 10:00</div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h4>Keynote: Cybersecurity in Education & Research</h4>
-            <p style="font-size:0.9rem; color:var(--text-muted);">High-level insights into national and global threat trends.</p>
-            <span class="timeline-badge">Keynote Talk</span>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="time-col">10:00 - 10:15</div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h4>Tea / Coffee Break</h4>
-            <p style="font-size:0.9rem; color:var(--text-muted);">Networking refreshment break.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="time-col">10:15 - 12:30</div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h4>Parallel Morning Sessions</h4>
-            <p style="font-size:0.9rem; color:var(--text-muted);">• <strong>Session A:</strong> LEARN Annual General Meeting (AGM)<br>• <strong>Session B:</strong> Cybersecurity Programme / Agri WG / AI WG</p>
-            <span class="timeline-badge">Parallel Track</span>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="time-col">12:30 - 01:30</div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h4>Lunch & Networking</h4>
-            <p style="font-size:0.9rem; color:var(--text-muted);">Buffet lunch and institutional networking.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="time-col">01:30 - 03:45</div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h4>Afternoon Technical Sessions</h4>
-            <p style="font-size:0.9rem; color:var(--text-muted);">Cybersecurity Technical Deep Dives / Agri WG / AI WG Track</p>
-            <span class="timeline-badge">Working Groups</span>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="time-col">03:45 - 04:00</div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h4>Tea / Coffee Break</h4>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="time-col">04:00 - 05:00</div>
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h4>Panel Discussion, Sponsor Talk & Closing</h4>
-            <p style="font-size:0.9rem; color:var(--text-muted);">Interactive panel with industry leaders followed by common closing remarks.</p>
-            <span class="timeline-badge">Plenary Session</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Working Groups Section -->
-  <section id="working-groups">
-    <div class="container">
-      <div class="section-title-wrap reveal">
-        <span class="section-tag">Initiatives</span>
-        <h2 class="section-title">LEARN Working Groups</h2>
-        <p style="color:var(--text-muted); margin-top:0.5rem;">Highlighting progress and future directions in cutting-edge domains.</p>
-      </div>
-
-      <div class="wg-grid">
-        <div class="wg-card wg-agri reveal">
-          <div class="wg-card-header">
-            <div class="wg-icon-wrapper">🌱</div>
-            <h3>Agriculture Technology (AgroTech) Working Group</h3>
-            <p>
-              A platform bringing together agriculture academics, researchers, technology specialists, and institutions to explore digital technologies, AI, IoT, remote sensing, and data platforms in agriculture.
-            </p>
-          </div>
-        </div>
-
-        <div class="wg-card wg-ai reveal" style="transition-delay: 0.15s;">
-          <div class="wg-card-header">
-            <div class="wg-icon-wrapper">🤖</div>
-            <h3>Generative AI Working Group</h3>
-            <p>
-              A community focused on the practical and responsible use of Generative AI in education, research, student services, and institutional operations.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Key Topic Feature Box -->
-      <div class="topic-card reveal">
-        <div class="topic-icon">🛡️</div>
-        <div>
-          <span style="color: var(--c-magenta); font-weight:800; font-size:0.85rem; text-transform:uppercase;">Key Topic Focus</span>
-          <h3 style="color: var(--c-navy); font-size: 1.5rem; margin: 0.25rem 0;">Cyber Threat Landscape</h3>
-          <p style="color: var(--text-muted); font-size:0.95rem;">
-            Understanding emerging cyber threats affecting higher education and research institutions, with strategic focus on incident response and digital resilience.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Speakers Section -->
-  <section id="speakers" style="background: var(--bg-light);">
-    <div class="container">
-      <div class="section-title-wrap reveal">
-        <span class="section-tag">Lineup</span>
-        <h2 class="section-title">Speakers & Experts</h2>
-        <p style="color:var(--text-muted); margin-top:0.5rem;">Bringing together cybersecurity experts, academics, technology professionals, and industry leaders.</p>
-      </div>
-
-      <div class="speaker-grid reveal">
-        <!-- Speaker Placeholder 1 -->
-        <div class="speaker-card">
-          <div class="speaker-img-placeholder">🎙️</div>
-          <div class="speaker-info">
-            <div class="speaker-name">Keynote Speaker</div>
-            <div class="speaker-title">Cybersecurity Specialist</div>
-            <div class="speaker-org">Leading Tech Institution</div>
-            <div class="speaker-topic">Cybersecurity in Education & Research</div>
-          </div>
-        </div>
-
-        <!-- Speaker Placeholder 2 -->
-        <div class="speaker-card">
-          <div class="speaker-img-placeholder">👤</div>
-          <div class="speaker-info">
-            <div class="speaker-name">AgroTech Lead</div>
-            <div class="speaker-title">Domain Expert</div>
-            <div class="speaker-org">AgriTech Working Group</div>
-            <div class="speaker-topic">IoT & AI in Modern Agriculture</div>
-          </div>
-        </div>
-
-        <!-- Speaker Placeholder 3 -->
-        <div class="speaker-card">
-          <div class="speaker-img-placeholder">👤</div>
-          <div class="speaker-info">
-            <div class="speaker-name">GenAI Specialist</div>
-            <div class="speaker-title">AI Research Fellow</div>
-            <div class="speaker-org">GenAI Working Group</div>
-            <div class="speaker-topic">Responsible GenAI in Academia</div>
-          </div>
-        </div>
-
-        <!-- Speaker Placeholder 4 -->
-        <div class="speaker-card">
-          <div class="speaker-img-placeholder">👤</div>
-          <div class="speaker-info">
-            <div class="speaker-name">Panelist Speaker</div>
-            <div class="speaker-title">Industry Representative</div>
-            <div class="speaker-org">Cyber Partner Network</div>
-            <div class="speaker-topic">Future of Institutional Defense</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sponsors & Partners Section -->
-  <section id="sponsors">
-    <div class="container">
-      <div class="section-title-wrap reveal">
-        <span class="section-tag">Partnerships</span>
-        <h2 class="section-title">Sponsors & Partners</h2>
-        <p style="color:var(--text-muted); margin-top:0.5rem;">Engage with Sri Lanka's education and research community in cybersecurity, ICT, cloud, and networking.</p>
-      </div>
-
-      <div class="sponsors-grid reveal">
-        <!-- Platinum -->
-        <div class="sponsor-tier-card tier-platinum">
-          <h3>PLATINUM</h3>
-          <div class="sponsor-price">LKR 1,000,000</div>
-          <ul class="sponsor-features">
-            <li>Speech at main session & WG</li>
-            <li>Exhibition stall space</li>
-            <li>Promotional video feature</li>
-            <li>Top-tier logo & recognition</li>
-          </ul>
-          <button class="btn btn-secondary" onclick="openModal('sponsorModal')">Sponsor Tier</button>
-        </div>
-
-        <!-- Gold -->
-        <div class="sponsor-tier-card tier-gold">
-          <h3>GOLD</h3>
-          <div class="sponsor-price">LKR 600,000</div>
-          <ul class="sponsor-features">
-            <li>Speech at working group sessions</li>
-            <li>Exhibition stall space</li>
-            <li>Promotional video feature</li>
-            <li>Featured logo recognition</li>
-          </ul>
-          <button class="btn btn-secondary" onclick="openModal('sponsorModal')">Sponsor Tier</button>
-        </div>
-
-        <!-- Silver -->
-        <div class="sponsor-tier-card tier-silver">
-          <h3>SILVER</h3>
-          <div class="sponsor-price">LKR 300,000</div>
-          <ul class="sponsor-features">
-            <li>Speech at working group sessions</li>
-            <li class="disabled">Exhibition stall space</li>
-            <li>Promotional video feature</li>
-            <li>Prominent logo recognition</li>
-          </ul>
-          <button class="btn btn-secondary" onclick="openModal('sponsorModal')">Sponsor Tier</button>
-        </div>
-
-        <!-- Bronze -->
-        <div class="sponsor-tier-card tier-bronze">
-          <h3>BRONZE</h3>
-          <div class="sponsor-price">LKR 150,000</div>
-          <ul class="sponsor-features">
-            <li class="disabled">Speech at sessions</li>
-            <li class="disabled">Exhibition stall space</li>
-            <li class="disabled">Promotional video</li>
-            <li>Logo placement & recognition</li>
-          </ul>
-          <button class="btn btn-secondary" onclick="openModal('sponsorModal')">Sponsor Tier</button>
-        </div>
-      </div>
-
-      <div class="sponsor-note reveal">
-        <p><strong>Note:</strong> LEARN welcomes both financial and in-kind sponsorships. Packages are a starting point and can be fully customized to align with your organization's objectives.</p>
-        <div style="margin-top: 1.5rem;">
-          <button class="btn btn-accent" onclick="openModal('sponsorModal')">Become a Sponsor</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About LEARN Banner -->
-  <section style="padding:0;">
-    <div class="container">
-      <div class="learn-about-banner reveal">
-        <div style="max-width: 800px; margin:0 auto; text-align:center;">
-          <h2 style="color:var(--c-navy); margin-bottom:1rem; font-size:2rem;">About LEARN</h2>
-          <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:1.5rem;">
-            LEARN (Lanka Education And Research Network) is Sri Lanka's National Research and Education Network (NREN), supporting connectivity, digital services, collaboration, and technology-enabled education and research across the nation.
-          </p>
-          <a href="#contact" class="btn btn-primary">Learn More About LEARN</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer / Contact Section -->
-  <footer class="footer" id="contact">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <h3>LEARN<span>37</span></h3>
-          <p>
-            Lanka Education And Research Network<br>
-            Supporting Connectivity, Collaboration & Security for Higher Education.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="footer-heading">Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About LEARN37</a></li>
-            <li><a href="#programme">Programme Schedule</a></li>
-            <li><a href="#working-groups">Working Groups</a></li>
-            <li><a href="#sponsors">Sponsorships</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-heading">Connect With LEARN</h4>
-          <p style="color: rgba(255,255,255,0.7); font-size:0.9rem; margin-bottom: 0.5rem;">Event Email: contact@learn.ac.lk</p>
-          <div class="social-links">
-            <!-- Facebook SVG -->
-            <a href="#" class="social-btn" aria-label="Facebook">
-              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <!-- Twitter/X SVG -->
-            <a href="#" class="social-btn" aria-label="Twitter">
-              <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
-            </a>
-            <!-- LinkedIn SVG -->
-            <a href="#" class="social-btn" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
-            <!-- YouTube SVG -->
-            <a href="#" class="social-btn" aria-label="YouTube">
-              <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 Lanka Education And Research Network (LEARN). All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Registration Modal -->
-  <div class="modal-overlay" id="registerModal">
-    <div class="modal-card">
-      <button class="modal-close" onclick="closeModal('registerModal')">&times;</button>
-      <h3 style="color:var(--c-navy); margin-bottom: 0.5rem;">Register for LEARN37</h3>
-      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom: 1.5rem;">Join us on 29 October 2026 for the Cybersecurity Programme & AGM.</p>
-      <form onsubmit="handleFormSubmit(event)">
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" class="form-control" placeholder="Enter your full name" required>
-        </div>
-        <div class="form-group">
-          <label>Institutional Email</label>
-          <input type="email" class="form-control" placeholder="name@institution.ac.lk" required>
-        </div>
-        <div class="form-group">
-          <label>Institution / Organization</label>
-          <input type="text" class="form-control" placeholder="University or Organization Name" required>
-        </div>
-        <div class="form-group">
-          <label>Participation Track</label>
-          <select class="form-control">
-            <option>General Cybersecurity Track</option>
-            <option>LEARN Official Representative (AGM)</option>
-            <option>AgriTech Working Group</option>
-            <option>Generative AI Working Group</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Complete Registration</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Sponsor Modal -->
-  <div class="modal-overlay" id="sponsorModal">
-    <div class="modal-card">
-      <button class="modal-close" onclick="closeModal('sponsorModal')">&times;</button>
-      <h3 style="color:var(--c-navy); margin-bottom: 0.5rem;">Become a Sponsor</h3>
-      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom: 1.5rem;">Connect with Sri Lanka's leading academic & research institutions.</p>
-      <form onsubmit="handleFormSubmit(event)">
-        <div class="form-group">
-          <label>Company Name</label>
-          <input type="text" class="form-control" placeholder="Organization name" required>
-        </div>
-        <div class="form-group">
-          <label>Contact Email</label>
-          <input type="email" class="form-control" placeholder="contact@company.com" required>
-        </div>
-        <div class="form-group">
-          <label>Preferred Tier</label>
-          <select class="form-control">
-            <option>Platinum Package (LKR 1,000,000)</option>
-            <option>Gold Package (LKR 600,000)</option>
-            <option>Silver Package (LKR 300,000)</option>
-            <option>Bronze Package (LKR 150,000)</option>
-            <option>Custom / In-Kind Sponsorship</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-accent" style="width: 100%; margin-top: 1rem;">Submit Inquiry</button>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    // Mobile Menu Toggle
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const navLinks = document.getElementById('navLinks');
-
-    mobileMenuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    // Navbar Shadow on Scroll
-    window.addEventListener('scroll', () => {
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-
-    // Scroll Reveal Animations
-    const observerOptions = {
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN37 - Cybersecurity Programme & AGM 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#171A6C',
+                            purple: '#841B72',
+                            pink: '#C93967',
+                            coral: '#F47356',
+                            amber: '#FFB550',
+                            lemon: '#F9F871'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-main': 'linear-gradient(135deg, #171A6C 0%, #841B72 25%, #C93967 50%, #F47356 75%, #FFB550 100%)',
+                        'gradient-subtle': 'linear-gradient(135deg, rgba(23,26,108,0.05) 0%, rgba(201,57,103,0.05) 50%, rgba(255,181,80,0.05) 100%)',
+                        'gradient-card': 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,249,250,0.8) 100%)',
+                        'gradient-btn': 'linear-gradient(90deg, #841B72 0%, #C93967 50%, #F47356 100%)'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        pulseGlow: {
+                            '0%': { filter: 'drop-shadow(0 0 10px rgba(201, 57, 103, 0.3))' },
+                            '100%': { filter: 'drop-shadow(0 0 25px rgba(244, 115, 86, 0.6))' }
+                        }
+                    }
+                }
+            }
         }
-      });
-    }, observerOptions);
+    </script>
+    <style>
+        /* Custom Styles & Utilities */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #1F2937;
+            overflow-x: hidden;
+        }
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
 
-    // Modal Control
-    function openModal(id) {
-      document.getElementById(id).classList.add('active');
-    }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
 
-    function closeModal(id) {
-      document.getElementById(id).classList.remove('active');
-    }
+        .gradient-text {
+            background: linear-gradient(135deg, #171A6C 0%, #841B72 30%, #C93967 65%, #F47356 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      alert('Thank you for your submission! LEARN team will get back to you shortly.');
-      document.querySelectorAll('.modal-overlay').forEach(modal => modal.classList.remove('active'));
-    }
-  </script>
+        .gradient-text-warm {
+            background: linear-gradient(135deg, #C93967 0%, #F47356 50%, #FFB550 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-border-card {
+            position: relative;
+            background: #ffffff;
+            border-radius: 1rem;
+            z-index: 1;
+        }
+
+        .gradient-border-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #171A6C, #841B72, #C93967, #F47356, #FFB550);
+            border-radius: 1.05rem;
+            z-index: -1;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+
+        .gradient-border-card:hover::before {
+            opacity: 1;
+        }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #171A6C, #C93967);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="relative antialiased text-gray-800 bg-white">
+
+    <!-- Decorative Dynamic Floating Background Elements -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-gradient-to-br from-brand-navy/10 to-brand-purple/10 blur-3xl animate-float"></div>
+        <div class="absolute top-1/3 -right-32 w-96 h-96 rounded-full bg-gradient-to-br from-brand-pink/15 to-brand-coral/15 blur-3xl animate-float-delayed"></div>
+        <div class="absolute -bottom-32 left-1/4 w-96 h-96 rounded-full bg-gradient-to-br from-brand-amber/10 to-brand-lemon/20 blur-3xl animate-float"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3 glass-nav border-b border-gray-100/80 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-12">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-xl tracking-tight gradient-text">LEARN37</span>
+                        <span class="text-[10px] font-semibold tracking-wider text-gray-500 uppercase -mt-1">Cybersecurity & AGM</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-gray-700">
+                    <a href="#home" class="hover:text-brand-pink transition-colors">HOME</a>
+                    <a href="#about" class="hover:text-brand-pink transition-colors">ABOUT</a>
+                    <a href="#programme" class="hover:text-brand-pink transition-colors">PROGRAMME</a>
+                    <a href="#working-groups" class="hover:text-brand-pink transition-colors">WORKING GROUPS</a>
+                    <a href="#speakers" class="hover:text-brand-pink transition-colors">SPEAKERS</a>
+                    <a href="#sponsors" class="hover:text-brand-pink transition-colors">SPONSORS</a>
+                    <a href="#contact" class="hover:text-brand-pink transition-colors">CONTACT</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden sm:flex items-center">
+                    <button onclick="openRegisterModal()" class="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white transition-all duration-300 bg-gradient-btn rounded-full shadow-lg shadow-brand-pink/30 hover:shadow-xl hover:shadow-brand-pink/50 hover:scale-105 active:scale-95 group overflow-hidden">
+                        <span class="relative z-10 flex items-center gap-2">
+                            Register Now <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-gray-600 hover:text-brand-purple hover:bg-gray-100 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden glass-panel border-b border-gray-200 mt-2 px-4 pt-2 pb-6 space-y-3 shadow-xl">
+            <a href="#home" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-navy/10 hover:to-transparent hover:text-brand-navy">HOME</a>
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-purple/10 hover:to-transparent hover:text-brand-purple">ABOUT LEARN37</a>
+            <a href="#programme" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-pink/10 hover:to-transparent hover:text-brand-pink">PROGRAMME</a>
+            <a href="#working-groups" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-coral/10 hover:to-transparent hover:text-brand-coral">WORKING GROUPS</a>
+            <a href="#speakers" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-amber/10 hover:to-transparent hover:text-brand-amber">SPEAKERS</a>
+            <a href="#sponsors" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-pink/10 hover:to-transparent hover:text-brand-pink">SPONSORS & PARTNERS</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-navy/10 hover:to-transparent hover:text-brand-navy">CONTACT</a>
+            <div class="pt-2">
+                <button onclick="openRegisterModal()" class="w-full py-3 bg-gradient-btn text-white font-bold rounded-xl shadow-md flex items-center justify-center gap-2">
+                    Register Now <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- HERO SECTION -->
+        <section id="home" class="min-h-screen pt-28 pb-16 flex items-center justify-center relative overflow-hidden bg-gradient-subtle">
+            <!-- Glowing Accent Orbs -->
+            <div class="absolute top-1/4 left-10 w-72 h-72 bg-brand-pink/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-10 right-10 w-80 h-80 bg-brand-amber/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <!-- Top Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-brand-pink/30 shadow-md mb-8 animate-bounce">
+                    <span class="flex h-2.5 w-2.5 rounded-full bg-brand-coral animate-ping"></span>
+                    <span class="text-xs sm:text-sm font-bold text-brand-navy uppercase tracking-wider">Annual General Meeting & Cybersecurity Event</span>
+                </div>
+
+                <!-- Main Hero Heading -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-gray-900 leading-tight mb-6">
+                    <span class="gradient-text">LEARN37</span>
+                </h1>
+                
+                <p class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-8 max-w-4xl mx-auto leading-snug">
+                    Cybersecurity Programme & <br class="hidden sm:inline">Annual General Meeting of LEARN
+                </p>
+
+                <!-- Tagline -->
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+                    Bringing Sri Lanka's education and research community together to strengthen cybersecurity, collaboration, and digital innovation.
+                </p>
+
+                <!-- Event Info Pill Badges -->
+                <div class="flex flex-wrap justify-center items-center gap-4 mb-12">
+                    <div class="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white shadow-lg border border-gray-100 text-brand-navy font-semibold text-sm sm:text-base">
+                        <i data-lucide="calendar" class="w-5 h-5 text-brand-pink"></i>
+                        <span>29 October 2026</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white shadow-lg border border-gray-100 text-brand-navy font-semibold text-sm sm:text-base">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-brand-coral"></i>
+                        <span>[Venue - To be Confirmed]</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white shadow-lg border border-gray-100 text-brand-navy font-semibold text-sm sm:text-base">
+                        <i data-lucide="clock" class="w-5 h-5 text-brand-amber"></i>
+                        <span>8:30 AM – 5:00 PM</span>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                    <button onclick="openRegisterModal()" class="w-full sm:w-auto px-8 py-4 bg-gradient-btn text-white font-extrabold text-base rounded-2xl shadow-xl shadow-brand-pink/30 hover:shadow-2xl hover:shadow-brand-pink/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3">
+                        <i data-lucide="user-check" class="w-5 h-5"></i>
+                        Register Now
+                    </button>
+                    <a href="#programme" class="w-full sm:w-auto px-8 py-4 bg-white text-gray-800 font-bold text-base rounded-2xl border border-gray-200 shadow-md hover:border-brand-purple hover:text-brand-purple transition-all duration-300 flex items-center justify-center gap-2">
+                        <i data-lucide="file-text" class="w-5 h-5"></i>
+                        View Programme
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT LEARN37 & AT A GLANCE -->
+        <section id="about" class="py-20 relative bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+                    <h2 class="text-xs font-extrabold text-brand-pink tracking-widest uppercase mb-2">Discover LEARN37</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">About The Event</h3>
+                    <div class="w-20 h-1.5 bg-gradient-main rounded-full mx-auto mt-4"></div>
+                </div>
+
+                <!-- Main About Card -->
+                <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-gray-100 shadow-xl mb-16 reveal-on-scroll">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-8 space-y-4">
+                            <p class="text-lg text-gray-700 leading-relaxed">
+                                <span class="font-bold text-brand-navy">LEARN37</span> is part of the <span class="font-bold text-brand-purple">Lanka Education And Research Network (LEARN)</span>, bringing together representatives from Sri Lanka's education, research, and technology communities.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                This year's programme will place a special focus on <strong class="text-brand-pink">cybersecurity in education and research</strong>, providing an essential platform to discuss emerging cyber threats, institutional preparedness, incident response, practical solutions, and national collaboration.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                The programme will also include the official <strong>LEARN Annual General Meeting (AGM)</strong> for official representatives of LEARN member institutions.
+                            </p>
+                        </div>
+                        <div class="md:col-span-4 flex justify-center">
+                            <div class="relative p-6 bg-gradient-main rounded-2xl text-white text-center shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                                <i data-lucide="shield-check" class="w-16 h-16 mx-auto mb-3 text-brand-lemon"></i>
+                                <h4 class="text-xl font-extrabold mb-1">Empowering NRENs</h4>
+                                <p class="text-xs text-gray-200">Safeguarding academic networks & data assets across Sri Lanka.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- At a Glance 3 Card Grid -->
+                <div class="mb-20">
+                    <h3 class="text-2xl font-bold text-gray-900 text-center mb-10 reveal-on-scroll">LEARN37 at a Glance</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        
+                        <!-- Card 1 -->
+                        <div class="gradient-border-card p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 reveal-on-scroll group">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-navy/10 text-brand-navy flex items-center justify-center mb-6 group-hover:bg-brand-navy group-hover:text-white transition-colors duration-300">
+                                <i data-lucide="shield-alert" class="w-7 h-7"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-3">Cybersecurity</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Emerging cyber threats, institutional preparedness, and actionable cybersecurity strategies tailored for academic institutions.
+                            </p>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="gradient-border-card p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 reveal-on-scroll group" style="transition-delay: 150ms;">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-purple/10 text-brand-purple flex items-center justify-center mb-6 group-hover:bg-brand-purple group-hover:text-white transition-colors duration-300">
+                                <i data-lucide="users" class="w-7 h-7"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-3">LEARN AGM</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                The official Annual General Meeting for official representatives and stakeholders of LEARN member institutions.
+                            </p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="gradient-border-card p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 reveal-on-scroll group" style="transition-delay: 300ms;">
+                            <div class="w-14 h-14 rounded-2xl bg-brand-pink/10 text-brand-pink flex items-center justify-center mb-6 group-hover:bg-brand-pink group-hover:text-white transition-colors duration-300">
+                                <i data-lucide="lightbulb" class="w-7 h-7"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-3">Knowledge Exchange</h4>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Keynotes from experts, industry perspectives, technical working group tracks, and interactive panel discussions.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Main Theme Highlights Box -->
+                <div class="bg-gradient-to-r from-brand-navy via-brand-purple to-brand-pink rounded-3xl p-8 sm:p-12 text-white shadow-2xl reveal-on-scroll relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                        <i data-lucide="lock" class="w-80 h-80"></i>
+                    </div>
+                    
+                    <div class="relative z-10 text-center max-w-3xl mx-auto mb-10">
+                        <span class="inline-block px-3 py-1 rounded-full bg-white/20 text-xs font-bold uppercase tracking-wider mb-3">Main Theme</span>
+                        <h3 class="text-2xl sm:text-4xl font-extrabold">Strengthening Cybersecurity in Education & Research</h3>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center relative z-10">
+                        <div class="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
+                            <i data-lucide="zap" class="w-8 h-8 mx-auto mb-3 text-brand-amber"></i>
+                            <h5 class="font-bold text-sm sm:text-base">Emerging Threats</h5>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
+                            <i data-lucide="building" class="w-8 h-8 mx-auto mb-3 text-brand-lemon"></i>
+                            <h5 class="font-bold text-sm sm:text-base">Institutional Preparedness</h5>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
+                            <i data-lucide="siren" class="w-8 h-8 mx-auto mb-3 text-brand-coral"></i>
+                            <h5 class="font-bold text-sm sm:text-base">Incident Response</h5>
+                        </div>
+                        <div class="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
+                            <i data-lucide="handshake" class="w-8 h-8 mx-auto mb-3 text-brand-lemon"></i>
+                            <h5 class="font-bold text-sm sm:text-base">Collaboration</h5>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROGRAMME / AGENDA SECTION -->
+        <section id="programme" class="py-20 bg-gray-50/80 relative">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12 reveal-on-scroll">
+                    <h2 class="text-xs font-extrabold text-brand-coral tracking-widest uppercase mb-2">Schedule</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Programme Agenda</h3>
+                    <p class="text-gray-600 mt-3">Proposed one-day event structure featuring AGM and parallel technical tracks.</p>
+                    <div class="w-20 h-1.5 bg-gradient-main rounded-full mx-auto mt-4"></div>
+                </div>
+
+                <!-- Agenda Filter Tabs -->
+                <div class="flex justify-center mb-10 overflow-x-auto py-2 px-4 gap-2 sm:gap-4 reveal-on-scroll">
+                    <button onclick="filterAgenda('all')" id="tab-all" class="agenda-tab px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 bg-brand-navy text-white shadow-md">
+                        All Sessions
+                    </button>
+                    <button onclick="filterAgenda('agm')" id="tab-agm" class="agenda-tab px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 bg-white text-gray-600 hover:bg-gray-100 shadow-sm">
+                        AGM Track
+                    </button>
+                    <button onclick="filterAgenda('wg')" id="tab-wg" class="agenda-tab px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 bg-white text-gray-600 hover:bg-gray-100 shadow-sm">
+                        Working Groups (AI & AgroTech)
+                    </button>
+                </div>
+
+                <!-- Timeline / Schedule Container -->
+                <div class="space-y-4 reveal-on-scroll" id="agenda-container">
+                    
+                    <!-- Item 1 -->
+                    <div class="agenda-item all bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-purple transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <span class="px-4 py-2 rounded-xl bg-brand-navy/10 text-brand-navy font-extrabold text-sm min-w-[120px] text-center">
+                                8:30 - 9:00
+                            </span>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base sm:text-lg">Registration</h4>
+                                <p class="text-xs text-gray-500">Welcome badge pickup & morning arrival</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">General</span>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="agenda-item all bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-purple transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <span class="px-4 py-2 rounded-xl bg-brand-navy/10 text-brand-navy font-extrabold text-sm min-w-[120px] text-center">
+                                9:00 - 9:20
+                            </span>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base sm:text-lg">Opening Ceremony</h4>
+                                <p class="text-xs text-gray-500">Welcome & Introduction to LEARN37</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand-navy/10 text-brand-navy">Plenary Session</span>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="agenda-item all bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-purple transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <span class="px-4 py-2 rounded-xl bg-brand-navy/10 text-brand-navy font-extrabold text-sm min-w-[120px] text-center">
+                                9:20 - 10:00
+                            </span>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base sm:text-lg">Keynote Address</h4>
+                                <p class="text-xs text-gray-500">Cybersecurity in Education & Research Landscape</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand-pink/10 text-brand-pink">Keynote</span>
+                    </div>
+
+                    <!-- Item 4 Break -->
+                    <div class="agenda-item all bg-amber-50/60 p-4 rounded-xl border border-amber-200/50 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="coffee" class="w-5 h-5 text-brand-amber"></i>
+                            <span class="font-bold text-amber-900 text-sm">10:00 - 10:15 | Tea / Coffee Break</span>
+                        </div>
+                        <span class="text-xs text-amber-700 font-medium">Networking</span>
+                    </div>
+
+                    <!-- Item 5 Parallel Sessions -->
+                    <div class="agenda-item all agm wg bg-white p-6 rounded-2xl shadow-md border-2 border-brand-purple/20 transition-all space-y-4">
+                        <div class="flex items-center justify-between border-b pb-3 border-gray-100">
+                            <span class="px-4 py-1.5 rounded-xl bg-brand-purple text-white font-extrabold text-sm">
+                                10:15 - 12:30
+                            </span>
+                            <span class="text-xs font-bold text-brand-purple uppercase tracking-wider">Parallel Tracks</span>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4 pt-2">
+                            <div class="p-4 rounded-xl bg-gradient-to-br from-brand-navy/5 to-transparent border border-brand-navy/10">
+                                <span class="px-2.5 py-1 rounded text-[10px] font-bold bg-brand-navy text-white mb-2 inline-block">TRACK A</span>
+                                <h5 class="font-bold text-brand-navy text-base">LEARN Annual General Meeting (AGM)</h5>
+                                <p class="text-xs text-gray-600 mt-1">Dedicated meeting for official representatives of LEARN member institutions.</p>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-gradient-to-br from-brand-pink/5 to-transparent border border-brand-pink/10">
+                                <span class="px-2.5 py-1 rounded text-[10px] font-bold bg-brand-pink text-white mb-2 inline-block">TRACK B</span>
+                                <h5 class="font-bold text-brand-pink text-base">Cybersecurity / Agri WG / AI WG Sessions</h5>
+                                <p class="text-xs text-gray-600 mt-1">Interactive presentations, research updates, and discussions.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 6 Lunch -->
+                    <div class="agenda-item all bg-emerald-50/60 p-4 rounded-xl border border-emerald-200/50 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="utensils" class="w-5 h-5 text-emerald-600"></i>
+                            <span class="font-bold text-emerald-900 text-sm">12:30 - 1:30 | Lunch & Networking</span>
+                        </div>
+                        <span class="text-xs text-emerald-700 font-medium">Main Hall</span>
+                    </div>
+
+                    <!-- Item 7 Afternoon Track -->
+                    <div class="agenda-item all wg bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-purple transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <span class="px-4 py-2 rounded-xl bg-brand-navy/10 text-brand-navy font-extrabold text-sm min-w-[120px] text-center">
+                                1:30 - 3:45
+                            </span>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base sm:text-lg">Cybersecurity & Working Group Sessions</h4>
+                                <p class="text-xs text-gray-500">Agri Tech (AgroTech) & Generative AI Working Group thematic presentations</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand-purple/10 text-brand-purple">Technical Track</span>
+                    </div>
+
+                    <!-- Item 8 Break -->
+                    <div class="agenda-item all bg-amber-50/60 p-4 rounded-xl border border-amber-200/50 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="coffee" class="w-5 h-5 text-brand-amber"></i>
+                            <span class="font-bold text-amber-900 text-sm">3:45 - 4:00 | Tea / Coffee Break</span>
+                        </div>
+                        <span class="text-xs text-amber-700 font-medium">Networking</span>
+                    </div>
+
+                    <!-- Item 9 Closing -->
+                    <div class="agenda-item all bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-purple transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <span class="px-4 py-2 rounded-xl bg-brand-coral/10 text-brand-coral font-extrabold text-sm min-w-[120px] text-center">
+                                4:00 - 5:00
+                            </span>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base sm:text-lg">Panel Discussion, Sponsor Talk & Closing</h4>
+                                <p class="text-xs text-gray-500">Industry panel discussion, partner insights & common closing remarks</p>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand-coral/10 text-brand-coral">Closing Plenary</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- WORKING GROUPS & INITIATIVES -->
+        <section id="working-groups" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+                    <h2 class="text-xs font-extrabold text-brand-purple tracking-widest uppercase mb-2">Innovation & Research</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Working Groups & Initiatives</h3>
+                    <p class="text-gray-600 mt-3">LEARN37 highlights the progress and future directions of LEARN's dedicated communities.</p>
+                    <div class="w-20 h-1.5 bg-gradient-main rounded-full mx-auto mt-4"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-16">
+                    
+                    <!-- AgroTech WG -->
+                    <div class="glass-panel p-8 rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group reveal-on-scroll">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-400/20 to-teal-500/10 rounded-bl-full pointer-events-none"></div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-6 font-extrabold">
+                            <i data-lucide="sprout" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-gray-900 mb-3">Agriculture Technology (AgroTech) WG</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            A collaborative platform bringing together agriculture academics, researchers, technology specialists, and institutions to explore digital technologies, AI, IoT, remote sensing, and data platforms in agriculture.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-semibold">Digital Agriculture</span>
+                            <span class="px-3 py-1 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-semibold">IoT & Sensors</span>
+                            <span class="px-3 py-1 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-semibold">Data Platforms</span>
+                        </div>
+                    </div>
+
+                    <!-- Generative AI WG -->
+                    <div class="glass-panel p-8 rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group reveal-on-scroll" style="transition-delay: 150ms;">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-brand-purple/20 to-brand-pink/10 rounded-bl-full pointer-events-none"></div>
+                        <div class="w-12 h-12 rounded-2xl bg-brand-purple/10 text-brand-purple flex items-center justify-center mb-6 font-extrabold">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-gray-900 mb-3">Generative AI Working Group</h4>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
+                            A community focused on the practical and responsible integration of Generative AI in Sri Lankan higher education, research, student services, and institutional administration.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-lg bg-purple-50 text-brand-purple text-xs font-semibold">Responsible AI</span>
+                            <span class="px-3 py-1 rounded-lg bg-purple-50 text-brand-purple text-xs font-semibold">Academic Integration</span>
+                            <span class="px-3 py-1 rounded-lg bg-purple-50 text-brand-purple text-xs font-semibold">EdTech Innovation</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Key Topic Highlight -->
+                <div class="bg-gradient-to-r from-gray-900 to-brand-navy rounded-3xl p-8 sm:p-10 text-white shadow-xl reveal-on-scroll flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="space-y-3 max-w-2xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-coral/20 text-brand-coral font-bold text-xs uppercase">
+                            <i data-lucide="alert-triangle" class="w-4 h-4"></i> Highlighted Key Topic
+                        </div>
+                        <h4 class="text-2xl sm:text-3xl font-extrabold">Cyber Threat Landscape</h4>
+                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                            Deep dive into understanding emerging cybersecurity threats specifically targeting education and research institutions in Sri Lanka and globally.
+                        </p>
+                    </div>
+                    <a href="#programme" class="px-6 py-3 bg-white text-brand-navy font-bold rounded-xl hover:bg-brand-lemon transition-colors text-sm whitespace-nowrap shadow-lg">
+                        Explore Topics
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SPEAKERS & EXPERTS -->
+        <section id="speakers" class="py-20 bg-gray-50/70">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+                    <h2 class="text-xs font-extrabold text-brand-pink tracking-widest uppercase mb-2">Thought Leaders</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Speakers & Experts</h3>
+                    <p class="text-gray-600 mt-3">LEARN37 brings together cybersecurity leaders, academics, and industry visionaries.</p>
+                    <div class="w-20 h-1.5 bg-gradient-main rounded-full mx-auto mt-4"></div>
+                </div>
+
+                <!-- Speakers Grid -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Speaker 1 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 text-center group reveal-on-scroll">
+                        <div class="relative w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden p-1 bg-gradient-main">
+                            <div class="w-full h-full rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                <i data-lucide="user" class="w-12 h-12"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-900">Keynote Speaker</h4>
+                        <p class="text-xs font-bold text-brand-pink mb-1">Cybersecurity Specialist</p>
+                        <p class="text-xs text-gray-500 mb-3">National Cyber Security Center</p>
+                        <div class="pt-3 border-t border-gray-100">
+                            <p class="text-xs text-gray-600 font-medium italic">"Emerging Threat Vectors in Higher Ed"</p>
+                        </div>
+                    </div>
+
+                    <!-- Speaker 2 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 text-center group reveal-on-scroll" style="transition-delay: 100ms;">
+                        <div class="relative w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden p-1 bg-gradient-main">
+                            <div class="w-full h-full rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                <i data-lucide="user" class="w-12 h-12"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-900">Academic Specialist</h4>
+                        <p class="text-xs font-bold text-brand-purple mb-1">Senior Researcher</p>
+                        <p class="text-xs text-gray-500 mb-3">LEARN Member Institution</p>
+                        <div class="pt-3 border-t border-gray-100">
+                            <p class="text-xs text-gray-600 font-medium italic">"Institutional Readiness & Resiliency"</p>
+                        </div>
+                    </div>
+
+                    <!-- Speaker 3 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 text-center group reveal-on-scroll" style="transition-delay: 200ms;">
+                        <div class="relative w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden p-1 bg-gradient-main">
+                            <div class="w-full h-full rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                <i data-lucide="user" class="w-12 h-12"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-900">AI WG Chair</h4>
+                        <p class="text-xs font-bold text-brand-coral mb-1">AI & Data Lead</p>
+                        <p class="text-xs text-gray-500 mb-3">Generative AI Working Group</p>
+                        <div class="pt-3 border-t border-gray-100">
+                            <p class="text-xs text-gray-600 font-medium italic">"Responsible GenAI Implementation"</p>
+                        </div>
+                    </div>
+
+                    <!-- Speaker 4 -->
+                    <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 text-center group reveal-on-scroll" style="transition-delay: 300ms;">
+                        <div class="relative w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden p-1 bg-gradient-main">
+                            <div class="w-full h-full rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                <i data-lucide="user" class="w-12 h-12"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-900">AgroTech Lead</h4>
+                        <p class="text-xs font-bold text-brand-amber mb-1">Smart Agriculture Expert</p>
+                        <p class="text-xs text-gray-500 mb-3">AgriTech Working Group</p>
+                        <div class="pt-3 border-t border-gray-100">
+                            <p class="text-xs text-gray-600 font-medium italic">"IoT & Security in Agro-Research"</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-10">
+                    <span class="text-xs font-semibold text-gray-500 italic">* Complete list of distinguished keynote speakers and panel delegates to be announced shortly.</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SPONSORS & PARTNERS -->
+        <section id="sponsors" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+                    <h2 class="text-xs font-extrabold text-brand-coral tracking-widest uppercase mb-2">Partnership Opportunities</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Sponsors & Partners</h3>
+                    <p class="text-gray-600 mt-3">Engage directly with Sri Lanka's leading academic, research, and technical decision-makers.</p>
+                    <div class="w-20 h-1.5 bg-gradient-main rounded-full mx-auto mt-4"></div>
+                </div>
+
+                <!-- Sponsor Packages Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    
+                    <!-- PLATINUM -->
+                    <div class="border-2 border-slate-300 rounded-3xl p-6 bg-white shadow-xl relative flex flex-col justify-between hover:scale-105 transition-transform duration-300 reveal-on-scroll">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-slate-800 text-white font-extrabold text-[10px] rounded-full uppercase tracking-wider">
+                            Most Prominent
+                        </div>
+                        <div>
+                            <div class="text-center pb-6 border-b border-gray-100">
+                                <h4 class="text-xl font-extrabold text-slate-800">PLATINUM</h4>
+                                <div class="text-2xl font-black gradient-text mt-2">LKR 1,000,000</div>
+                            </div>
+                            <ul class="py-6 space-y-3 text-xs text-gray-600">
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Speech at main session & working groups</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Exhibition stall representation</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Featured promotional video feature</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Top-tier logo placement & recognition</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <button onclick="openSponsorModal('Platinum')" class="w-full py-2.5 rounded-xl bg-slate-800 text-white font-bold text-xs hover:bg-slate-900 transition-colors">
+                            Select Platinum
+                        </button>
+                    </div>
+
+                    <!-- GOLD -->
+                    <div class="border-2 border-brand-amber rounded-3xl p-6 bg-white shadow-xl relative flex flex-col justify-between hover:scale-105 transition-transform duration-300 reveal-on-scroll" style="transition-delay: 100ms;">
+                        <div>
+                            <div class="text-center pb-6 border-b border-gray-100">
+                                <h4 class="text-xl font-extrabold text-brand-amber">GOLD</h4>
+                                <div class="text-2xl font-black text-gray-900 mt-2">LKR 600,000</div>
+                            </div>
+                            <ul class="py-6 space-y-3 text-xs text-gray-600">
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Speech at working group sessions</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Exhibition / stall representation</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Promotional video + LED wall/social</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Prominent logo & recognition</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <button onclick="openSponsorModal('Gold')" class="w-full py-2.5 rounded-xl bg-brand-amber text-white font-bold text-xs hover:bg-amber-600 transition-colors">
+                            Select Gold
+                        </button>
+                    </div>
+
+                    <!-- SILVER -->
+                    <div class="border-2 border-gray-200 rounded-3xl p-6 bg-white shadow-lg relative flex flex-col justify-between hover:scale-105 transition-transform duration-300 reveal-on-scroll" style="transition-delay: 200ms;">
+                        <div>
+                            <div class="text-center pb-6 border-b border-gray-100">
+                                <h4 class="text-xl font-extrabold text-gray-600">SILVER</h4>
+                                <div class="text-2xl font-black text-gray-900 mt-2">LKR 300,000</div>
+                            </div>
+                            <ul class="py-6 space-y-3 text-xs text-gray-600">
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Speech at working group sessions</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Promotional video feature</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Logo placement & recognition</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <button onclick="openSponsorModal('Silver')" class="w-full py-2.5 rounded-xl bg-gray-700 text-white font-bold text-xs hover:bg-gray-800 transition-colors">
+                            Select Silver
+                        </button>
+                    </div>
+
+                    <!-- BRONZE -->
+                    <div class="border-2 border-amber-800/30 rounded-3xl p-6 bg-white shadow-lg relative flex flex-col justify-between hover:scale-105 transition-transform duration-300 reveal-on-scroll" style="transition-delay: 300ms;">
+                        <div>
+                            <div class="text-center pb-6 border-b border-gray-100">
+                                <h4 class="text-xl font-extrabold text-amber-800">BRONZE</h4>
+                                <div class="text-2xl font-black text-gray-900 mt-2">LKR 150,000</div>
+                            </div>
+                            <ul class="py-6 space-y-3 text-xs text-gray-600">
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Promotional video feature</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"></i>
+                                    <span>Logo placement & recognition</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <button onclick="openSponsorModal('Bronze')" class="w-full py-2.5 rounded-xl bg-amber-800 text-white font-bold text-xs hover:bg-amber-900 transition-colors">
+                            Select Bronze
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Customized Note & Action Button -->
+                <div class="glass-panel rounded-2xl p-6 text-center max-w-3xl mx-auto border border-gray-200">
+                    <p class="text-xs sm:text-sm text-gray-600 mb-4">
+                        <strong>Note:</strong> LEARN welcomes both financial and in-kind sponsorships. Packages are a starting point and can be fully customized to align with your organization's objectives.
+                    </p>
+                    <button onclick="openSponsorModal('Custom')" class="px-8 py-3 bg-gradient-btn text-white font-extrabold text-sm rounded-xl shadow-lg shadow-brand-pink/30 hover:scale-105 transition-all">
+                        Become a Sponsor
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ABOUT LEARN ORGANISATION -->
+        <section class="py-16 bg-gradient-to-r from-brand-navy to-brand-purple text-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-8">
+                        <span class="px-3 py-1 rounded-full bg-white/20 text-xs font-bold uppercase tracking-wider mb-3 inline-block">National NREN</span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4">About LEARN (Lanka Education And Research Network)</h3>
+                        <p class="text-gray-200 text-sm sm:text-base leading-relaxed">
+                            LEARN is Sri Lanka's National Research and Education Network (NREN), supporting high-speed connectivity, digital services, cross-institutional collaboration, and technology-enabled education and research across the nation.
+                        </p>
+                    </div>
+                    <div class="md:col-span-4 flex justify-start md:justify-end">
+                        <a href="https://www.learn.ac.lk" target="_blank" class="px-6 py-3.5 bg-white text-brand-navy font-extrabold rounded-xl hover:bg-brand-lemon transition-colors text-sm shadow-xl inline-flex items-center gap-2">
+                            Learn More About LEARN <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT & EVENT INFO SECTION -->
+        <section id="contact" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    
+                    <!-- Event Summary Card -->
+                    <div class="glass-panel p-8 rounded-3xl border border-gray-200 shadow-lg reveal-on-scroll">
+                        <h3 class="text-2xl font-extrabold text-gray-900 mb-6 flex items-center gap-2">
+                            <i data-lucide="info" class="w-6 h-6 text-brand-pink"></i> Event Details Summary
+                        </h3>
+                        
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start gap-4 p-3 rounded-xl bg-white border border-gray-100">
+                                <i data-lucide="calendar" class="w-5 h-5 text-brand-pink shrink-0 mt-0.5"></i>
+                                <div>
+                                    <div class="font-bold text-gray-900">Date</div>
+                                    <div class="text-gray-600">29 October 2026</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-3 rounded-xl bg-white border border-gray-100">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-brand-coral shrink-0 mt-0.5"></i>
+                                <div>
+                                    <div class="font-bold text-gray-900">Venue</div>
+                                    <div class="text-gray-600">To be confirmed</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-3 rounded-xl bg-white border border-gray-100">
+                                <i data-lucide="clock" class="w-5 h-5 text-brand-amber shrink-0 mt-0.5"></i>
+                                <div>
+                                    <div class="font-bold text-gray-900">Time</div>
+                                    <div class="text-gray-600">8:30 AM – 5:00 PM</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-3 rounded-xl bg-white border border-gray-100">
+                                <i data-lucide="layers" class="w-5 h-5 text-brand-purple shrink-0 mt-0.5"></i>
+                                <div>
+                                    <div class="font-bold text-gray-900">Format</div>
+                                    <div class="text-gray-600">Annual General Meeting & Cybersecurity Programme</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Details Form / Card -->
+                    <div class="glass-panel p-8 rounded-3xl border border-gray-200 shadow-lg reveal-on-scroll" style="transition-delay: 150ms;">
+                        <h3 class="text-2xl font-extrabold text-gray-900 mb-6 flex items-center gap-2">
+                            <i data-lucide="mail" class="w-6 h-6 text-brand-purple"></i> Contact Information
+                        </h3>
+
+                        <p class="text-gray-600 text-sm mb-6">
+                            For queries regarding institutional participation, sponsorship opportunities, or general inquiries:
+                        </p>
+
+                        <div class="space-y-4 text-sm mb-8">
+                            <div class="flex items-center gap-3 text-gray-700">
+                                <div class="w-9 h-9 rounded-lg bg-brand-navy/10 text-brand-navy flex items-center justify-center font-bold">
+                                    <i data-lucide="building-2" class="w-4 h-4"></i>
+                                </div>
+                                <span class="font-semibold">LEARN - Lanka Education And Research Network</span>
+                            </div>
+
+                            <div class="flex items-center gap-3 text-gray-700">
+                                <div class="w-9 h-9 rounded-lg bg-brand-purple/10 text-brand-purple flex items-center justify-center font-bold">
+                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-gray-600">Event contact & Email: [To be added]</span>
+                            </div>
+
+                            <div class="flex items-center gap-3 text-gray-700">
+                                <div class="w-9 h-9 rounded-lg bg-brand-pink/10 text-brand-pink flex items-center justify-center font-bold">
+                                    <i data-lucide="globe" class="w-4 h-4"></i>
+                                </div>
+                                <a href="https://www.learn.ac.lk" target="_blank" class="text-brand-pink hover:underline font-medium">www.learn.ac.lk</a>
+                            </div>
+                        </div>
+
+                        <!-- Social Media Links -->
+                        <div>
+                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Connect With LEARN</div>
+                            <div class="flex gap-3">
+                                <a href="#" class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand-navy hover:border-brand-navy transition-colors">
+                                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand-navy hover:border-brand-navy transition-colors">
+                                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand-navy hover:border-brand-navy transition-colors">
+                                    <i data-lucide="twitter" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand-navy hover:border-brand-navy transition-colors">
+                                    <i data-lucide="youtube" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
+                <div class="flex items-center gap-2">
+                    <span class="font-extrabold text-white text-base">LEARN37</span>
+                    <span>- Lanka Education And Research Network</span>
+                </div>
+                <div class="flex gap-4 text-xs font-medium">
+                    <a href="#home" class="hover:text-white">Home</a>
+                    <a href="#about" class="hover:text-white">About</a>
+                    <a href="#programme" class="hover:text-white">Programme</a>
+                    <a href="#contact" class="hover:text-white">Contact</a>
+                </div>
+            </div>
+            <p>&copy; 2026 Lanka Education And Research Network (LEARN). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- REGISTRATION MODAL -->
+    <div id="register-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border border-gray-100 transform scale-95 transition-transform duration-300" id="modal-card">
+            
+            <button onclick="closeRegisterModal()" class="absolute top-5 right-5 p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-pink uppercase tracking-wider">Registration Form</span>
+                <h3 class="text-2xl font-extrabold text-gray-900">Register for LEARN37</h3>
+                <p class="text-xs text-gray-500 mt-1">Join Sri Lanka's education and research cybersecurity summit.</p>
+            </div>
+
+            <!-- Form -->
+            <form id="reg-form" onsubmit="handleRegistration(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Full Name *</label>
+                    <input type="text" required placeholder="e.g. Dr. K. Perera" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Institution / Organization *</label>
+                    <input type="text" required placeholder="e.g. University of Colombo" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none text-sm">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Designation *</label>
+                        <input type="text" required placeholder="e.g. Senior Lecturer / IT Director" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Email Address *</label>
+                        <input type="email" required placeholder="name@domain.ac.lk" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Attendance Category *</label>
+                    <select required class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none text-sm bg-white">
+                        <option value="">Select Category</option>
+                        <option value="agm">Official AGM Representative (Member Institution)</option>
+                        <option value="cyber">Cybersecurity Programme Participant</option>
+                        <option value="agri">AgroTech Working Group Delegate</option>
+                        <option value="ai">Generative AI Working Group Delegate</option>
+                    </select>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full py-3.5 bg-gradient-btn text-white font-extrabold rounded-xl shadow-lg shadow-brand-pink/30 hover:scale-[1.02] active:scale-95 transition-all text-sm">
+                        Submit Registration
+                    </button>
+                </div>
+            </form>
+
+            <div id="modal-success-msg" class="hidden text-center py-8 space-y-3">
+                <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                    <i data-lucide="check" class="w-8 h-8"></i>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900">Registration Received!</h4>
+                <p class="text-xs text-gray-600 max-w-xs mx-auto">Thank you for registering for LEARN37. Confirmation details will be emailed to you shortly.</p>
+                <button onclick="closeRegisterModal()" class="px-6 py-2.5 bg-gray-900 text-white font-bold rounded-xl text-xs mt-4">
+                    Close
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SPONSOR MODAL -->
+    <div id="sponsor-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border border-gray-100">
+            <button onclick="closeSponsorModal()" class="absolute top-5 right-5 p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-coral uppercase tracking-wider">Partnership Inquiry</span>
+                <h3 class="text-2xl font-extrabold text-gray-900" id="sponsor-modal-title">Sponsorship Interest</h3>
+                <p class="text-xs text-gray-500 mt-1">Connect with Sri Lanka's leading academic & tech decision-makers.</p>
+            </div>
+
+            <form onsubmit="handleSponsorSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Company / Organization *</label>
+                    <input type="text" required placeholder="e.g. CyberSec Solutions Ltd" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Contact Person *</label>
+                    <input type="text" required placeholder="Full Name" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Email Address *</label>
+                    <input type="email" required placeholder="contact@company.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Message / Requirements</label>
+                    <textarea rows="3" placeholder="Tell us about your objectives or custom package needs..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none text-sm"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3.5 bg-gradient-btn text-white font-extrabold rounded-xl shadow-lg shadow-brand-pink/30 hover:scale-[1.02] active:scale-95 transition-all text-sm">
+                    Submit Inquiry
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Agenda Filter Tabs Logic
+        function filterAgenda(category) {
+            const items = document.querySelectorAll('.agenda-item');
+            const tabs = document.querySelectorAll('.agenda-tab');
+
+            // Reset tab styles
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-brand-navy', 'text-white');
+                tab.classList.add('bg-white', 'text-gray-600');
+            });
+
+            // Highlight selected tab
+            const activeTab = document.getElementById(`tab-${category}`);
+            if (activeTab) {
+                activeTab.classList.remove('bg-white', 'text-gray-600');
+                activeTab.classList.add('bg-brand-navy', 'text-white');
+            }
+
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Functionality
+        const regModal = document.getElementById('register-modal');
+        const modalCard = document.getElementById('modal-card');
+        const sponsorModal = document.getElementById('sponsor-modal');
+
+        function openRegisterModal() {
+            regModal.classList.remove('hidden');
+            setTimeout(() => {
+                regModal.classList.remove('opacity-0');
+                modalCard.classList.remove('scale-95');
+                modalCard.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeRegisterModal() {
+            regModal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+            setTimeout(() => {
+                regModal.classList.add('hidden');
+                document.getElementById('reg-form').reset();
+                document.getElementById('reg-form').classList.remove('hidden');
+                document.getElementById('modal-success-msg').classList.add('hidden');
+            }, 300);
+        }
+
+        function openSponsorModal(tier) {
+            document.getElementById('sponsor-modal-title').textContent = `${tier} Sponsor Inquiry`;
+            sponsorModal.classList.remove('hidden');
+            setTimeout(() => {
+                sponsorModal.classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeSponsorModal() {
+            sponsorModal.classList.add('opacity-0');
+            setTimeout(() => {
+                sponsorModal.classList.add('hidden');
+            }, 300);
+        }
+
+        function handleRegistration(e) {
+            e.preventDefault();
+            document.getElementById('reg-form').classList.add('hidden');
+            document.getElementById('modal-success-msg').classList.remove('hidden');
+        }
+
+        function handleSponsorSubmit(e) {
+            e.preventDefault();
+            alert("Thank you for your interest! The LEARN team will reach out to you with details.");
+            closeSponsorModal();
+        }
+
+        // Scroll Intersection Observer for Reveal Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
