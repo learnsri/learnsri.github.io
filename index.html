@@ -133,7 +133,7 @@
 </head>
 <body class="relative antialiased text-gray-800 bg-white">
 
-    <!-- Floating Background Elements -->
+    <!-- Dynamic Background Orbs -->
     <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-gradient-to-br from-brand-navy/10 to-brand-purple/10 blur-3xl animate-float"></div>
         <div class="absolute top-1/3 -right-32 w-96 h-96 rounded-full bg-gradient-to-br from-brand-pink/15 to-brand-coral/15 blur-3xl animate-float-delayed"></div>
@@ -194,7 +194,6 @@
     </header>
 
     <main class="relative z-10">
-
         <!-- HERO SECTION -->
         <section id="home" class="min-h-screen pt-28 pb-16 flex items-center justify-center relative overflow-hidden bg-gradient-subtle">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -276,35 +275,9 @@
                 </div>
             </div>
         </section>
-
-        <!-- CONTACT SECTION -->
-        <section id="contact" class="py-20 bg-gray-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="glass-panel p-8 rounded-3xl border border-gray-200 shadow-lg max-w-2xl mx-auto">
-                    <h3 class="text-2xl font-extrabold text-gray-900 mb-6 flex items-center gap-2">
-                        <i data-lucide="mail" class="w-6 h-6 text-brand-purple"></i> Contact Information
-                    </h3>
-                    <div class="space-y-4 text-sm">
-                        <div class="flex items-center gap-3 text-gray-700">
-                            <div class="w-9 h-9 rounded-lg bg-brand-navy/10 text-brand-navy flex items-center justify-center font-bold">
-                                <i data-lucide="building-2" class="w-4 h-4"></i>
-                            </div>
-                            <span class="font-semibold">LEARN - Lanka Education And Research Network</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-gray-700">
-                            <div class="w-9 h-9 rounded-lg bg-brand-purple/10 text-brand-purple flex items-center justify-center font-bold">
-                                <i data-lucide="mail" class="w-4 h-4"></i>
-                            </div>
-                            <span class="text-gray-600">Event contact: aparna@ops.learn.ac.lk</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </main>
 
-    <!-- REGISTRATION MODAL WITH DIRECT GOOGLE SHEET SUBMISSION -->
+    <!-- ENHANCED REGISTRATION MODAL WITH GOOGLE SHEET INTEGRATION -->
     <div id="register-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
         <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-gray-100 max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300" id="modal-card">
             
@@ -318,7 +291,7 @@
                 <p class="text-xs text-gray-500 mt-1">Join Sri Lanka's education and research cybersecurity summit.</p>
             </div>
 
-            <!-- Registration Form -->
+            <!-- Multi-Session & Contact Number Form -->
             <form id="reg-form" onsubmit="handleRegistration(event)" class="space-y-4">
 
                 <div>
@@ -344,7 +317,7 @@
 
                 <div>
                     <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Email Address *</label>
-                    <input type="email" name="Email" required placeholder="aparna@ops.learn.ac.lk" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none text-sm">
+                    <input type="email" name="Email" required placeholder="name@domain.ac.lk" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 outline-none text-sm">
                 </div>
 
                 <!-- Multi-Select Sessions / Attendance Categories -->
@@ -353,34 +326,34 @@
                     
                     <div class="space-y-2 bg-gray-50/80 p-3.5 rounded-xl border border-gray-200">
                         <label class="flex items-start gap-3 cursor-pointer p-1.5 rounded-lg hover:bg-white transition-colors">
-                            <input type="checkbox" name="session_option" value="Official AGM" class="mt-0.5 rounded text-brand-purple focus:ring-brand-purple">
+                            <input type="checkbox" name="session_option" value="Official AGM Representative" class="mt-0.5 rounded text-brand-purple focus:ring-brand-purple">
                             <div class="text-xs">
-                                <span class="font-bold text-gray-800 block">Official AGM</span>
-                                <span class="text-gray-500">For official representatives of LEARN member institutions</span>
+                                <span class="font-bold text-gray-800 block">Official AGM Representative</span>
+                                <span class="text-gray-500">For designated official representatives of LEARN member institutions</span>
                             </div>
                         </label>
 
                         <label class="flex items-start gap-3 cursor-pointer p-1.5 rounded-lg hover:bg-white transition-colors">
-                            <input type="checkbox" name="session_option" value="Cybersecurity" class="mt-0.5 rounded text-brand-purple focus:ring-brand-purple" checked>
+                            <input type="checkbox" name="session_option" value="Cybersecurity Programme Participant" class="mt-0.5 rounded text-brand-purple focus:ring-brand-purple" checked>
                             <div class="text-xs">
-                                <span class="font-bold text-gray-800 block">Cybersecurity</span>
+                                <span class="font-bold text-gray-800 block">Cybersecurity Programme Participant</span>
                                 <span class="text-gray-500">Main keynote & technical cybersecurity sessions</span>
                             </div>
                         </label>
 
                         <label class="flex items-start gap-3 cursor-pointer p-1.5 rounded-lg hover:bg-white transition-colors">
-                            <input type="checkbox" name="session_option" value="AgroTech WG" class="mt-0.5 rounded text-brand-purple focus:ring-brand-purple">
+                            <input type="checkbox" name="session_option" value="AgroTech Working Group Delegate" class="mt-0.5 rounded text-brand-purple focus:ring-brand-purple">
                             <div class="text-xs">
-                                <span class="font-bold text-gray-800 block">AgroTech WG</span>
-                                <span class="text-gray-500">Agriculture technology & research track</span>
+                                <span class="font-bold text-gray-800 block">AgroTech Working Group Session</span>
+                                <span class="text-gray-500">Agriculture academics, researchers & technology specialists</span>
                             </div>
                         </label>
 
                         <label class="flex items-start gap-3 cursor-pointer p-1.5 rounded-lg hover:bg-white transition-colors">
-                            <input type="checkbox" name="session_option" value="Generative AI WG" class="mt-0.5 rounded text-brand-purple focus:ring-brand-purple">
+                            <input type="checkbox" name="session_option" value="Generative AI Working Group Delegate" class="mt-0.5 rounded text-brand-purple focus:ring-brand-purple">
                             <div class="text-xs">
-                                <span class="font-bold text-gray-800 block">Generative AI WG</span>
-                                <span class="text-gray-500">Practical and responsible AI implementation</span>
+                                <span class="font-bold text-gray-800 block">Generative AI Working Group Session</span>
+                                <span class="text-gray-500">Community focused on practical & responsible GenAI integration</span>
                             </div>
                         </label>
                     </div>
@@ -398,7 +371,7 @@
                     <i data-lucide="check" class="w-8 h-8"></i>
                 </div>
                 <h4 class="text-xl font-bold text-gray-900">Registration Received!</h4>
-                <p class="text-xs text-gray-600 max-w-xs mx-auto">Thank you for registering for LEARN37. Your response has been recorded directly into the Google Sheet.</p>
+                <p class="text-xs text-gray-600 max-w-xs mx-auto">Thank you for registering for LEARN37. Your response has been recorded in the registration database.</p>
                 <button onclick="closeRegisterModal()" class="px-6 py-2.5 bg-gray-900 text-white font-bold rounded-xl text-xs mt-4">
                     Close
                 </button>
@@ -411,10 +384,12 @@
     <script>
         lucide.createIcons();
 
+        // Mobile Menu
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
+        // Modal Controls
         const regModal = document.getElementById('register-modal');
         const modalCard = document.getElementById('modal-card');
 
@@ -439,15 +414,15 @@
             }, 300);
         }
 
-        // PRE-CONFIGURED GOOGLE APPS SCRIPT WEB APP URL
-        const GOOGLE_SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwRznr1TES3S4LE9mmjUPUBwlPuMx4OUhQt5mcxgrqAnMAhBPQwJLwKYnNsWH5fuMGb-g/exec';
+        // GOOGLE SCRIPT WEB APP ENDPOINT
+        const GOOGLE_SHEET_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL';
 
         async function handleRegistration(e) {
             e.preventDefault();
             const form = e.target;
             const btn = document.getElementById('reg-submit-btn');
             
-            // Collect Selected Sessions
+            // Gather Selected Sessions
             const selectedSessions = Array.from(document.querySelectorAll('input[name="session_option"]:checked'))
                 .map(cb => cb.value)
                 .join(', ');
@@ -457,7 +432,7 @@
                 return;
             }
 
-            btn.textContent = 'Submitting to Google Sheet...';
+            btn.textContent = 'Submitting...';
             btn.disabled = true;
 
             const formData = new FormData();
@@ -469,10 +444,12 @@
             formData.append('Sessions', selectedSessions);
 
             try {
-                await fetch(GOOGLE_SHEET_SCRIPT_URL, {
-                    method: 'POST',
-                    body: formData
-                });
+                if (GOOGLE_SHEET_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL') {
+                    await fetch(GOOGLE_SHEET_SCRIPT_URL, {
+                        method: 'POST',
+                        body: formData
+                    });
+                }
                 form.classList.add('hidden');
                 document.getElementById('modal-success-msg').classList.remove('hidden');
             } catch (err) {
