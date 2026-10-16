@@ -1057,7 +1057,9 @@
 
             <form id="sponsor-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleSponsorSubmit(event)" class="space-y-4">
                 <input type="hidden" name="access_key" value="d37921ef-a445-45af-9a51-cd02bfc64f92">
-                <input type="hidden" name="subject" value="New Sponsorship Inquiry for LEARN37">
+                <!-- DYNAMIC SPONSORSHIP TIER & SUBJECT INPUTS -->
+                <input type="hidden" id="sponsor-tier-input" name="Sponsorship Tier" value="General">
+                <input type="hidden" id="sponsor-subject-input" name="subject" value="New Sponsorship Inquiry for LEARN37">
                 <input type="hidden" name="from_name" value="LEARN37 Website">
 
                 <div>
@@ -1157,8 +1159,12 @@
             }, 300);
         }
 
+        // Updated openSponsorModal to dynamically attach Tier name to email data
         function openSponsorModal(tier) {
             document.getElementById('sponsor-modal-title').textContent = `${tier} Sponsor Inquiry`;
+            document.getElementById('sponsor-tier-input').value = `${tier} Package`;
+            document.getElementById('sponsor-subject-input').value = `New ${tier} Sponsorship Inquiry for LEARN37`;
+
             sponsorModal.classList.remove('hidden');
             setTimeout(() => {
                 sponsorModal.classList.remove('opacity-0');
