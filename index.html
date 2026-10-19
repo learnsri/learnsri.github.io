@@ -170,11 +170,11 @@
                     <a href="#contact" class="hover:text-brand-pink transition-colors">CONTACT</a>
                 </nav>
 
-                <!-- CTA Button (Updated to Registration Closed Status) -->
+                <!-- CTA Button (Restored original style) -->
                 <div class="hidden sm:flex items-center">
-                    <button onclick="openRegisterModal()" class="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-gray-600 bg-gray-100 hover:bg-gray-200 border border-gray-200 rounded-full transition-all duration-300 group">
+                    <button onclick="openRegisterModal()" class="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white transition-all duration-300 bg-gradient-btn rounded-full shadow-lg shadow-brand-pink/30 hover:shadow-xl hover:shadow-brand-pink/50 hover:scale-105 active:scale-95 group overflow-hidden">
                         <span class="relative z-10 flex items-center gap-2">
-                            <i data-lucide="lock" class="w-4 h-4 text-gray-500"></i> Registration Closed
+                            Register Now <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </span>
                     </button>
                 </div>
@@ -198,8 +198,8 @@
             <a href="#sponsors" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-pink/10 hover:to-transparent hover:text-brand-pink">SPONSORS & PARTNERS</a>
             <a href="#contact" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-navy/10 hover:to-transparent hover:text-brand-navy">CONTACT</a>
             <div class="pt-2">
-                <button onclick="openRegisterModal()" class="w-full py-3 bg-gray-100 text-gray-700 font-bold rounded-xl border border-gray-200 flex items-center justify-center gap-2">
-                    <i data-lucide="lock" class="w-4 h-4 text-gray-500"></i> Registration Closed
+                <button onclick="openRegisterModal()" class="w-full py-3 bg-gradient-btn text-white font-bold rounded-xl shadow-md flex items-center justify-center gap-2">
+                    Register Now <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </button>
             </div>
         </div>
@@ -250,11 +250,11 @@
                     </div>
                 </div>
 
-                <!-- CTA Buttons -->
+                <!-- CTA Buttons (Restored original style) -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                    <button onclick="openRegisterModal()" class="w-full sm:w-auto px-8 py-4 bg-gray-100 text-gray-700 font-extrabold text-base rounded-2xl border border-gray-200 shadow-md hover:bg-gray-200 transition-all duration-300 flex items-center justify-center gap-3">
-                        <i data-lucide="lock" class="w-5 h-5 text-gray-500"></i>
-                        Registration Closed
+                    <button onclick="openRegisterModal()" class="w-full sm:w-auto px-8 py-4 bg-gradient-btn text-white font-extrabold text-base rounded-2xl shadow-xl shadow-brand-pink/30 hover:shadow-2xl hover:shadow-brand-pink/50 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3">
+                        <i data-lucide="user-check" class="w-5 h-5"></i>
+                        Register Now
                     </button>
                     <a href="#programme" class="w-full sm:w-auto px-8 py-4 bg-white text-gray-800 font-bold text-base rounded-2xl border border-gray-200 shadow-md hover:border-brand-purple hover:text-brand-purple transition-all duration-300 flex items-center justify-center gap-2">
                         <i data-lucide="file-text" class="w-5 h-5"></i>
@@ -969,7 +969,7 @@
         </div>
     </footer>
 
-    <!-- REGISTRATION MODAL (TEMPORARILY CLOSED) -->
+    <!-- REGISTRATION MODAL (TEMPORARILY CLOSED NOTICE) -->
     <div id="register-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
         <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-gray-100 max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300" id="modal-card">
             
