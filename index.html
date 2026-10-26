@@ -39,7 +39,6 @@
                     animation: {
                         'blob': 'blob 14s infinite alternate ease-in-out',
                         'blob-reverse': 'blob-reverse 18s infinite alternate ease-in-out',
-                        'shimmer-pulse': 'shimmerGlow 4s ease-in-out infinite alternate',
                         'spin-slow': 'spin 30s linear infinite',
                         'marquee': 'marquee 25s linear infinite',
                     },
@@ -55,10 +54,6 @@
                             '33%': { transform: 'translate(-45px, 35px) scale(1.1)' },
                             '66%': { transform: 'translate(30px, -40px) scale(0.95)' },
                             '100%': { transform: 'translate(0px, 0px) scale(1)' }
-                        },
-                        shimmerGlow: {
-                            '0%': { filter: 'drop-shadow(0 0 15px rgba(0, 224, 191, 0.4))' },
-                            '100%': { filter: 'drop-shadow(0 0 35px rgba(0, 109, 193, 0.7))' }
                         },
                         marquee: {
                             '0%': { transform: 'translateX(0%)' },
@@ -77,12 +72,12 @@
             overflow-x: hidden;
         }
 
-        /* Modern cyber grid pattern background */
+        /* Subtle cyber grid backdrop */
         .bg-grid-cyber {
             background-image: 
-                radial-gradient(circle at 1px 1px, rgba(0, 109, 193, 0.12) 1px, transparent 0),
-                linear-gradient(to right, rgba(0, 187, 199, 0.04) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(0, 66, 165, 0.04) 1px, transparent 1px);
+                radial-gradient(circle at 1px 1px, rgba(0, 109, 193, 0.08) 1px, transparent 0),
+                linear-gradient(to right, rgba(0, 187, 199, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 66, 165, 0.035) 1px, transparent 1px);
             background-size: 32px 32px, 64px 64px, 64px 64px;
         }
 
@@ -191,17 +186,13 @@
 
     <!-- FLOATING DYNAMIC NEON MESH BACKGROUND -->
     <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 bg-grid-cyber">
-        <!-- Orb 1: Deep Navy/Royal -->
         <div class="absolute -top-36 -left-36 w-[540px] h-[540px] rounded-full bg-gradient-to-tr from-pal-navy via-pal-royal to-pal-blue opacity-35 blur-[120px] animate-blob"></div>
-        <!-- Orb 2: Electric Cyan/Teal -->
         <div class="absolute top-[28%] -right-44 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-pal-cyan via-pal-teal to-pal-aqua opacity-45 blur-[130px] animate-blob-reverse"></div>
-        <!-- Orb 3: Aqua Light Center Pulse -->
         <div class="absolute top-[65%] left-[10%] w-[580px] h-[580px] rounded-full bg-gradient-to-tl from-pal-blue via-pal-teal to-pal-aqua opacity-30 blur-[140px] animate-blob"></div>
-        <!-- Orb 4: Bottom Cyber Glow -->
         <div class="absolute -bottom-40 right-[15%] w-[480px] h-[480px] rounded-full bg-gradient-to-r from-pal-royal via-pal-cyan to-pal-aqua opacity-40 blur-[110px] animate-blob-reverse"></div>
     </div>
 
-    <!-- FLOATING TICKER / LIVE STATUS BANNER -->
+    <!-- LIVE STATUS TOP BAR -->
     <div class="relative z-50 bg-gradient-to-r from-pal-navy via-pal-royal to-pal-blue text-white text-xs py-2 px-4 shadow-sm overflow-hidden flex items-center border-b border-pal-cyan/30">
         <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
             <div class="flex items-center gap-2">
@@ -284,8 +275,12 @@
 
     <main class="relative z-10">
 
-        <!-- HERO SECTION -->
+        <!-- HERO SECTION WITH SMOOTH FLOWING WAVE RIBBON CANVAS -->
         <section id="home" class="min-h-[92vh] pt-12 pb-20 flex items-center justify-center relative overflow-hidden">
+            
+            <!-- Dynamic Interactive Sine Wave Mesh Canvas -->
+            <canvas id="hero-waves-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
                 
                 <!-- Cyber Glowing Badge -->
@@ -311,8 +306,8 @@
 
                 <!-- Modern Live Info Cards Strip -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-12">
-                    <div class="flex items-center gap-3.5 p-4 rounded-2xl bg-white/90 border border-pal-blue/15 shadow-lg shadow-pal-cyan/5 hover:border-pal-teal transition-all group">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pal-navy to-pal-blue text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <div class="flex items-center gap-3.5 p-4 rounded-2xl bg-white/95 border border-pal-blue/15 shadow-lg shadow-pal-cyan/5 hover:border-pal-teal transition-all group backdrop-blur-md">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pal-navy to-pal-blue text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-md">
                             <i data-lucide="calendar" class="w-5 h-5 text-pal-aqua"></i>
                         </div>
                         <div class="text-left">
@@ -321,8 +316,8 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-3.5 p-4 rounded-2xl bg-white/90 border border-pal-blue/15 shadow-lg shadow-pal-cyan/5 hover:border-pal-teal transition-all group">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pal-royal to-pal-cyan text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <div class="flex items-center gap-3.5 p-4 rounded-2xl bg-white/95 border border-pal-blue/15 shadow-lg shadow-pal-cyan/5 hover:border-pal-teal transition-all group backdrop-blur-md">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pal-royal to-pal-cyan text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-md">
                             <i data-lucide="map-pin" class="w-5 h-5 text-pal-aqua"></i>
                         </div>
                         <div class="text-left">
@@ -331,8 +326,8 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-3.5 p-4 rounded-2xl bg-white/90 border border-pal-blue/15 shadow-lg shadow-pal-cyan/5 hover:border-pal-teal transition-all group">
-                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pal-cyan to-pal-aqua text-slate-900 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                    <div class="flex items-center gap-3.5 p-4 rounded-2xl bg-white/95 border border-pal-blue/15 shadow-lg shadow-pal-cyan/5 hover:border-pal-teal transition-all group backdrop-blur-md">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pal-cyan to-pal-aqua text-slate-900 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-md">
                             <i data-lucide="clock" class="w-5 h-5 text-pal-navy"></i>
                         </div>
                         <div class="text-left">
@@ -348,7 +343,7 @@
                         <i data-lucide="user-check" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
                         Register Now
                     </button>
-                    <a href="#programme" class="w-full sm:w-auto px-9 py-4 bg-white/90 backdrop-blur-md text-pal-navy font-black text-sm uppercase tracking-wider rounded-2xl border-2 border-pal-cyan/30 shadow-md hover:border-pal-teal hover:bg-pal-aqua/10 transition-all duration-300 flex items-center justify-center gap-2 group">
+                    <a href="#programme" class="w-full sm:w-auto px-9 py-4 bg-white/95 backdrop-blur-md text-pal-navy font-black text-sm uppercase tracking-wider rounded-2xl border-2 border-pal-cyan/30 shadow-md hover:border-pal-teal hover:bg-pal-aqua/10 transition-all duration-300 flex items-center justify-center gap-2 group">
                         <i data-lucide="compass" class="w-5 h-5 text-pal-cyan group-hover:rotate-45 transition-transform"></i>
                         Explore Agenda
                     </a>
@@ -357,7 +352,7 @@
             </div>
         </section>
 
-        <!-- STATS STRIP (Fills emptiness with social proof & tech feel) -->
+        <!-- STATS STRIP -->
         <section class="py-10 bg-white/80 border-y border-pal-cyan/20 backdrop-blur-md relative z-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -394,7 +389,7 @@
                     <div class="w-24 h-2 bg-gradient-to-r from-pal-navy via-pal-cyan to-pal-aqua rounded-full mx-auto mt-5"></div>
                 </div>
 
-                <!-- Main About Card with Cyber Gradient Border -->
+                <!-- Main About Card -->
                 <div class="holo-card p-8 sm:p-14 shadow-2xl mb-16 reveal-on-scroll">
                     <div class="grid md:grid-cols-12 gap-10 items-center">
                         <div class="md:col-span-8 space-y-5">
@@ -423,7 +418,7 @@
                     </div>
                 </div>
 
-                <!-- 3 Pillars Grid with Holographic Accents -->
+                <!-- 3 Pillars Grid -->
                 <div class="grid md:grid-cols-3 gap-8">
                     
                     <!-- Card 1 -->
@@ -469,7 +464,6 @@
 
         <!-- IMMERSIVE DARK CYBER BANNER -->
         <section class="py-20 bg-dark-cyber text-white relative overflow-hidden dark-grid-cyber">
-            <!-- Animated neon beam -->
             <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-3/4 h-48 bg-gradient-to-r from-pal-cyan via-pal-aqua to-pal-blue opacity-25 blur-3xl rounded-full pointer-events-none"></div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1204,7 +1198,7 @@
         </div>
     </div>
 
-    <!-- JavaScript Logic -->
+    <!-- JavaScript Logic & Smooth Waveform Ribbon Canvas -->
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
@@ -1223,6 +1217,112 @@
                 mobileMenu.classList.add('hidden');
             });
         });
+
+        // =========================================================================
+        // DYNAMIC SINE WAVE MESH & PARTICLE CANVAS (Matching Reference Style)
+        // =========================================================================
+        (function initWaveCanvas() {
+            const canvas = document.getElementById('hero-waves-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let step = 0;
+            let mouseX = 0, mouseY = 0, targetMouseX = 0, targetMouseY = 0;
+
+            function resize() {
+                const parent = canvas.parentElement;
+                width = canvas.width = parent.offsetWidth;
+                height = canvas.height = parent.offsetHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            // Track gentle mouse movement for subtle parallax wave reaction
+            window.addEventListener('mousemove', (e) => {
+                targetMouseX = (e.clientX / window.innerWidth) - 0.5;
+                targetMouseY = (e.clientY / window.innerHeight) - 0.5;
+            });
+
+            // Particles floating alongside waves
+            const particles = Array.from({ length: 26 }, () => ({
+                x: Math.random() * (width || 1200),
+                y: Math.random() * (height || 700),
+                radius: Math.random() * 2 + 1,
+                vx: (Math.random() - 0.5) * 0.4,
+                vy: -Math.random() * 0.5 - 0.2,
+                alpha: Math.random() * 0.6 + 0.2
+            }));
+
+            // Palette Wave Colors with varying opacity
+            const waveColors = [
+                'rgba(0, 224, 191, 0.35)', // Aqua
+                'rgba(0, 187, 199, 0.40)', // Teal
+                'rgba(0, 149, 202, 0.32)', // Cyan
+                'rgba(0, 109, 193, 0.28)', // Blue
+                'rgba(0, 66, 165, 0.20)'   // Royal
+            ];
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+
+                // Smooth mouse interpolation
+                mouseX += (targetMouseX - mouseX) * 0.05;
+                mouseY += (targetMouseY - mouseY) * 0.05;
+
+                // 1. Draw Floating Shimmer Particles
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.y < 0) p.y = height;
+                    if (p.x < 0) p.x = width;
+                    if (p.x > width) p.x = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(0, 224, 191, ${p.alpha * 0.7})`;
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = '#00E0BF';
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                });
+
+                // 2. Draw Multi-Layered Ribbon Sine Lines (Matching Reference Curve)
+                const waveCount = 28;
+                for (let i = 0; i < waveCount; i++) {
+                    ctx.beginPath();
+                    const colorIndex = i % waveColors.length;
+                    ctx.strokeStyle = waveColors[colorIndex];
+                    ctx.lineWidth = i % 3 === 0 ? 1.6 : 1.1;
+
+                    // Progressively offset waves to build smooth ribbon fan
+                    const offset = (i * 14) + (step * 0.65);
+                    const mouseAmp = mouseY * 40;
+
+                    for (let x = 0; x <= width; x += 12) {
+                        // Blend two harmonic sine frequencies for organic fluid motion
+                        const normX = x / width;
+                        const y1 = Math.sin((x * 0.0022) + (step * 0.015) + (i * 0.08)) * (75 + i * 1.5);
+                        const y2 = Math.cos((x * 0.0012) - (step * 0.018)) * 40;
+                        
+                        // Diagonal sweeping swoop as shown in the reference image
+                        const baseTrajectory = (height * 0.76) - (normX * height * 0.42);
+                        const y = baseTrajectory + y1 + y2 + (i * 4) + mouseAmp;
+
+                        if (x === 0) {
+                            ctx.moveTo(x, y);
+                        } else {
+                            ctx.lineTo(x, y);
+                        }
+                    }
+                    ctx.stroke();
+                }
+
+                step += 1;
+                requestAnimationFrame(draw);
+            }
+
+            draw();
+        })();
 
         // Agenda Filter Tabs Logic
         function filterAgenda(category) {
