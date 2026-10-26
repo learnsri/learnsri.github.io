@@ -11,50 +11,58 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: {
+                        pal: {
                             navy: '#070E75',
                             royal: '#0042A5',
                             blue: '#006DC1',
                             cyan: '#0095CA',
                             teal: '#00BBC7',
-                            aqua: '#00E0BF',
-                            // Aliased mappings to ensure complete backward compatibility
-                            purple: '#0042A5',
-                            pink: '#006DC1',
-                            coral: '#0095CA',
-                            amber: '#00BBC7',
-                            lemon: '#00E0BF'
+                            aqua: '#00E0BF'
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
                     },
                     backgroundImage: {
-                        'gradient-main': 'linear-gradient(135deg, #070E75 0%, #0042A5 20%, #006DC1 40%, #0095CA 60%, #00BBC7 80%, #00E0BF 100%)',
-                        'gradient-subtle': 'linear-gradient(135deg, rgba(7,14,117,0.06) 0%, rgba(0,109,193,0.06) 50%, rgba(0,224,191,0.06) 100%)',
-                        'gradient-card': 'linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(240,249,255,0.85) 100%)',
-                        'gradient-btn': 'linear-gradient(90deg, #0042A5 0%, #006DC1 50%, #00BBC7 100%)'
+                        'full-spectrum': 'linear-gradient(135deg, #070E75 0%, #0042A5 22%, #006DC1 44%, #0095CA 65%, #00BBC7 82%, #00E0BF 100%)',
+                        'spectrum-btn': 'linear-gradient(95deg, #0042A5 0%, #006DC1 35%, #00BBC7 75%, #00E0BF 100%)',
+                        'spectrum-hologram': 'linear-gradient(135deg, rgba(0,224,191,0.18) 0%, rgba(0,187,199,0.12) 35%, rgba(0,66,165,0.08) 100%)',
+                        'dark-cyber': 'radial-gradient(circle at 15% 20%, #0042A5 0%, #070E75 55%, #03062C 100%)',
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'float-delayed': 'float 6s ease-in-out 3s infinite',
-                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                        'blob': 'blob 14s infinite alternate ease-in-out',
+                        'blob-reverse': 'blob-reverse 18s infinite alternate ease-in-out',
+                        'shimmer-pulse': 'shimmerGlow 4s ease-in-out infinite alternate',
+                        'spin-slow': 'spin 30s linear infinite',
+                        'marquee': 'marquee 25s linear infinite',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-15px)' },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(40px, -50px) scale(1.15)' },
+                            '66%': { transform: 'translate(-30px, 25px) scale(0.92)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
                         },
-                        pulseGlow: {
-                            '0%': { filter: 'drop-shadow(0 0 10px rgba(0, 109, 193, 0.3))' },
-                            '100%': { filter: 'drop-shadow(0 0 25px rgba(0, 224, 191, 0.6))' }
+                        'blob-reverse': {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(-45px, 35px) scale(1.1)' },
+                            '66%': { transform: 'translate(30px, -40px) scale(0.95)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
+                        },
+                        shimmerGlow: {
+                            '0%': { filter: 'drop-shadow(0 0 15px rgba(0, 224, 191, 0.4))' },
+                            '100%': { filter: 'drop-shadow(0 0 35px rgba(0, 109, 193, 0.7))' }
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
                         }
                     }
                 }
@@ -62,68 +70,103 @@
         }
     </script>
     <style>
-        /* Custom Styles & Utilities */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FFFFFF;
-            color: #1F2937;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
             overflow-x: hidden;
         }
 
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 187, 199, 0.15);
+        /* Modern cyber grid pattern background */
+        .bg-grid-cyber {
+            background-image: 
+                radial-gradient(circle at 1px 1px, rgba(0, 109, 193, 0.12) 1px, transparent 0),
+                linear-gradient(to right, rgba(0, 187, 199, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 66, 165, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px, 64px 64px, 64px 64px;
         }
 
-        .glass-nav {
+        .dark-grid-cyber {
+            background-image: 
+                radial-gradient(circle at 1px 1px, rgba(0, 224, 191, 0.25) 1px, transparent 0),
+                linear-gradient(to right, rgba(0, 187, 199, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 109, 193, 0.08) 1px, transparent 1px);
+            background-size: 36px 36px, 72px 72px, 72px 72px;
+        }
+
+        /* Animated Glowing Gradient text */
+        .gradient-text-animated {
+            background: linear-gradient(120deg, #070E75, #0042A5, #006DC1, #0095CA, #00BBC7, #00E0BF, #0042A5);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textFlow 8s linear infinite;
+        }
+
+        @keyframes textFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Frosted Glass Panels */
+        .glass-cyber {
             background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 224, 191, 0.25);
+            box-shadow: 0 10px 30px -10px rgba(0, 66, 165, 0.08);
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #070E75 0%, #0042A5 30%, #006DC1 65%, #00BBC7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .glass-nav-active {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 187, 199, 0.2);
         }
 
-        .gradient-text-warm {
-            background: linear-gradient(135deg, #0042A5 0%, #0095CA 50%, #00E0BF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .gradient-border-card {
+        /* Animated border glowing cards */
+        .holo-card {
             position: relative;
             background: #ffffff;
-            border-radius: 1rem;
+            border-radius: 1.5rem;
             z-index: 1;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .gradient-border-card::before {
+        .holo-card::before {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, #070E75, #0042A5, #006DC1, #0095CA, #00BBC7, #00E0BF);
-            border-radius: 1.05rem;
+            inset: -2px;
+            border-radius: 1.6rem;
+            background: linear-gradient(135deg, #070E75, #006DC1, #00BBC7, #00E0BF);
+            background-size: 200% 200%;
             z-index: -1;
-            opacity: 0.3;
-            transition: opacity 0.3s ease;
+            opacity: 0.35;
+            transition: opacity 0.4s ease, filter 0.4s ease;
         }
 
-        .gradient-border-card:hover::before {
+        .holo-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 25px 40px -15px rgba(0, 187, 199, 0.35);
+        }
+
+        .holo-card:hover::before {
             opacity: 1;
+            filter: blur(3px);
+            animation: borderPulse 3s ease infinite;
         }
 
+        @keyframes borderPulse {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Reveal animations */
         .reveal-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(35px);
+            transition: all 0.85s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .reveal-on-scroll.active {
@@ -133,61 +176,89 @@
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 9px;
         }
         ::-webkit-scrollbar-track {
             background: #F1F5F9;
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #070E75, #00BBC7);
-            border-radius: 4px;
+            background: linear-gradient(180deg, #0042A5, #00BBC7, #00E0BF);
+            border-radius: 5px;
         }
     </style>
 </head>
-<body class="relative antialiased text-gray-800 bg-white">
+<body class="relative antialiased text-slate-800 bg-slate-50 overflow-x-hidden selection:bg-pal-aqua selection:text-pal-navy">
 
-    <!-- Decorative Dynamic Floating Background Elements -->
-    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-gradient-to-br from-brand-navy/15 to-brand-royal/10 blur-3xl animate-float"></div>
-        <div class="absolute top-1/3 -right-32 w-96 h-96 rounded-full bg-gradient-to-br from-brand-blue/15 to-brand-cyan/15 blur-3xl animate-float-delayed"></div>
-        <div class="absolute -bottom-32 left-1/4 w-96 h-96 rounded-full bg-gradient-to-br from-brand-teal/15 to-brand-aqua/20 blur-3xl animate-float"></div>
+    <!-- FLOATING DYNAMIC NEON MESH BACKGROUND -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 bg-grid-cyber">
+        <!-- Orb 1: Deep Navy/Royal -->
+        <div class="absolute -top-36 -left-36 w-[540px] h-[540px] rounded-full bg-gradient-to-tr from-pal-navy via-pal-royal to-pal-blue opacity-35 blur-[120px] animate-blob"></div>
+        <!-- Orb 2: Electric Cyan/Teal -->
+        <div class="absolute top-[28%] -right-44 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-pal-cyan via-pal-teal to-pal-aqua opacity-45 blur-[130px] animate-blob-reverse"></div>
+        <!-- Orb 3: Aqua Light Center Pulse -->
+        <div class="absolute top-[65%] left-[10%] w-[580px] h-[580px] rounded-full bg-gradient-to-tl from-pal-blue via-pal-teal to-pal-aqua opacity-30 blur-[140px] animate-blob"></div>
+        <!-- Orb 4: Bottom Cyber Glow -->
+        <div class="absolute -bottom-40 right-[15%] w-[480px] h-[480px] rounded-full bg-gradient-to-r from-pal-royal via-pal-cyan to-pal-aqua opacity-40 blur-[110px] animate-blob-reverse"></div>
     </div>
 
-    <!-- Navigation Bar -->
-    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-3 glass-nav border-b border-gray-100/80 shadow-sm">
+    <!-- FLOATING TICKER / LIVE STATUS BANNER -->
+    <div class="relative z-50 bg-gradient-to-r from-pal-navy via-pal-royal to-pal-blue text-white text-xs py-2 px-4 shadow-sm overflow-hidden flex items-center border-b border-pal-cyan/30">
+        <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="inline-flex h-2.5 w-2.5 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pal-aqua opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-pal-aqua"></span>
+                </span>
+                <span class="font-bold tracking-wider uppercase text-[11px] text-pal-aqua">Event Announcement</span>
+                <span class="hidden md:inline text-blue-200">| Registrations opening soon for official LEARN member delegates & participants.</span>
+            </div>
+            <a href="#sponsors" class="text-pal-aqua hover:text-white font-bold transition-colors text-[11px] flex items-center gap-1 group">
+                Sponsor Call Open <i data-lucide="chevron-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 left-0 right-0 z-50 transition-all duration-300 py-3.5 glass-nav-active shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-12">
                 <!-- Logo -->
                 <a href="#home" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-pal-navy via-pal-blue to-pal-aqua flex items-center justify-center shadow-md shadow-pal-cyan/20 group-hover:scale-105 transition-transform duration-300">
+                        <i data-lucide="shield" class="w-5 h-5 text-white"></i>
+                    </div>
                     <div class="flex flex-col">
-                        <span class="font-extrabold text-xl tracking-tight gradient-text">LEARN37</span>
-                        <span class="text-[10px] font-semibold tracking-wider text-gray-500 uppercase -mt-1">Cybersecurity & LEARN37</span>
+                        <span class="font-black text-2xl tracking-tight gradient-text-animated leading-none">LEARN37</span>
+                        <span class="text-[10px] font-bold tracking-widest text-pal-cyan uppercase mt-0.5">Cybersecurity Summit</span>
                     </div>
                 </a>
 
                 <!-- Desktop Navigation Links -->
-                <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-gray-700">
-                    <a href="#home" class="hover:text-brand-blue transition-colors">HOME</a>
-                    <a href="#about" class="hover:text-brand-blue transition-colors">ABOUT</a>
-                    <a href="#programme" class="hover:text-brand-blue transition-colors">PROGRAMME</a>
-                    <a href="#working-groups" class="hover:text-brand-blue transition-colors">WORKING GROUPS</a>
-                    <a href="#speakers" class="hover:text-brand-blue transition-colors">SPEAKERS</a>
-                    <a href="#sponsors" class="hover:text-brand-blue transition-colors">SPONSORS</a>
-                    <a href="#contact" class="hover:text-brand-blue transition-colors">CONTACT</a>
+                <nav class="hidden lg:flex items-center space-x-7 text-xs font-bold text-slate-700 tracking-wide uppercase">
+                    <a href="#home" class="hover:text-pal-cyan transition-colors">Home</a>
+                    <a href="#about" class="hover:text-pal-cyan transition-colors">About</a>
+                    <a href="#programme" class="hover:text-pal-cyan transition-colors">Programme</a>
+                    <a href="#working-groups" class="hover:text-pal-cyan transition-colors">Working Groups</a>
+                    <a href="#speakers" class="hover:text-pal-cyan transition-colors">Speakers</a>
+                    <a href="#sponsors" class="hover:text-pal-cyan transition-colors">Sponsors</a>
+                    <a href="#contact" class="hover:text-pal-cyan transition-colors">Contact</a>
                 </nav>
 
                 <!-- CTA Button -->
-                <div class="hidden sm:flex items-center">
-                    <button onclick="openRegisterModal()" class="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white transition-all duration-300 bg-gradient-btn rounded-full shadow-lg shadow-brand-blue/30 hover:shadow-xl hover:shadow-brand-teal/40 hover:scale-105 active:scale-95 group overflow-hidden">
-                        <span class="relative z-10 flex items-center gap-2">
-                            Register Now <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                <div class="hidden sm:flex items-center gap-3">
+                    <button onclick="openRegisterModal()" class="relative group inline-flex items-center justify-center p-0.5 overflow-hidden rounded-full font-bold transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-pal-cyan/25">
+                        <span class="w-full h-full bg-gradient-to-br from-pal-royal via-pal-teal to-pal-aqua group-hover:from-pal-blue group-hover:to-pal-aqua absolute"></span>
+                        <span class="relative px-6 py-2.5 transition-all ease-out duration-300 bg-pal-navy rounded-full group-hover:bg-opacity-0">
+                            <span class="relative flex items-center gap-2 text-xs uppercase tracking-wider text-white group-hover:text-pal-navy font-black">
+                                Register Now <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            </span>
                         </span>
                     </button>
                 </div>
 
                 <!-- Mobile menu button -->
                 <div class="lg:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-gray-600 hover:text-brand-royal hover:bg-gray-100 focus:outline-none">
+                    <button id="mobile-menu-btn" class="p-2 rounded-xl text-pal-navy hover:text-pal-cyan hover:bg-slate-100 focus:outline-none transition-colors">
                         <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
@@ -195,16 +266,16 @@
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden glass-panel border-b border-gray-200 mt-2 px-4 pt-2 pb-6 space-y-3 shadow-xl">
-            <a href="#home" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-navy/10 hover:to-transparent hover:text-brand-navy">HOME</a>
-            <a href="#about" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-royal/10 hover:to-transparent hover:text-brand-royal">ABOUT LEARN37</a>
-            <a href="#programme" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-blue/10 hover:to-transparent hover:text-brand-blue">PROGRAMME</a>
-            <a href="#working-groups" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-cyan/10 hover:to-transparent hover:text-brand-cyan">WORKING GROUPS</a>
-            <a href="#speakers" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-teal/10 hover:to-transparent hover:text-brand-teal">SPEAKERS</a>
-            <a href="#sponsors" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-blue/10 hover:to-transparent hover:text-brand-blue">SPONSORS & PARTNERS</a>
-            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gradient-to-r hover:from-brand-navy/10 hover:to-transparent hover:text-brand-navy">CONTACT</a>
+        <div id="mobile-menu" class="hidden lg:hidden glass-cyber border-b border-pal-teal/20 mt-3 px-6 pt-3 pb-6 space-y-3 shadow-2xl">
+            <a href="#home" class="mobile-link block px-3 py-2 rounded-xl font-bold text-slate-800 hover:bg-pal-cyan/10 hover:text-pal-blue">HOME</a>
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-xl font-bold text-slate-800 hover:bg-pal-cyan/10 hover:text-pal-blue">ABOUT LEARN37</a>
+            <a href="#programme" class="mobile-link block px-3 py-2 rounded-xl font-bold text-slate-800 hover:bg-pal-cyan/10 hover:text-pal-blue">PROGRAMME</a>
+            <a href="#working-groups" class="mobile-link block px-3 py-2 rounded-xl font-bold text-slate-800 hover:bg-pal-cyan/10 hover:text-pal-blue">WORKING GROUPS</a>
+            <a href="#speakers" class="mobile-link block px-3 py-2 rounded-xl font-bold text-slate-800 hover:bg-pal-cyan/10 hover:text-pal-blue">SPEAKERS</a>
+            <a href="#sponsors" class="mobile-link block px-3 py-2 rounded-xl font-bold text-slate-800 hover:bg-pal-cyan/10 hover:text-pal-blue">SPONSORS & PARTNERS</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-xl font-bold text-slate-800 hover:bg-pal-cyan/10 hover:text-pal-blue">CONTACT</a>
             <div class="pt-2">
-                <button onclick="openRegisterModal()" class="w-full py-3 bg-gradient-btn text-white font-bold rounded-xl shadow-md flex items-center justify-center gap-2">
+                <button onclick="openRegisterModal()" class="w-full py-3 bg-gradient-to-r from-pal-navy via-pal-blue to-pal-aqua text-white font-extrabold rounded-xl shadow-lg flex items-center justify-center gap-2">
                     Register Now <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </button>
             </div>
@@ -214,192 +285,252 @@
     <main class="relative z-10">
 
         <!-- HERO SECTION -->
-        <section id="home" class="min-h-screen pt-28 pb-16 flex items-center justify-center relative overflow-hidden bg-gradient-subtle">
-            <!-- Glowing Accent Orbs -->
-            <div class="absolute top-1/4 left-10 w-72 h-72 bg-brand-blue/20 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute bottom-10 right-10 w-80 h-80 bg-brand-aqua/20 rounded-full blur-3xl pointer-events-none"></div>
-
+        <section id="home" class="min-h-[92vh] pt-12 pb-20 flex items-center justify-center relative overflow-hidden">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                <!-- Top Badge -->
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-brand-teal/30 shadow-md mb-8 animate-bounce">
-                    <span class="flex h-2.5 w-2.5 rounded-full bg-brand-aqua animate-ping"></span>
-                    <span class="text-xs sm:text-sm font-bold text-brand-navy uppercase tracking-wider">LEARN37 & Cybersecurity Event</span>
+                
+                <!-- Cyber Glowing Badge -->
+                <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white/95 border-2 border-pal-aqua/60 shadow-xl shadow-pal-cyan/15 mb-8 backdrop-blur-md hover:scale-105 transition-transform cursor-default">
+                    <span class="flex h-3 w-3 rounded-full bg-pal-aqua shadow-[0_0_12px_#00E0BF] animate-ping"></span>
+                    <span class="text-xs sm:text-sm font-extrabold text-pal-navy uppercase tracking-widest">Sri Lanka's Premier NREN Summit</span>
                 </div>
 
                 <!-- Main Hero Heading -->
-                <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-gray-900 leading-tight mb-6">
-                    <span class="gradient-text">LEARN37</span>
+                <h1 class="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight leading-none mb-6">
+                    <span class="gradient-text-animated">LEARN37</span>
                 </h1>
                 
-                <p class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-8 max-w-4xl mx-auto leading-snug">
-                    Cybersecurity Programme & <br class="hidden sm:inline">LEARN37
+                <p class="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 max-w-4xl mx-auto leading-tight">
+                    Cybersecurity Programme & <br>
+                    <span class="bg-gradient-to-r from-pal-royal via-pal-cyan to-pal-aqua bg-clip-text text-transparent">37th LEARN Meeting</span>
                 </p>
 
                 <!-- Tagline -->
-                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
-                    Bringing Sri Lanka's education and research community together to strengthen cybersecurity, collaboration, and digital innovation.
+                <p class="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
+                    Uniting Sri Lanka's higher education and research community to engineer cyber resilience, accelerate innovation, and safeguard national knowledge infrastructure.
                 </p>
 
-                <!-- Event Info Pill Badges -->
-                <div class="flex flex-wrap justify-center items-center gap-4 mb-12">
-                    <div class="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white shadow-lg border border-gray-100 text-brand-navy font-semibold text-sm sm:text-base">
-                        <i data-lucide="calendar" class="w-5 h-5 text-brand-blue"></i>
-                        <span>[Date - To be Confirmed]</span>
+                <!-- Modern Live Info Cards Strip -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-12">
+                    <div class="flex items-center gap-3.5 p-4 rounded-2xl bg-white/90 border border-pal-blue/15 shadow-lg shadow-pal-cyan/5 hover:border-pal-teal transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pal-navy to-pal-blue text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                            <i data-lucide="calendar" class="w-5 h-5 text-pal-aqua"></i>
+                        </div>
+                        <div class="text-left">
+                            <span class="text-[11px] font-bold uppercase text-pal-cyan block">Date</span>
+                            <span class="text-sm font-extrabold text-slate-800">To be Confirmed</span>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white shadow-lg border border-gray-100 text-brand-navy font-semibold text-sm sm:text-base">
-                        <i data-lucide="map-pin" class="w-5 h-5 text-brand-cyan"></i>
-                        <span>[Venue - To be Confirmed]</span>
+
+                    <div class="flex items-center gap-3.5 p-4 rounded-2xl bg-white/90 border border-pal-blue/15 shadow-lg shadow-pal-cyan/5 hover:border-pal-teal transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pal-royal to-pal-cyan text-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-pal-aqua"></i>
+                        </div>
+                        <div class="text-left">
+                            <span class="text-[11px] font-bold uppercase text-pal-cyan block">Venue</span>
+                            <span class="text-sm font-extrabold text-slate-800">To be Confirmed</span>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white shadow-lg border border-gray-100 text-brand-navy font-semibold text-sm sm:text-base">
-                        <i data-lucide="clock" class="w-5 h-5 text-brand-teal"></i>
-                        <span>8:30 AM – 5:00 PM</span>
+
+                    <div class="flex items-center gap-3.5 p-4 rounded-2xl bg-white/90 border border-pal-blue/15 shadow-lg shadow-pal-cyan/5 hover:border-pal-teal transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pal-cyan to-pal-aqua text-slate-900 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                            <i data-lucide="clock" class="w-5 h-5 text-pal-navy"></i>
+                        </div>
+                        <div class="text-left">
+                            <span class="text-[11px] font-bold uppercase text-pal-cyan block">Time</span>
+                            <span class="text-sm font-extrabold text-slate-800">8:30 AM – 5:00 PM</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- CTA Buttons -->
+                <!-- CTA Button Pair -->
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                    <button onclick="openRegisterModal()" class="w-full sm:w-auto px-8 py-4 bg-gradient-btn text-white font-extrabold text-base rounded-2xl shadow-xl shadow-brand-blue/30 hover:shadow-2xl hover:shadow-brand-teal/40 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3">
-                        <i data-lucide="user-check" class="w-5 h-5"></i>
+                    <button onclick="openRegisterModal()" class="w-full sm:w-auto px-9 py-4 bg-gradient-to-r from-pal-royal via-pal-blue to-pal-teal text-white font-black text-sm uppercase tracking-wider rounded-2xl shadow-xl shadow-pal-cyan/35 hover:shadow-2xl hover:shadow-pal-aqua/40 transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group">
+                        <i data-lucide="user-check" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
                         Register Now
                     </button>
-                    <a href="#programme" class="w-full sm:w-auto px-8 py-4 bg-white text-gray-800 font-bold text-base rounded-2xl border border-gray-200 shadow-md hover:border-brand-blue hover:text-brand-blue transition-all duration-300 flex items-center justify-center gap-2">
-                        <i data-lucide="file-text" class="w-5 h-5"></i>
-                        View Programme
+                    <a href="#programme" class="w-full sm:w-auto px-9 py-4 bg-white/90 backdrop-blur-md text-pal-navy font-black text-sm uppercase tracking-wider rounded-2xl border-2 border-pal-cyan/30 shadow-md hover:border-pal-teal hover:bg-pal-aqua/10 transition-all duration-300 flex items-center justify-center gap-2 group">
+                        <i data-lucide="compass" class="w-5 h-5 text-pal-cyan group-hover:rotate-45 transition-transform"></i>
+                        Explore Agenda
                     </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- STATS STRIP (Fills emptiness with social proof & tech feel) -->
+        <section class="py-10 bg-white/80 border-y border-pal-cyan/20 backdrop-blur-md relative z-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="space-y-1">
+                        <div class="text-3xl sm:text-5xl font-black gradient-text-animated">37th</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Annual Gathering</div>
+                    </div>
+                    <div class="space-y-1">
+                        <div class="text-3xl sm:text-5xl font-black text-pal-royal">30+</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Institutions & Universities</div>
+                    </div>
+                    <div class="space-y-1">
+                        <div class="text-3xl sm:text-5xl font-black text-pal-cyan">2</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Specialist Working Groups</div>
+                    </div>
+                    <div class="space-y-1">
+                        <div class="text-3xl sm:text-5xl font-black text-pal-teal">100%</div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">National Cyber Focus</div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ABOUT LEARN37 & AT A GLANCE -->
-        <section id="about" class="py-20 relative bg-white">
+        <section id="about" class="py-24 relative bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <!-- Section Header -->
                 <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
-                    <h2 class="text-xs font-extrabold text-brand-blue tracking-widest uppercase mb-2">Discover LEARN37</h2>
-                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">About The Event</h3>
-                    <div class="w-20 h-1.5 bg-gradient-main rounded-full mx-auto mt-4"></div>
+                    <span class="px-4 py-1.5 rounded-full bg-pal-cyan/10 text-pal-royal font-black text-xs uppercase tracking-widest inline-block mb-3">
+                        Discover LEARN37
+                    </span>
+                    <h3 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">Safeguarding Academic Futures</h3>
+                    <div class="w-24 h-2 bg-gradient-to-r from-pal-navy via-pal-cyan to-pal-aqua rounded-full mx-auto mt-5"></div>
                 </div>
 
-                <!-- Main About Card -->
-                <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-gray-100 shadow-xl mb-16 reveal-on-scroll">
-                    <div class="grid md:grid-cols-12 gap-8 items-center">
-                        <div class="md:col-span-8 space-y-4">
-                            <p class="text-lg text-gray-700 leading-relaxed">
-                                <span class="font-bold text-brand-navy">LEARN37</span> is part of the <span class="font-bold text-brand-royal">Lanka Education And Research Network (LEARN)</span>, bringing together representatives from Sri Lanka's education, research, and technology communities.
+                <!-- Main About Card with Cyber Gradient Border -->
+                <div class="holo-card p-8 sm:p-14 shadow-2xl mb-16 reveal-on-scroll">
+                    <div class="grid md:grid-cols-12 gap-10 items-center">
+                        <div class="md:col-span-8 space-y-5">
+                            <p class="text-xl font-bold text-slate-800 leading-relaxed">
+                                <span class="text-pal-navy font-black">LEARN37</span> represents the benchmark summit hosted by the <span class="text-pal-blue font-black">Lanka Education And Research Network</span>, converging university vice-chancellors, IT directors, security architects, and academic researchers.
                             </p>
-                            <p class="text-gray-600 leading-relaxed">
-                                This year's programme will place a special focus on <strong class="text-brand-blue">cybersecurity in education and research</strong>, providing an essential platform to discuss emerging cyber threats, institutional preparedness, incident response, practical solutions, and national collaboration.
+                            <p class="text-slate-600 leading-relaxed text-base">
+                                This edition spotlights an urgent national imperative: <strong class="text-pal-blue font-extrabold">Strengthening Cybersecurity in Education & Research</strong>. As university assets face sophisticated targeted ransomware, phishing, and exfiltration attempts, LEARN37 provides the actionable blueprints, institutional frameworks, and collective incident response capabilities needed to defend our academic digital space.
                             </p>
-                            <p class="text-gray-600 leading-relaxed">
-                                The programme will also include the official <strong>37th LEARN Meeting</strong> for official representatives of LEARN member institutions.
+                            <p class="text-slate-600 leading-relaxed text-base">
+                                Concurrently, the closed-door <strong>37th LEARN Meeting</strong> convenes the designated institutional representatives to shape connectivity roadmaps, digital public goods, and shared cloud platforms for the upcoming decade.
                             </p>
                         </div>
                         <div class="md:col-span-4 flex justify-center">
-                            <div class="relative p-6 bg-gradient-main rounded-2xl text-white text-center shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-300">
-                                <i data-lucide="shield-check" class="w-16 h-16 mx-auto mb-3 text-brand-aqua"></i>
-                                <h4 class="text-xl font-extrabold mb-1">Empowering NRENs</h4>
-                                <p class="text-xs text-blue-100">Safeguarding academic networks & data assets across Sri Lanka.</p>
+                            <div class="relative w-full p-8 rounded-3xl bg-gradient-to-br from-pal-navy via-pal-royal to-pal-cyan text-white text-center shadow-2xl shadow-pal-navy/30 group hover:rotate-1 transition-transform">
+                                <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 text-pal-aqua">
+                                    <i data-lucide="shield-check" class="w-10 h-10 animate-pulse"></i>
+                                </div>
+                                <h4 class="text-2xl font-black mb-1">National NREN</h4>
+                                <p class="text-xs text-blue-100 uppercase tracking-widest font-semibold">Resilient • Connected • Secure</p>
+                                <div class="mt-4 pt-4 border-t border-white/10 text-xs text-pal-aqua font-bold">
+                                    Safeguarding 20+ Member Networks
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- At a Glance 3 Card Grid -->
-                <div class="mb-20">
-                    <h3 class="text-2xl font-bold text-gray-900 text-center mb-10 reveal-on-scroll">LEARN37 at a Glance</h3>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        
-                        <!-- Card 1 -->
-                        <div class="gradient-border-card p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 reveal-on-scroll group">
-                            <div class="w-14 h-14 rounded-2xl bg-brand-navy/10 text-brand-navy flex items-center justify-center mb-6 group-hover:bg-brand-navy group-hover:text-white transition-colors duration-300">
-                                <i data-lucide="shield-alert" class="w-7 h-7"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-gray-900 mb-3">Cybersecurity</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                Emerging cyber threats, institutional preparedness, and actionable cybersecurity strategies tailored for academic institutions.
-                            </p>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="gradient-border-card p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 reveal-on-scroll group" style="transition-delay: 150ms;">
-                            <div class="w-14 h-14 rounded-2xl bg-brand-royal/10 text-brand-royal flex items-center justify-center mb-6 group-hover:bg-brand-royal group-hover:text-white transition-colors duration-300">
-                                <i data-lucide="users" class="w-7 h-7"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-gray-900 mb-3">LEARN37</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                The official LEARN Meeting for official representatives and stakeholders of LEARN member institutions.
-                            </p>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="gradient-border-card p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 reveal-on-scroll group" style="transition-delay: 300ms;">
-                            <div class="w-14 h-14 rounded-2xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center mb-6 group-hover:bg-brand-cyan group-hover:text-white transition-colors duration-300">
-                                <i data-lucide="lightbulb" class="w-7 h-7"></i>
-                            </div>
-                            <h4 class="text-xl font-bold text-gray-900 mb-3">Knowledge Exchange</h4>
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                Keynotes from experts, industry perspectives, technical working group tracks, and interactive panel discussions.
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Main Theme Highlights Box -->
-                <div class="bg-gradient-to-r from-brand-navy via-brand-royal to-brand-blue rounded-3xl p-8 sm:p-12 text-white shadow-2xl reveal-on-scroll relative overflow-hidden">
-                    <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
-                        <i data-lucide="lock" class="w-80 h-80"></i>
-                    </div>
+                <!-- 3 Pillars Grid with Holographic Accents -->
+                <div class="grid md:grid-cols-3 gap-8">
                     
-                    <div class="relative z-10 text-center max-w-3xl mx-auto mb-10">
-                        <span class="inline-block px-3 py-1 rounded-full bg-white/20 text-xs font-bold uppercase tracking-wider mb-3">Main Theme</span>
-                        <h3 class="text-2xl sm:text-4xl font-extrabold">Strengthening Cybersecurity in Education & Research</h3>
+                    <!-- Card 1 -->
+                    <div class="holo-card p-8 rounded-3xl reveal-on-scroll group">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pal-navy to-pal-blue text-pal-aqua flex items-center justify-center mb-6 shadow-md shadow-pal-navy/20 group-hover:scale-110 transition-transform">
+                            <i data-lucide="shield-alert" class="w-8 h-8"></i>
+                        </div>
+                        <span class="text-xs font-black tracking-widest uppercase text-pal-cyan">Pillar 01</span>
+                        <h4 class="text-2xl font-black text-slate-900 mt-1 mb-3">Cyber Defense</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Mitigating institutional vulnerability, deploying Security Operations Centers (SOCs), building zero-trust perimeters, and hardening campus networks.
+                        </p>
                     </div>
 
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center relative z-10">
-                        <div class="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
-                            <i data-lucide="zap" class="w-8 h-8 mx-auto mb-3 text-brand-aqua"></i>
-                            <h5 class="font-bold text-sm sm:text-base">Emerging Threats</h5>
+                    <!-- Card 2 -->
+                    <div class="holo-card p-8 rounded-3xl reveal-on-scroll group" style="transition-delay: 150ms;">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pal-royal to-pal-cyan text-white flex items-center justify-center mb-6 shadow-md shadow-pal-royal/20 group-hover:scale-110 transition-transform">
+                            <i data-lucide="network" class="w-8 h-8 text-pal-aqua"></i>
                         </div>
-                        <div class="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
-                            <i data-lucide="building" class="w-8 h-8 mx-auto mb-3 text-brand-teal"></i>
-                            <h5 class="font-bold text-sm sm:text-base">Institutional Preparedness</h5>
-                        </div>
-                        <div class="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
-                            <i data-lucide="siren" class="w-8 h-8 mx-auto mb-3 text-brand-aqua"></i>
-                            <h5 class="font-bold text-sm sm:text-base">Incident Response</h5>
-                        </div>
-                        <div class="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all">
-                            <i data-lucide="handshake" class="w-8 h-8 mx-auto mb-3 text-brand-teal"></i>
-                            <h5 class="font-bold text-sm sm:text-base">Collaboration</h5>
-                        </div>
+                        <span class="text-xs font-black tracking-widest uppercase text-pal-cyan">Pillar 02</span>
+                        <h4 class="text-2xl font-black text-slate-900 mt-1 mb-3">37th LEARN Meeting</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Executive discussions for accredited representatives of LEARN member institutions, aligning national backbone capacity and institutional partnerships.
+                        </p>
                     </div>
+
+                    <!-- Card 3 -->
+                    <div class="holo-card p-8 rounded-3xl reveal-on-scroll group" style="transition-delay: 300ms;">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pal-teal to-pal-aqua text-pal-navy flex items-center justify-center mb-6 shadow-md shadow-pal-teal/20 group-hover:scale-110 transition-transform">
+                            <i data-lucide="cpu" class="w-8 h-8"></i>
+                        </div>
+                        <span class="text-xs font-black tracking-widest uppercase text-pal-cyan">Pillar 03</span>
+                        <h4 class="text-2xl font-black text-slate-900 mt-1 mb-3">Frontier Tech</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Practical integration tracks dedicated to Generative AI in curriculum delivery and IoT-driven Smart Agriculture (AgroTech) innovation.
+                        </p>
+                    </div>
+
                 </div>
 
             </div>
         </section>
 
+        <!-- IMMERSIVE DARK CYBER BANNER -->
+        <section class="py-20 bg-dark-cyber text-white relative overflow-hidden dark-grid-cyber">
+            <!-- Animated neon beam -->
+            <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-3/4 h-48 bg-gradient-to-r from-pal-cyan via-pal-aqua to-pal-blue opacity-25 blur-3xl rounded-full pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="px-4 py-1.5 rounded-full bg-pal-aqua/20 text-pal-aqua font-bold text-xs uppercase tracking-widest border border-pal-aqua/40">
+                        Strategic Focus 2026
+                    </span>
+                    <h3 class="text-3xl sm:text-5xl font-black mt-4 mb-4">Building a Cyber-Immune Academic Sri Lanka</h3>
+                    <p class="text-blue-200 text-sm sm:text-base">Targeting multi-layered response mechanisms tailored for research networks.</p>
+                </div>
+
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-pal-aqua/20 hover:border-pal-aqua hover:bg-white/10 transition-all duration-300 group">
+                        <i data-lucide="activity" class="w-8 h-8 text-pal-aqua mb-3 group-hover:scale-110 transition-transform"></i>
+                        <h5 class="font-extrabold text-base mb-1 text-white">Threat Telemetry</h5>
+                        <p class="text-xs text-blue-200">Real-time visibility into academic network anomalies and intrusion attempts.</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-pal-aqua/20 hover:border-pal-aqua hover:bg-white/10 transition-all duration-300 group">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-pal-teal mb-3 group-hover:scale-110 transition-transform"></i>
+                        <h5 class="font-extrabold text-base mb-1 text-white">Institutional Readiness</h5>
+                        <p class="text-xs text-blue-200">Audit blueprints, policy frameworks, and disaster recovery architectures.</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-pal-aqua/20 hover:border-pal-aqua hover:bg-white/10 transition-all duration-300 group">
+                        <i data-lucide="siren" class="w-8 h-8 text-pal-cyan mb-3 group-hover:scale-110 transition-transform"></i>
+                        <h5 class="font-extrabold text-base mb-1 text-white">Rapid CSIRT Response</h5>
+                        <p class="text-xs text-blue-200">Coordinated response teams for containment, forensics, and remediation.</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white/5 backdrop-blur-lg border border-pal-aqua/20 hover:border-pal-aqua hover:bg-white/10 transition-all duration-300 group">
+                        <i data-lucide="share-2" class="w-8 h-8 text-pal-aqua mb-3 group-hover:scale-110 transition-transform"></i>
+                        <h5 class="font-extrabold text-base mb-1 text-white">NREN Trust Grid</h5>
+                        <p class="text-xs text-blue-200">Inter-institutional threat sharing with national and global CERT bodies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- PROGRAMME / AGENDA SECTION -->
-        <section id="programme" class="py-20 bg-gray-50/80 relative">
+        <section id="programme" class="py-24 bg-slate-50 relative">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <div class="text-center max-w-3xl mx-auto mb-12 reveal-on-scroll">
-                    <h2 class="text-xs font-extrabold text-brand-cyan tracking-widest uppercase mb-2">Schedule</h2>
-                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Programme Agenda</h3>
-                    <p class="text-gray-600 mt-3">Proposed one-day event structure featuring LEARN37 and parallel technical tracks.</p>
-                    <div class="w-20 h-1.5 bg-gradient-main rounded-full mx-auto mt-4"></div>
+                <div class="text-center max-w-3xl mx-auto mb-14 reveal-on-scroll">
+                    <span class="px-4 py-1.5 rounded-full bg-pal-teal/15 text-pal-royal font-black text-xs uppercase tracking-widest inline-block mb-3">
+                        Curated Schedule
+                    </span>
+                    <h3 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">Programme Agenda</h3>
+                    <p class="text-slate-600 mt-3 text-base">Comprehensive multi-track symposium featuring plenary sessions, executive summits, and specialist workshops.</p>
+                    <div class="w-24 h-2 bg-gradient-to-r from-pal-navy via-pal-cyan to-pal-aqua rounded-full mx-auto mt-4"></div>
                 </div>
 
                 <!-- Agenda Filter Tabs -->
-                <div class="flex justify-center mb-10 overflow-x-auto py-2 px-4 gap-2 sm:gap-4 reveal-on-scroll">
-                    <button onclick="filterAgenda('all')" id="tab-all" class="agenda-tab px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 bg-brand-navy text-white shadow-md">
-                        All Sessions
+                <div class="flex justify-center mb-12 overflow-x-auto py-2 px-4 gap-3 reveal-on-scroll">
+                    <button onclick="filterAgenda('all')" id="tab-all" class="agenda-tab px-7 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 bg-gradient-to-r from-pal-navy to-pal-blue text-white shadow-lg shadow-pal-navy/20">
+                        All Tracks
                     </button>
-                    <button onclick="filterAgenda('agm')" id="tab-agm" class="agenda-tab px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 bg-white text-gray-600 hover:bg-gray-100 shadow-sm">
-                        LEARN37
+                    <button onclick="filterAgenda('agm')" id="tab-agm" class="agenda-tab px-7 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 bg-white text-slate-700 hover:bg-slate-100 shadow-sm border border-slate-200">
+                        LEARN37 Track
                     </button>
-                    <button onclick="filterAgenda('wg')" id="tab-wg" class="agenda-tab px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 bg-white text-gray-600 hover:bg-gray-100 shadow-sm">
+                    <button onclick="filterAgenda('wg')" id="tab-wg" class="agenda-tab px-7 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 bg-white text-slate-700 hover:bg-slate-100 shadow-sm border border-slate-200">
                         Working Groups (AI & AgroTech)
                     </button>
                 </div>
@@ -408,124 +539,149 @@
                 <div class="space-y-4 reveal-on-scroll" id="agenda-container">
                     
                     <!-- Item 1 -->
-                    <div class="agenda-item all bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-blue transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                        <div class="flex items-center gap-4">
-                            <span class="px-4 py-2 rounded-xl bg-brand-navy/10 text-brand-navy font-extrabold text-sm min-w-[120px] text-center">
-                                8:30 - 9:00
-                            </span>
+                    <div class="agenda-item all holo-card p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-5">
+                            <div class="px-4 py-2.5 rounded-2xl bg-pal-navy text-pal-aqua font-black text-sm min-w-[130px] text-center shadow-inner">
+                                08:30 - 09:00
+                            </div>
                             <div>
-                                <h4 class="font-bold text-gray-900 text-base sm:text-lg">Registration</h4>
-                                <p class="text-xs text-gray-500">Welcome badge pickup & morning arrival</p>
+                                <h4 class="font-extrabold text-slate-900 text-lg">Delegate Registration & Networking Coffee</h4>
+                                <p class="text-xs text-slate-500 font-medium">Badge collection, kit reception, and morning meet-and-greet</p>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">General</span>
+                        <span class="px-3.5 py-1 rounded-full text-xs font-black bg-slate-100 text-slate-700 border border-slate-200 uppercase tracking-wider">
+                            Plenary
+                        </span>
                     </div>
 
                     <!-- Item 2 -->
-                    <div class="agenda-item all bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-blue transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                        <div class="flex items-center gap-4">
-                            <span class="px-4 py-2 rounded-xl bg-brand-navy/10 text-brand-navy font-extrabold text-sm min-w-[120px] text-center">
-                                9:00 - 9:20
-                            </span>
+                    <div class="agenda-item all holo-card p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-5">
+                            <div class="px-4 py-2.5 rounded-2xl bg-pal-royal text-white font-black text-sm min-w-[130px] text-center shadow-inner">
+                                09:00 - 09:20
+                            </div>
                             <div>
-                                <h4 class="font-bold text-gray-900 text-base sm:text-lg">Opening Ceremony</h4>
-                                <p class="text-xs text-gray-500">Welcome & Introduction to LEARN37</p>
+                                <h4 class="font-extrabold text-slate-900 text-lg">Inauguration & Welcome Address</h4>
+                                <p class="text-xs text-slate-500 font-medium">Opening ceremonial remarks by LEARN leadership and distinguished patrons</p>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand-navy/10 text-brand-navy">Plenary Session</span>
+                        <span class="px-3.5 py-1 rounded-full text-xs font-black bg-pal-royal/10 text-pal-royal border border-pal-royal/20 uppercase tracking-wider">
+                            Ceremonial
+                        </span>
                     </div>
 
                     <!-- Item 3 -->
-                    <div class="agenda-item all bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-blue transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                        <div class="flex items-center gap-4">
-                            <span class="px-4 py-2 rounded-xl bg-brand-navy/10 text-brand-navy font-extrabold text-sm min-w-[120px] text-center">
-                                9:20 - 10:00
-                            </span>
+                    <div class="agenda-item all holo-card p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-5">
+                            <div class="px-4 py-2.5 rounded-2xl bg-pal-blue text-white font-black text-sm min-w-[130px] text-center shadow-inner">
+                                09:20 - 10:00
+                            </div>
                             <div>
-                                <h4 class="font-bold text-gray-900 text-base sm:text-lg">Keynote Address</h4>
-                                <p class="text-xs text-gray-500">Cybersecurity in Education & Research Landscape</p>
+                                <h4 class="font-extrabold text-slate-900 text-lg">Keynote: Cyber Warfare & The Higher Education Threat Vector</h4>
+                                <p class="text-xs text-slate-500 font-medium">Analyzing real-world breaches, state-actor ransomware, and resilient posture engineering</p>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand-blue/10 text-brand-blue">Keynote</span>
+                        <span class="px-3.5 py-1 rounded-full text-xs font-black bg-pal-blue/10 text-pal-blue border border-pal-blue/20 uppercase tracking-wider">
+                            Keynote
+                        </span>
                     </div>
 
                     <!-- Item 4 Break -->
-                    <div class="agenda-item all bg-sky-50/70 p-4 rounded-xl border border-sky-200/50 flex items-center justify-between">
+                    <div class="agenda-item all p-4 rounded-2xl bg-gradient-to-r from-pal-cyan/15 via-pal-teal/15 to-pal-aqua/15 border-2 border-pal-cyan/30 flex items-center justify-between shadow-sm">
                         <div class="flex items-center gap-3">
-                            <i data-lucide="coffee" class="w-5 h-5 text-brand-teal"></i>
-                            <span class="font-bold text-sky-950 text-sm">10:00 - 10:15 | Tea / Coffee Break</span>
+                            <div class="w-9 h-9 rounded-xl bg-white text-pal-cyan flex items-center justify-center shadow-sm">
+                                <i data-lucide="coffee" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-black text-slate-800 text-sm">10:00 - 10:15 | Morning Refreshments & Interactive Networking</span>
                         </div>
-                        <span class="text-xs text-sky-700 font-medium">Networking</span>
+                        <span class="text-xs text-pal-navy font-bold uppercase tracking-wider">Exhibition Hall</span>
                     </div>
 
                     <!-- Item 5 Parallel Sessions -->
-                    <div class="agenda-item all agm wg bg-white p-6 rounded-2xl shadow-md border-2 border-brand-royal/20 transition-all space-y-4">
-                        <div class="flex items-center justify-between border-b pb-3 border-gray-100">
-                            <span class="px-4 py-1.5 rounded-xl bg-brand-royal text-white font-extrabold text-sm">
-                                10:15 - 12:30
+                    <div class="agenda-item all agm wg holo-card p-7 space-y-5 border-2 border-pal-cyan/40">
+                        <div class="flex items-center justify-between border-b pb-4 border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <span class="px-4 py-1.5 rounded-xl bg-gradient-to-r from-pal-navy to-pal-royal text-white font-black text-sm">
+                                    10:15 - 12:30
+                                </span>
+                                <span class="text-sm font-extrabold text-slate-900 uppercase tracking-wider">Concurrent Working Tracks</span>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-pal-aqua/20 text-pal-navy border border-pal-aqua/40">
+                                Parallel Breakouts
                             </span>
-                            <span class="text-xs font-bold text-brand-royal uppercase tracking-wider">Parallel Tracks</span>
                         </div>
                         
-                        <div class="grid md:grid-cols-2 gap-4 pt-2">
-                            <div class="p-4 rounded-xl bg-gradient-to-br from-brand-navy/5 to-transparent border border-brand-navy/10">
-                                <span class="px-2.5 py-1 rounded text-[10px] font-bold bg-brand-navy text-white mb-2 inline-block">TRACK A</span>
-                                <h5 class="font-bold text-brand-navy text-base">LEARN Annual LEARN Meeting</h5>
-                                <p class="text-xs text-gray-600 mt-1">Dedicated meeting for official representatives of LEARN member institutions.</p>
+                        <div class="grid md:grid-cols-2 gap-5 pt-1">
+                            <div class="p-6 rounded-2xl bg-gradient-to-br from-pal-navy/5 via-pal-royal/5 to-transparent border border-pal-royal/20 hover:border-pal-royal transition-colors">
+                                <span class="px-3 py-1 rounded-lg text-[10px] font-black bg-pal-navy text-white mb-3 inline-block uppercase tracking-wider">TRACK A • CLOSED DOOR</span>
+                                <h5 class="font-black text-pal-navy text-lg">37th LEARN Official Meeting</h5>
+                                <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                    Strategic gathering restricted to accredited representatives and board delegates of LEARN member institutions.
+                                </p>
                             </div>
 
-                            <div class="p-4 rounded-xl bg-gradient-to-br from-brand-cyan/5 to-transparent border border-brand-cyan/15">
-                                <span class="px-2.5 py-1 rounded text-[10px] font-bold bg-brand-cyan text-white mb-2 inline-block">TRACK B</span>
-                                <h5 class="font-bold text-brand-cyan text-base">Cybersecurity / Agri WG / AI WG Sessions</h5>
-                                <p class="text-xs text-gray-600 mt-1">Interactive presentations, research updates, and discussions.</p>
+                            <div class="p-6 rounded-2xl bg-gradient-to-br from-pal-cyan/5 via-pal-teal/5 to-transparent border border-pal-teal/20 hover:border-pal-teal transition-colors">
+                                <span class="px-3 py-1 rounded-lg text-[10px] font-black bg-pal-teal text-slate-900 mb-3 inline-block uppercase tracking-wider">TRACK B • TECHNICAL</span>
+                                <h5 class="font-black text-pal-blue text-lg">Cybersecurity, AgriTech & GenAI Workshops</h5>
+                                <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                    Technical papers, zero-trust case studies, and hands-on demonstrations across smart agriculture sensors and educational AI.
+                                </p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Item 6 Lunch -->
-                    <div class="agenda-item all bg-teal-50/70 p-4 rounded-xl border border-teal-200/50 flex items-center justify-between">
+                    <div class="agenda-item all p-4 rounded-2xl bg-gradient-to-r from-pal-teal/15 via-pal-aqua/15 to-pal-blue/15 border-2 border-pal-teal/30 flex items-center justify-between shadow-sm">
                         <div class="flex items-center gap-3">
-                            <i data-lucide="utensils" class="w-5 h-5 text-brand-teal"></i>
-                            <span class="font-bold text-teal-950 text-sm">12:30 - 1:30 | Lunch & Networking</span>
+                            <div class="w-9 h-9 rounded-xl bg-white text-pal-teal flex items-center justify-center shadow-sm">
+                                <i data-lucide="utensils" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-black text-slate-800 text-sm">12:30 - 13:30 | Networking Luncheon & Sponsor Booth Showcase</span>
                         </div>
-                        <span class="text-xs text-teal-700 font-medium">Main Hall</span>
+                        <span class="text-xs text-pal-navy font-bold uppercase tracking-wider">Banquet Hall</span>
                     </div>
 
                     <!-- Item 7 Afternoon Track -->
-                    <div class="agenda-item all wg bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-royal transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                        <div class="flex items-center gap-4">
-                            <span class="px-4 py-2 rounded-xl bg-brand-navy/10 text-brand-navy font-extrabold text-sm min-w-[120px] text-center">
-                                1:30 - 3:45
-                            </span>
+                    <div class="agenda-item all wg holo-card p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div class="flex items-center gap-5">
+                            <div class="px-4 py-2.5 rounded-2xl bg-pal-cyan text-white font-black text-sm min-w-[130px] text-center shadow-inner">
+                                13:30 - 15:45
+                            </div>
                             <div>
-                                <h4 class="font-bold text-gray-900 text-base sm:text-lg">Cybersecurity & Working Group Sessions</h4>
-                                <p class="text-xs text-gray-500">Agri Tech (AgroTech) & Generative AI Working Group thematic presentations</p>
+                                <h4 class="font-extrabold text-slate-900 text-lg">Working Group Deep Dives: Generative AI & AgroTech Innovations</h4>
+                                <p class="text-xs text-slate-500 font-medium">Presentations on national research data hubs, IoT sensor networks, and policy guidelines for AI in academia</p>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand-royal/10 text-brand-royal">Technical Track</span>
+                        <span class="px-3.5 py-1 rounded-full text-xs font-black bg-pal-cyan/10 text-pal-cyan border border-pal-cyan/20 uppercase tracking-wider">
+                            Specialist Track
+                        </span>
                     </div>
 
                     <!-- Item 8 Break -->
-                    <div class="agenda-item all bg-sky-50/70 p-4 rounded-xl border border-sky-200/50 flex items-center justify-between">
+                    <div class="agenda-item all p-4 rounded-2xl bg-gradient-to-r from-pal-cyan/15 via-pal-teal/15 to-pal-aqua/15 border-2 border-pal-cyan/30 flex items-center justify-between shadow-sm">
                         <div class="flex items-center gap-3">
-                            <i data-lucide="coffee" class="w-5 h-5 text-brand-teal"></i>
-                            <span class="font-bold text-sky-950 text-sm">3:45 - 4:00 | Tea / Coffee Break</span>
+                            <div class="w-9 h-9 rounded-xl bg-white text-pal-cyan flex items-center justify-center shadow-sm">
+                                <i data-lucide="coffee" class="w-5 h-5"></i>
+                            </div>
+                            <span class="font-black text-slate-800 text-sm">15:45 - 16:00 | Afternoon High Tea & Partnership Discussions</span>
                         </div>
-                        <span class="text-xs text-sky-700 font-medium">Networking</span>
+                        <span class="text-xs text-pal-navy font-bold uppercase tracking-wider">Foyer</span>
                     </div>
 
                     <!-- Item 9 Closing -->
-                    <div class="agenda-item all bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-brand-cyan transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                        <div class="flex items-center gap-4">
-                            <span class="px-4 py-2 rounded-xl bg-brand-cyan/10 text-brand-cyan font-extrabold text-sm min-w-[120px] text-center">
-                                4:00 - 5:00
-                            </span>
+                    <div class="agenda-item all holo-card p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-2 border-pal-aqua/50">
+                        <div class="flex items-center gap-5">
+                            <div class="px-4 py-2.5 rounded-2xl bg-gradient-to-r from-pal-teal to-pal-aqua text-pal-navy font-black text-sm min-w-[130px] text-center shadow-inner">
+                                16:00 - 17:00
+                            </div>
                             <div>
-                                <h4 class="font-bold text-gray-900 text-base sm:text-lg">Panel Discussion, Sponsor Talk & Closing</h4>
-                                <p class="text-xs text-gray-500">Industry panel discussion, partner insights & common closing remarks</p>
+                                <h4 class="font-extrabold text-slate-900 text-lg">Industry Executive Panel & Communiqué Closing</h4>
+                                <p class="text-xs text-slate-500 font-medium">Collaborative panel, industry sponsor insights, award tokens, and national roadmap adoption</p>
                             </div>
                         </div>
-                        <span class="px-3 py-1 rounded-full text-xs font-semibold bg-brand-cyan/10 text-brand-cyan">Closing Plenary</span>
+                        <span class="px-3.5 py-1 rounded-full text-xs font-black bg-pal-aqua/20 text-pal-navy border border-pal-aqua/40 uppercase tracking-wider">
+                            Plenary Grand Finale
+                        </span>
                     </div>
 
                 </div>
@@ -534,414 +690,419 @@
         </section>
 
         <!-- WORKING GROUPS & INITIATIVES -->
-        <section id="working-groups" class="py-20 bg-white">
+        <section id="working-groups" class="py-24 bg-white relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
-                    <h2 class="text-xs font-extrabold text-brand-royal tracking-widest uppercase mb-2">Innovation & Research</h2>
-                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Working Groups & Initiatives</h3>
-                    <p class="text-gray-600 mt-3">LEARN37 highlights the progress and future directions of LEARN's dedicated communities.</p>
-                    <div class="w-20 h-1.5 bg-gradient-main rounded-full mx-auto mt-4"></div>
+                    <span class="px-4 py-1.5 rounded-full bg-pal-royal/10 text-pal-royal font-black text-xs uppercase tracking-widest inline-block mb-3">
+                        Pioneering Research
+                    </span>
+                    <h3 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">Active Working Groups</h3>
+                    <p class="text-slate-600 mt-3 text-base">Catalyzing inter-university collaboration across Sri Lanka's high-impact domains.</p>
+                    <div class="w-24 h-2 bg-gradient-to-r from-pal-navy via-pal-cyan to-pal-aqua rounded-full mx-auto mt-4"></div>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-8 mb-16">
                     
                     <!-- AgroTech WG -->
-                    <div class="glass-panel p-8 rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group reveal-on-scroll">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-brand-teal/20 to-brand-aqua/10 rounded-bl-full pointer-events-none"></div>
-                        <div class="w-12 h-12 rounded-2xl bg-teal-50 text-brand-teal flex items-center justify-center mb-6 font-extrabold">
-                            <i data-lucide="sprout" class="w-6 h-6"></i>
+                    <div class="holo-card p-10 rounded-3xl relative overflow-hidden group reveal-on-scroll">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pal-teal to-pal-aqua text-pal-navy flex items-center justify-center mb-6 font-black shadow-lg shadow-pal-teal/20 group-hover:scale-110 transition-transform">
+                            <i data-lucide="sprout" class="w-7 h-7"></i>
                         </div>
-                        <h4 class="text-2xl font-bold text-gray-900 mb-3">Agriculture Technology (AgroTech) WG</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                            A collaborative platform bringing together agriculture academics, researchers, technology specialists, and institutions to explore digital technologies, AI, IoT, remote sensing, and data platforms in agriculture.
+                        <h4 class="text-2xl font-black text-slate-900 mb-3">Agriculture Technology (AgroTech) WG</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Bridging agronomists, remote sensing researchers, and IoT engineers to implement smart irrigation, soil telemetry, drone spectral analytics, and connected open data repositories.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 rounded-lg bg-teal-50 text-teal-800 text-xs font-semibold">Digital Agriculture</span>
-                            <span class="px-3 py-1 rounded-lg bg-teal-50 text-teal-800 text-xs font-semibold">IoT & Sensors</span>
-                            <span class="px-3 py-1 rounded-lg bg-teal-50 text-teal-800 text-xs font-semibold">Data Platforms</span>
+                            <span class="px-3 py-1 rounded-xl bg-pal-teal/10 text-pal-navy text-xs font-extrabold border border-pal-teal/20">Precision Farming</span>
+                            <span class="px-3 py-1 rounded-xl bg-pal-teal/10 text-pal-navy text-xs font-extrabold border border-pal-teal/20">LoRaWAN Sensors</span>
+                            <span class="px-3 py-1 rounded-xl bg-pal-teal/10 text-pal-navy text-xs font-extrabold border border-pal-teal/20">National Agro-Cloud</span>
                         </div>
                     </div>
 
                     <!-- Generative AI WG -->
-                    <div class="glass-panel p-8 rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group reveal-on-scroll" style="transition-delay: 150ms;">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-brand-royal/20 to-brand-cyan/15 rounded-bl-full pointer-events-none"></div>
-                        <div class="w-12 h-12 rounded-2xl bg-brand-royal/10 text-brand-royal flex items-center justify-center mb-6 font-extrabold">
-                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                    <div class="holo-card p-10 rounded-3xl relative overflow-hidden group reveal-on-scroll" style="transition-delay: 150ms;">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pal-royal to-pal-cyan text-white flex items-center justify-center mb-6 font-black shadow-lg shadow-pal-royal/20 group-hover:scale-110 transition-transform">
+                            <i data-lucide="bot" class="w-7 h-7 text-pal-aqua"></i>
                         </div>
-                        <h4 class="text-2xl font-bold text-gray-900 mb-3">Generative AI Working Group</h4>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-6">
-                            A community focused on the practical and responsible integration of Generative AI in Sri Lankan higher education, research, student services, and institutional administration.
+                        <h4 class="text-2xl font-black text-slate-900 mb-3">Generative AI Working Group</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Formulating ethical boundaries, automated curriculum tooling, campus chatbots, and high-performance computing (HPC) clusters to empower faculty and scholars across the island.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 rounded-lg bg-blue-50 text-brand-blue text-xs font-semibold">Responsible AI</span>
-                            <span class="px-3 py-1 rounded-lg bg-blue-50 text-brand-blue text-xs font-semibold">Academic Integration</span>
-                            <span class="px-3 py-1 rounded-lg bg-blue-50 text-brand-blue text-xs font-semibold">EdTech Innovation</span>
+                            <span class="px-3 py-1 rounded-xl bg-pal-royal/10 text-pal-royal text-xs font-extrabold border border-pal-royal/20">Responsible AI Policy</span>
+                            <span class="px-3 py-1 rounded-xl bg-pal-royal/10 text-pal-royal text-xs font-extrabold border border-pal-royal/20">LLM Benchmarks</span>
+                            <span class="px-3 py-1 rounded-xl bg-pal-royal/10 text-pal-royal text-xs font-extrabold border border-pal-royal/20">Campus AI Assistants</span>
                         </div>
                     </div>
 
-                </div>
-
-                <!-- Key Topic Highlight -->
-                <div class="bg-gradient-to-r from-gray-900 to-brand-navy rounded-3xl p-8 sm:p-10 text-white shadow-xl reveal-on-scroll flex flex-col md:flex-row items-center justify-between gap-8">
-                    <div class="space-y-3 max-w-2xl">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-cyan/20 text-brand-aqua font-bold text-xs uppercase">
-                            <i data-lucide="alert-triangle" class="w-4 h-4"></i> Highlighted Key Topic
-                        </div>
-                        <h4 class="text-2xl sm:text-3xl font-extrabold">Cyber Threat Landscape</h4>
-                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-                            Deep dive into understanding emerging cybersecurity threats specifically targeting education and research institutions in Sri Lanka and globally.
-                        </p>
-                    </div>
-                    <a href="#programme" class="px-6 py-3 bg-white text-brand-navy font-bold rounded-xl hover:bg-brand-aqua transition-colors text-sm whitespace-nowrap shadow-lg">
-                        Explore Topics
-                    </a>
                 </div>
 
             </div>
         </section>
 
         <!-- SPEAKERS & EXPERTS -->
-        <section id="speakers" class="py-20 bg-gray-50/70">
+        <section id="speakers" class="py-24 bg-slate-50/80">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
-                    <h2 class="text-xs font-extrabold text-brand-blue tracking-widest uppercase mb-2">Thought Leaders</h2>
-                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Speakers & Experts</h3>
-                    <p class="text-gray-600 mt-3">LEARN37 brings together cybersecurity leaders, academics, and industry visionaries.</p>
-                    <div class="w-20 h-1.5 bg-gradient-main rounded-full mx-auto mt-4"></div>
+                    <span class="px-4 py-1.5 rounded-full bg-pal-cyan/10 text-pal-blue font-black text-xs uppercase tracking-widest inline-block mb-3">
+                        Thought Leaders
+                    </span>
+                    <h3 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">Distinguished Speakers</h3>
+                    <p class="text-slate-600 mt-3 text-base">Engage with industry veterans, academic visionaries, and threat researchers.</p>
+                    <div class="w-24 h-2 bg-gradient-to-r from-pal-navy via-pal-cyan to-pal-aqua rounded-full mx-auto mt-4"></div>
                 </div>
 
                 <!-- Speakers Grid -->
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     
                     <!-- Speaker 1 -->
-                    <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 text-center group reveal-on-scroll">
-                        <div class="relative w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden p-1 bg-gradient-main">
-                            <div class="w-full h-full rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                <i data-lucide="user" class="w-12 h-12"></i>
+                    <div class="holo-card p-6 text-center group reveal-on-scroll">
+                        <div class="relative w-28 h-28 mx-auto mb-4 rounded-3xl overflow-hidden p-1 bg-gradient-to-tr from-pal-navy via-pal-blue to-pal-aqua shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <div class="w-full h-full rounded-[22px] bg-slate-100 flex items-center justify-center text-slate-400 group-hover:text-pal-blue transition-colors">
+                                <i data-lucide="shield" class="w-12 h-12"></i>
                             </div>
                         </div>
-                        <h4 class="font-bold text-lg text-gray-900">Keynote Speaker</h4>
-                        <p class="text-xs font-bold text-brand-blue mb-1">Cybersecurity Specialist</p>
-                        <p class="text-xs text-gray-500 mb-3">National Cyber Security Center</p>
-                        <div class="pt-3 border-t border-gray-100">
-                            <p class="text-xs text-gray-600 font-medium italic">"Emerging Threat Vectors in Higher Ed"</p>
+                        <h4 class="font-black text-lg text-slate-900">Keynote Leader</h4>
+                        <p class="text-xs font-black text-pal-blue uppercase tracking-wider mb-1">Cyber Threat Specialist</p>
+                        <p class="text-xs text-slate-500 mb-4">National Cybersecurity Center</p>
+                        <div class="pt-3 border-t border-slate-100 text-xs text-slate-700 italic font-semibold">
+                            "Ransomware Resilience in NREN Backbones"
                         </div>
                     </div>
 
                     <!-- Speaker 2 -->
-                    <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 text-center group reveal-on-scroll" style="transition-delay: 100ms;">
-                        <div class="relative w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden p-1 bg-gradient-main">
-                            <div class="w-full h-full rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                <i data-lucide="user" class="w-12 h-12"></i>
+                    <div class="holo-card p-6 text-center group reveal-on-scroll" style="transition-delay: 100ms;">
+                        <div class="relative w-28 h-28 mx-auto mb-4 rounded-3xl overflow-hidden p-1 bg-gradient-to-tr from-pal-royal via-pal-cyan to-pal-aqua shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <div class="w-full h-full rounded-[22px] bg-slate-100 flex items-center justify-center text-slate-400 group-hover:text-pal-royal transition-colors">
+                                <i data-lucide="user-check" class="w-12 h-12"></i>
                             </div>
                         </div>
-                        <h4 class="font-bold text-lg text-gray-900">Academic Specialist</h4>
-                        <p class="text-xs font-bold text-brand-royal mb-1">Senior Researcher</p>
-                        <p class="text-xs text-gray-500 mb-3">LEARN Member Institution</p>
-                        <div class="pt-3 border-t border-gray-100">
-                            <p class="text-xs text-gray-600 font-medium italic">"Institutional Readiness & Resiliency"</p>
+                        <h4 class="font-black text-lg text-slate-900">Academic Director</h4>
+                        <p class="text-xs font-black text-pal-royal uppercase tracking-wider mb-1">Senior Network Architect</p>
+                        <p class="text-xs text-slate-500 mb-4">LEARN Member University</p>
+                        <div class="pt-3 border-t border-slate-100 text-xs text-slate-700 italic font-semibold">
+                            "Campus SOCs & Federated Identity Security"
                         </div>
                     </div>
 
                     <!-- Speaker 3 -->
-                    <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 text-center group reveal-on-scroll" style="transition-delay: 200ms;">
-                        <div class="relative w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden p-1 bg-gradient-main">
-                            <div class="w-full h-full rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                <i data-lucide="user" class="w-12 h-12"></i>
+                    <div class="holo-card p-6 text-center group reveal-on-scroll" style="transition-delay: 200ms;">
+                        <div class="relative w-28 h-28 mx-auto mb-4 rounded-3xl overflow-hidden p-1 bg-gradient-to-tr from-pal-blue via-pal-teal to-pal-aqua shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <div class="w-full h-full rounded-[22px] bg-slate-100 flex items-center justify-center text-slate-400 group-hover:text-pal-cyan transition-colors">
+                                <i data-lucide="cpu" class="w-12 h-12"></i>
                             </div>
                         </div>
-                        <h4 class="font-bold text-lg text-gray-900">AI WG Chair</h4>
-                        <p class="text-xs font-bold text-brand-cyan mb-1">AI & Data Lead</p>
-                        <p class="text-xs text-gray-500 mb-3">Generative AI Working Group</p>
-                        <div class="pt-3 border-t border-gray-100">
-                            <p class="text-xs text-gray-600 font-medium italic">"Responsible GenAI Implementation"</p>
+                        <h4 class="font-black text-lg text-slate-900">AI WG Lead</h4>
+                        <p class="text-xs font-black text-pal-cyan uppercase tracking-wider mb-1">Data & Compute Chair</p>
+                        <p class="text-xs text-slate-500 mb-4">Generative AI Working Group</p>
+                        <div class="pt-3 border-t border-slate-100 text-xs text-slate-700 italic font-semibold">
+                            "Protecting Institutional IP in Generative Models"
                         </div>
                     </div>
 
                     <!-- Speaker 4 -->
-                    <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 text-center group reveal-on-scroll" style="transition-delay: 300ms;">
-                        <div class="relative w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden p-1 bg-gradient-main">
-                            <div class="w-full h-full rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                <i data-lucide="user" class="w-12 h-12"></i>
+                    <div class="holo-card p-6 text-center group reveal-on-scroll" style="transition-delay: 300ms;">
+                        <div class="relative w-28 h-28 mx-auto mb-4 rounded-3xl overflow-hidden p-1 bg-gradient-to-tr from-pal-cyan via-pal-aqua to-pal-royal shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <div class="w-full h-full rounded-[22px] bg-slate-100 flex items-center justify-center text-slate-400 group-hover:text-pal-teal transition-colors">
+                                <i data-lucide="radio" class="w-12 h-12"></i>
                             </div>
                         </div>
-                        <h4 class="font-bold text-lg text-gray-900">AgroTech Lead</h4>
-                        <p class="text-xs font-bold text-brand-teal mb-1">Smart Agriculture Expert</p>
-                        <p class="text-xs text-gray-500 mb-3">AgriTech Working Group</p>
-                        <div class="pt-3 border-t border-gray-100">
-                            <p class="text-xs text-gray-600 font-medium italic">"IoT & Security in Agro-Research"</p>
+                        <h4 class="font-black text-lg text-slate-900">AgroTech Lead</h4>
+                        <p class="text-xs font-black text-pal-teal uppercase tracking-wider mb-1">Smart Agriculture Fellow</p>
+                        <p class="text-xs text-slate-500 mb-4">AgriTech Working Group</p>
+                        <div class="pt-3 border-t border-slate-100 text-xs text-slate-700 italic font-semibold">
+                            "Securing Edge IoT Clusters in Agricultural Research"
                         </div>
                     </div>
 
-                </div>
-
-                <div class="text-center mt-10">
-                    <span class="text-xs font-semibold text-gray-500 italic">* Complete list of distinguished keynote speakers and panel delegates to be announced shortly.</span>
                 </div>
 
             </div>
         </section>
 
         <!-- SPONSORS & PARTNERS -->
-        <section id="sponsors" class="py-20 bg-white">
+        <section id="sponsors" class="py-24 bg-white relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
-                    <h2 class="text-xs font-extrabold text-brand-cyan tracking-widest uppercase mb-2">Partnership Opportunities</h2>
-                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Sponsors & Partners</h3>
-                    <p class="text-gray-600 mt-3">Engage directly with Sri Lanka's leading academic, research, and technical decision-makers.</p>
-                    <div class="w-20 h-1.5 bg-gradient-main rounded-full mx-auto mt-4"></div>
+                    <span class="px-4 py-1.5 rounded-full bg-pal-teal/15 text-pal-navy font-black text-xs uppercase tracking-widest inline-block mb-3">
+                        Partnership Prospects
+                    </span>
+                    <h3 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">Sponsorship Packages</h3>
+                    <p class="text-slate-600 mt-3 text-base">Directly position your technology brand before CIOs, senior network engineers, and university leadership.</p>
+                    <div class="w-24 h-2 bg-gradient-to-r from-pal-navy via-pal-cyan to-pal-aqua rounded-full mx-auto mt-4"></div>
                 </div>
 
                 <!-- Sponsor Packages Grid -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
                     
                     <!-- PLATINUM -->
-                    <div class="border-2 border-slate-300 rounded-3xl p-6 bg-white shadow-xl relative flex flex-col justify-between hover:scale-105 transition-transform duration-300 reveal-on-scroll">
-                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-brand-navy text-white font-extrabold text-[10px] rounded-full uppercase tracking-wider">
-                            Most Prominent
+                    <div class="holo-card p-7 flex flex-col justify-between relative group reveal-on-scroll border-2 border-pal-navy/20">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-pal-navy to-pal-royal text-white font-black text-[10px] rounded-full uppercase tracking-wider shadow-md">
+                            Premium Tier
                         </div>
                         <div>
-                            <div class="text-center pb-6 border-b border-gray-100">
-                                <h4 class="text-xl font-extrabold text-slate-800">PLATINUM</h4>
-                                <div class="text-2xl font-black gradient-text mt-2">LKR 1,000,000</div>
+                            <div class="text-center pb-6 border-b border-slate-100">
+                                <h4 class="text-xl font-black text-pal-navy">PLATINUM</h4>
+                                <div class="text-2xl font-black gradient-text-animated mt-2">LKR 1,000,000</div>
                             </div>
-                            <ul class="py-6 space-y-3 text-xs text-gray-600">
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
-                                    <span>Speech at main session & working groups</span>
+                            <ul class="py-6 space-y-3.5 text-xs text-slate-600">
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Main session & track keynote address</span>
                                 </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
-                                    <span>Exhibition stall representation</span>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Prime exhibition booth stall allocation</span>
                                 </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
-                                    <span>Featured promotional video feature</span>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Featured promotional video presentation</span>
                                 </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
-                                    <span>Top-tier logo placement & recognition</span>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Top-tier brand placement on all collateral</span>
                                 </li>
                             </ul>
                         </div>
-                        <button onclick="openSponsorModal('Platinum')" class="w-full py-2.5 rounded-xl bg-brand-navy text-white font-bold text-xs hover:bg-slate-900 transition-colors">
-                            Select Platinum
+                        <button onclick="openSponsorModal('Platinum')" class="w-full py-3 rounded-xl bg-pal-navy text-white font-extrabold text-xs uppercase tracking-wider hover:bg-pal-royal transition-colors shadow-md">
+                            Choose Platinum
                         </button>
                     </div>
 
                     <!-- GOLD -->
-                    <div class="border-2 border-brand-teal/40 rounded-3xl p-6 bg-white shadow-xl relative flex flex-col justify-between hover:scale-105 transition-transform duration-300 reveal-on-scroll" style="transition-delay: 100ms;">
+                    <div class="holo-card p-7 flex flex-col justify-between relative group reveal-on-scroll border-2 border-pal-royal/20" style="transition-delay: 100ms;">
                         <div>
-                            <div class="text-center pb-6 border-b border-gray-100">
-                                <h4 class="text-xl font-extrabold text-brand-teal">GOLD</h4>
-                                <div class="text-2xl font-black text-gray-900 mt-2">LKR 600,000</div>
+                            <div class="text-center pb-6 border-b border-slate-100">
+                                <h4 class="text-xl font-black text-pal-royal">GOLD</h4>
+                                <div class="text-2xl font-black text-slate-900 mt-2">LKR 600,000</div>
                             </div>
-                            <ul class="py-6 space-y-3 text-xs text-gray-600">
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
-                                    <span>Speech at working group sessions</span>
+                            <ul class="py-6 space-y-3.5 text-xs text-slate-600">
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Working Group technical session slot</span>
                                 </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
-                                    <span>Exhibition / stall representation</span>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Exhibition foyer display representation</span>
                                 </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
-                                    <span>Promotional video + LED wall/social</span>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>LED wall promo display loops & social spotlight</span>
                                 </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
-                                    <span>Prominent logo & recognition</span>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Prominent logo placement on website & kits</span>
                                 </li>
                             </ul>
                         </div>
-                        <button onclick="openSponsorModal('Gold')" class="w-full py-2.5 rounded-xl bg-brand-teal text-white font-bold text-xs hover:bg-teal-600 transition-colors">
-                            Select Gold
+                        <button onclick="openSponsorModal('Gold')" class="w-full py-3 rounded-xl bg-pal-royal text-white font-extrabold text-xs uppercase tracking-wider hover:bg-pal-blue transition-colors shadow-md">
+                            Choose Gold
                         </button>
                     </div>
 
                     <!-- SILVER -->
-                    <div class="border-2 border-gray-200 rounded-3xl p-6 bg-white shadow-lg relative flex flex-col justify-between hover:scale-105 transition-transform duration-300 reveal-on-scroll" style="transition-delay: 200ms;">
+                    <div class="holo-card p-7 flex flex-col justify-between relative group reveal-on-scroll border-2 border-pal-cyan/20" style="transition-delay: 200ms;">
                         <div>
-                            <div class="text-center pb-6 border-b border-gray-100">
-                                <h4 class="text-xl font-extrabold text-gray-600">SILVER</h4>
-                                <div class="text-2xl font-black text-gray-900 mt-2">LKR 300,000</div>
+                            <div class="text-center pb-6 border-b border-slate-100">
+                                <h4 class="text-xl font-black text-pal-cyan">SILVER</h4>
+                                <div class="text-2xl font-black text-slate-900 mt-2">LKR 300,000</div>
                             </div>
-                            <ul class="py-6 space-y-3 text-xs text-gray-600">
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
-                                    <span>Speech at working group sessions</span>
+                            <ul class="py-6 space-y-3.5 text-xs text-slate-600">
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Speech at specialist working track</span>
                                 </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
-                                    <span>Promotional video feature</span>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Promotional brand clip playback</span>
                                 </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
-                                    <span>Logo placement & recognition</span>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Logo inclusion across marketing materials</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Complimentary delegate passes (2)</span>
                                 </li>
                             </ul>
                         </div>
-                        <button onclick="openSponsorModal('Silver')" class="w-full py-2.5 rounded-xl bg-gray-700 text-white font-bold text-xs hover:bg-gray-800 transition-colors">
-                            Select Silver
+                        <button onclick="openSponsorModal('Silver')" class="w-full py-3 rounded-xl bg-pal-cyan text-white font-extrabold text-xs uppercase tracking-wider hover:bg-pal-teal hover:text-pal-navy transition-colors shadow-md">
+                            Choose Silver
                         </button>
                     </div>
 
                     <!-- BRONZE -->
-                    <div class="border-2 border-brand-cyan/30 rounded-3xl p-6 bg-white shadow-lg relative flex flex-col justify-between hover:scale-105 transition-transform duration-300 reveal-on-scroll" style="transition-delay: 300ms;">
+                    <div class="holo-card p-7 flex flex-col justify-between relative group reveal-on-scroll border-2 border-pal-teal/20" style="transition-delay: 300ms;">
                         <div>
-                            <div class="text-center pb-6 border-b border-gray-100">
-                                <h4 class="text-xl font-extrabold text-brand-cyan">BRONZE</h4>
-                                <div class="text-2xl font-black text-gray-900 mt-2">LKR 150,000</div>
+                            <div class="text-center pb-6 border-b border-slate-100">
+                                <h4 class="text-xl font-black text-pal-teal">BRONZE</h4>
+                                <div class="text-2xl font-black text-slate-900 mt-2">LKR 150,000</div>
                             </div>
-                            <ul class="py-6 space-y-3 text-xs text-gray-600">
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
-                                    <span>Promotional video feature</span>
+                            <ul class="py-6 space-y-3.5 text-xs text-slate-600">
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Logo placement in event program book</span>
                                 </li>
-                                <li class="flex items-start gap-2">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-brand-teal shrink-0 mt-0.5"></i>
-                                    <span>Logo placement & recognition</span>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Digital banner projection during intervals</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Complimentary delegate pass (1)</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-pal-teal shrink-0 mt-0.5"></i>
+                                    <span>Social media sponsor acknowledgment</span>
                                 </li>
                             </ul>
                         </div>
-                        <button onclick="openSponsorModal('Bronze')" class="w-full py-2.5 rounded-xl bg-brand-cyan text-white font-bold text-xs hover:bg-blue-600 transition-colors">
-                            Select Bronze
+                        <button onclick="openSponsorModal('Bronze')" class="w-full py-3 rounded-xl bg-pal-teal text-pal-navy font-extrabold text-xs uppercase tracking-wider hover:bg-pal-aqua transition-colors shadow-md">
+                            Choose Bronze
                         </button>
                     </div>
 
                 </div>
 
-                <!-- Customized Note & Action Button -->
-                <div class="glass-panel rounded-2xl p-6 text-center max-w-3xl mx-auto border border-gray-200">
-                    <p class="text-xs sm:text-sm text-gray-600 mb-4">
-                        <strong>Note:</strong> LEARN welcomes both financial and in-kind sponsorships. Packages are a starting point and can be fully customized to align with your organization's objectives.
-                    </p>
-                    <button onclick="openSponsorModal('Custom')" class="px-8 py-3 bg-gradient-btn text-white font-extrabold text-sm rounded-xl shadow-lg shadow-brand-blue/30 hover:scale-105 transition-all">
-                        Become a Sponsor
+                <!-- Custom Sponsorship Callout -->
+                <div class="p-8 rounded-3xl bg-gradient-to-r from-pal-navy via-pal-royal to-pal-cyan text-white text-center max-w-4xl mx-auto shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div class="text-left">
+                        <h4 class="text-xl font-black mb-1">Looking for a tailored exhibition or in-kind package?</h4>
+                        <p class="text-blue-100 text-xs sm:text-sm">We welcome custom hardware demonstrations, SOC live labs, and student challenge sponsorships.</p>
+                    </div>
+                    <button onclick="openSponsorModal('Custom')" class="px-8 py-3.5 bg-pal-aqua text-pal-navy font-black text-xs uppercase tracking-wider rounded-xl hover:bg-white hover:scale-105 transition-all shadow-lg whitespace-nowrap">
+                        Inquire Custom Package
                     </button>
                 </div>
 
             </div>
         </section>
 
-        <!-- ABOUT LEARN ORGANISATION -->
-        <section class="py-16 bg-gradient-to-r from-brand-navy to-brand-royal text-white relative overflow-hidden">
+        <!-- ABOUT LEARN NREN SECTION -->
+        <section class="py-20 bg-dark-cyber text-white relative overflow-hidden dark-grid-cyber">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid md:grid-cols-12 gap-8 items-center">
-                    <div class="md:col-span-8">
-                        <span class="px-3 py-1 rounded-full bg-white/20 text-xs font-bold uppercase tracking-wider mb-3 inline-block">National NREN</span>
-                        <h3 class="text-2xl sm:text-3xl font-extrabold mb-4">About LEARN (Lanka Education And Research Network)</h3>
-                        <p class="text-gray-200 text-sm sm:text-base leading-relaxed">
-                            LEARN is Sri Lanka's National Research and Education Network (NREN), supporting high-speed connectivity, digital services, cross-institutional collaboration, and technology-enabled education and research across the nation.
+                <div class="grid md:grid-cols-12 gap-10 items-center">
+                    <div class="md:col-span-8 space-y-4">
+                        <span class="px-3.5 py-1.5 rounded-full bg-pal-aqua/20 text-pal-aqua text-xs font-black uppercase tracking-widest inline-block border border-pal-aqua/30">
+                            National Network Spine
+                        </span>
+                        <h3 class="text-3xl sm:text-4xl font-black">About LEARN (Lanka Education And Research Network)</h3>
+                        <p class="text-blue-100 text-sm sm:text-base leading-relaxed">
+                            Established to interconnect Sri Lanka's universities, research centers, and academic institutes, LEARN delivers high-speed national transmission backbones, eduroam federated roaming, high-capacity international peering, and secure computing infrastructure.
                         </p>
                     </div>
                     <div class="md:col-span-4 flex justify-start md:justify-end">
-                        <a href="https://www.learn.ac.lk" target="_blank" class="px-6 py-3.5 bg-white text-brand-navy font-extrabold rounded-xl hover:bg-brand-aqua transition-colors text-sm shadow-xl inline-flex items-center gap-2">
-                            Learn More About LEARN <i data-lucide="external-link" class="w-4 h-4"></i>
+                        <a href="https://www.learn.ac.lk" target="_blank" class="px-8 py-4 bg-gradient-to-r from-pal-teal to-pal-aqua text-pal-navy font-black rounded-2xl hover:scale-105 transition-all text-xs uppercase tracking-wider shadow-xl shadow-pal-aqua/20 inline-flex items-center gap-2">
+                            Explore LEARN Portal <i data-lucide="external-link" class="w-4 h-4"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CONTACT & EVENT INFO SECTION -->
-        <section id="contact" class="py-20 bg-gray-50">
+        <!-- CONTACT & LOCATION INFO -->
+        <section id="contact" class="py-24 bg-slate-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                <div class="grid md:grid-cols-2 gap-12">
+                <div class="grid md:grid-cols-2 gap-10">
                     
                     <!-- Event Summary Card -->
-                    <div class="glass-panel p-8 rounded-3xl border border-gray-200 shadow-lg reveal-on-scroll">
-                        <h3 class="text-2xl font-extrabold text-gray-900 mb-6 flex items-center gap-2">
-                            <i data-lucide="info" class="w-6 h-6 text-brand-blue"></i> Event Details Summary
-                        </h3>
+                    <div class="holo-card p-10 reveal-on-scroll">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="w-10 h-10 rounded-xl bg-pal-navy text-pal-aqua flex items-center justify-center">
+                                <i data-lucide="info" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-slate-900">Event Details At-a-Glance</h3>
+                        </div>
                         
                         <div class="space-y-4 text-sm">
-                            <div class="flex items-start gap-4 p-3 rounded-xl bg-white border border-gray-100">
-                                <i data-lucide="calendar" class="w-5 h-5 text-brand-blue shrink-0 mt-0.5"></i>
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                                <i data-lucide="calendar" class="w-5 h-5 text-pal-blue shrink-0 mt-0.5"></i>
                                 <div>
-                                    <div class="font-bold text-gray-900">Date</div>
-                                    <div class="text-gray-600">To be confirmed</div>
+                                    <div class="font-bold text-slate-900">Scheduled Date</div>
+                                    <div class="text-slate-500">To be confirmed shortly</div>
                                 </div>
                             </div>
 
-                            <div class="flex items-start gap-4 p-3 rounded-xl bg-white border border-gray-100">
-                                <i data-lucide="map-pin" class="w-5 h-5 text-brand-cyan shrink-0 mt-0.5"></i>
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-pal-cyan shrink-0 mt-0.5"></i>
                                 <div>
-                                    <div class="font-bold text-gray-900">Venue</div>
-                                    <div class="text-gray-600">To be confirmed</div>
+                                    <div class="font-bold text-slate-900">Official Location</div>
+                                    <div class="text-slate-500">To be confirmed shortly</div>
                                 </div>
                             </div>
 
-                            <div class="flex items-start gap-4 p-3 rounded-xl bg-white border border-gray-100">
-                                <i data-lucide="clock" class="w-5 h-5 text-brand-teal shrink-0 mt-0.5"></i>
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                                <i data-lucide="clock" class="w-5 h-5 text-pal-teal shrink-0 mt-0.5"></i>
                                 <div>
-                                    <div class="font-bold text-gray-900">Time</div>
-                                    <div class="text-gray-600">8:30 AM – 5:00 PM</div>
+                                    <div class="font-bold text-slate-900">Conference Timings</div>
+                                    <div class="text-slate-500">8:30 AM – 5:00 PM (+05:30 GMT)</div>
                                 </div>
                             </div>
 
-                            <div class="flex items-start gap-4 p-3 rounded-xl bg-white border border-gray-100">
-                                <i data-lucide="layers" class="w-5 h-5 text-brand-royal shrink-0 mt-0.5"></i>
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                                <i data-lucide="layers" class="w-5 h-5 text-pal-royal shrink-0 mt-0.5"></i>
                                 <div>
-                                    <div class="font-bold text-gray-900">Format</div>
-                                    <div class="text-gray-600">37th LEARN Meeting & Cybersecurity Programme</div>
+                                    <div class="font-bold text-slate-900">Official Conference Format</div>
+                                    <div class="text-slate-500">Dual-Track: Plenary Cyber Summit & Closed-Door 37th LEARN Meeting</div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Contact Details Form / Card -->
-                    <div class="glass-panel p-8 rounded-3xl border border-gray-200 shadow-lg reveal-on-scroll" style="transition-delay: 150ms;">
-                        <h3 class="text-2xl font-extrabold text-gray-900 mb-6 flex items-center gap-2">
-                            <i data-lucide="mail" class="w-6 h-6 text-brand-royal"></i> Contact Information
-                        </h3>
+                    <!-- Direct Contact Card -->
+                    <div class="holo-card p-10 reveal-on-scroll" style="transition-delay: 150ms;">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="w-10 h-10 rounded-xl bg-pal-royal text-pal-aqua flex items-center justify-center">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-slate-900">Organizing Secretariat</h3>
+                        </div>
 
-                        <p class="text-gray-600 text-sm mb-6">
-                            For queries regarding institutional participation, sponsorship opportunities, or general inquiries:
+                        <p class="text-slate-600 text-sm mb-8 leading-relaxed">
+                            For delegate accreditation, institution seat allotments, technical presentation abstracts, and partner sponsorships, reach out directly:
                         </p>
 
-                        <div class="space-y-4 text-sm mb-8">
-                            <div class="flex items-center gap-3 text-gray-700">
-                                <div class="w-9 h-9 rounded-lg bg-brand-navy/10 text-brand-navy flex items-center justify-center font-bold">
-                                    <i data-lucide="building-2" class="w-4 h-4"></i>
+                        <div class="space-y-5 text-sm mb-8">
+                            <div class="flex items-center gap-3 text-slate-700">
+                                <div class="w-10 h-10 rounded-xl bg-pal-navy/10 text-pal-navy flex items-center justify-center">
+                                    <i data-lucide="building-2" class="w-5 h-5"></i>
                                 </div>
-                                <span class="font-semibold">LEARN - Lanka Education And Research Network</span>
+                                <span class="font-extrabold">LEARN - Lanka Education And Research Network</span>
                             </div>
 
-                            <div class="flex items-center gap-3 text-gray-700">
-                                <div class="w-9 h-9 rounded-lg bg-brand-royal/10 text-brand-royal flex items-center justify-center font-bold">
-                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                            <div class="flex items-center gap-3 text-slate-700">
+                                <div class="w-10 h-10 rounded-xl bg-pal-royal/10 text-pal-royal flex items-center justify-center">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
                                 </div>
-                                <span class="text-gray-600">Event contact: aparna@ops.learn.ac.lk</span>
+                                <span class="font-medium text-slate-600">Direct desk: <a href="mailto:aparna@ops.learn.ac.lk" class="text-pal-blue font-bold hover:underline">aparna@ops.learn.ac.lk</a></span>
                             </div>
 
-                            <div class="flex items-center gap-3 text-gray-700">
-                                <div class="w-9 h-9 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center font-bold">
-                                    <i data-lucide="globe" class="w-4 h-4"></i>
+                            <div class="flex items-center gap-3 text-slate-700">
+                                <div class="w-10 h-10 rounded-xl bg-pal-cyan/10 text-pal-cyan flex items-center justify-center">
+                                    <i data-lucide="globe" class="w-5 h-5"></i>
                                 </div>
-                                <a href="https://www.learn.ac.lk" target="_blank" class="text-brand-blue hover:underline font-medium">www.learn.ac.lk</a>
+                                <a href="https://www.learn.ac.lk" target="_blank" class="text-pal-blue font-bold hover:underline">www.learn.ac.lk</a>
                             </div>
                         </div>
 
-                        <!-- Social Media Links with Inline SVG Icons -->
+                        <!-- Social Media Links -->
                         <div>
-                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Connect With LEARN</div>
+                            <div class="text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Connect With LEARN</div>
                             <div class="flex gap-3">
-                                <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand-navy hover:border-brand-navy transition-colors">
+                                <a href="#" aria-label="LinkedIn" class="w-11 h-11 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-white hover:bg-pal-navy hover:border-pal-navy transition-all">
                                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                                 </a>
-                                <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand-navy hover:border-brand-navy transition-colors">
+                                <a href="#" aria-label="Facebook" class="w-11 h-11 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-white hover:bg-pal-royal hover:border-pal-royal transition-all">
                                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
                                 </a>
-                                <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand-navy hover:border-brand-navy transition-colors">
+                                <a href="#" aria-label="Twitter" class="w-11 h-11 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-white hover:bg-pal-blue hover:border-pal-blue transition-all">
                                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.05c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
                                 </a>
-                                <a href="#" aria-label="YouTube" class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-brand-navy hover:border-brand-navy transition-colors">
+                                <a href="#" aria-label="YouTube" class="w-11 h-11 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-white hover:bg-red-600 hover:border-red-600 transition-all">
                                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.16 7.83.44.9.25 1.48.83 1.73 1.73z"/></svg>
                                 </a>
                             </div>
@@ -957,43 +1118,44 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-gray-900 text-gray-400 py-8 border-t border-gray-800">
+    <footer class="bg-slate-950 text-slate-400 py-10 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
-                <div class="flex items-center gap-2">
-                    <span class="font-extrabold text-white text-base">LEARN37</span>
-                    <span>- Lanka Education And Research Network</span>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+                <div class="flex items-center gap-3">
+                    <span class="font-black text-white text-lg tracking-tight gradient-text-animated">LEARN37</span>
+                    <span class="text-slate-400">| Lanka Education And Research Network</span>
                 </div>
-                <div class="flex gap-4 text-xs font-medium">
-                    <a href="#home" class="hover:text-white">Home</a>
-                    <a href="#about" class="hover:text-white">About</a>
-                    <a href="#programme" class="hover:text-white">Programme</a>
-                    <a href="#contact" class="hover:text-white">Contact</a>
+                <div class="flex gap-6 text-xs font-bold uppercase tracking-wider">
+                    <a href="#home" class="hover:text-pal-aqua transition-colors">Home</a>
+                    <a href="#about" class="hover:text-pal-aqua transition-colors">About</a>
+                    <a href="#programme" class="hover:text-pal-aqua transition-colors">Programme</a>
+                    <a href="#sponsors" class="hover:text-pal-aqua transition-colors">Sponsorships</a>
+                    <a href="#contact" class="hover:text-pal-aqua transition-colors">Contact</a>
                 </div>
             </div>
-            <p>&copy; 2026 Lanka Education And Research Network (LEARN). All Rights Reserved.</p>
+            <p class="text-slate-500">&copy; 2026 Lanka Education And Research Network (LEARN). All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- REGISTRATION MODAL (TEMPORARILY CLOSED NOTICE) -->
-    <div id="register-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
-        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-gray-100 max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300" id="modal-card">
+    <!-- REGISTRATION MODAL -->
+    <div id="register-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-8 shadow-2xl relative border border-pal-cyan/30 max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300" id="modal-card">
             
-            <button onclick="closeRegisterModal()" class="absolute top-5 right-5 p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700">
+            <button onclick="closeRegisterModal()" class="absolute top-5 right-5 p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-700">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
 
-            <!-- Registration Closed Banner Message -->
+            <!-- Registration Notice -->
             <div class="text-center py-6 space-y-4">
-                <div class="w-16 h-16 rounded-full bg-sky-100 text-brand-blue flex items-center justify-center mx-auto">
+                <div class="w-16 h-16 rounded-3xl bg-pal-cyan/15 text-pal-blue flex items-center justify-center mx-auto border border-pal-cyan/30">
                     <i data-lucide="lock" class="w-8 h-8"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold text-gray-900">Registration Currently Closed</h3>
-                <p class="text-sm text-gray-600 max-w-sm mx-auto leading-relaxed">
-                    Registration for <strong>LEARN37</strong> is currently unavailable. Please check back later or contact the organizing committee at <a href="mailto:aparna@ops.learn.ac.lk" class="text-brand-blue underline font-semibold">aparna@ops.learn.ac.lk</a> for inquiries.
+                <h3 class="text-2xl font-black text-slate-900">Registration Currently Opening Soon</h3>
+                <p class="text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
+                    Official participant intake for <strong>LEARN37</strong> will open shortly for LEARN member institutions and invited delegates. Inquire early at <a href="mailto:aparna@ops.learn.ac.lk" class="text-pal-blue font-bold underline">aparna@ops.learn.ac.lk</a>.
                 </p>
-                <button onclick="closeRegisterModal()" class="px-6 py-2.5 bg-gray-900 text-white font-bold rounded-xl text-xs mt-4 hover:bg-gray-800 transition-colors">
-                    Close Window
+                <button onclick="closeRegisterModal()" class="px-7 py-3 bg-pal-navy text-white font-extrabold rounded-xl text-xs uppercase tracking-wider hover:bg-pal-royal transition-colors">
+                    Close Notice
                 </button>
             </div>
 
@@ -1001,16 +1163,16 @@
     </div>
 
     <!-- SPONSOR MODAL -->
-    <div id="sponsor-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border border-gray-100">
-            <button onclick="closeSponsorModal()" class="absolute top-5 right-5 p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700">
+    <div id="sponsor-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl relative border border-pal-cyan/30">
+            <button onclick="closeSponsorModal()" class="absolute top-5 right-5 p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-700">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
             
             <div class="mb-6">
-                <span class="text-xs font-bold text-brand-cyan uppercase tracking-wider">Partnership Inquiry</span>
-                <h3 class="text-2xl font-extrabold text-gray-900" id="sponsor-modal-title">Sponsorship Interest</h3>
-                <p class="text-xs text-gray-500 mt-1">Connect with Sri Lanka's leading academic & tech decision-makers.</p>
+                <span class="text-xs font-black text-pal-cyan uppercase tracking-widest">Sponsorship Inquiries</span>
+                <h3 class="text-2xl font-black text-slate-900" id="sponsor-modal-title">Partner with LEARN37</h3>
+                <p class="text-xs text-slate-500 mt-1">Connect directly with Sri Lanka's leading academic & cyber decision-makers.</p>
             </div>
 
             <form id="sponsor-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleSponsorSubmit(event)" class="space-y-4">
@@ -1020,23 +1182,23 @@
                 <input type="hidden" name="from_name" value="LEARN37 Website">
 
                 <div>
-                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Company / Organization *</label>
-                    <input type="text" name="Company Name" required placeholder="e.g. CyberSec Solutions Ltd" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none text-sm">
+                    <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Company / Organization *</label>
+                    <input type="text" name="Company Name" required placeholder="e.g. FortiShield Networks" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-pal-blue focus:ring-2 focus:ring-pal-blue/20 outline-none text-sm">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Contact Person *</label>
-                    <input type="text" name="Contact Person" required placeholder="Full Name" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none text-sm">
+                    <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Contact Person *</label>
+                    <input type="text" name="Contact Person" required placeholder="Full Name" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-pal-blue focus:ring-2 focus:ring-pal-blue/20 outline-none text-sm">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Email Address *</label>
-                    <input type="email" name="Email" required placeholder="contact@company.com" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none text-sm">
+                    <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Email Address *</label>
+                    <input type="email" name="Email" required placeholder="rep@company.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-pal-blue focus:ring-2 focus:ring-pal-blue/20 outline-none text-sm">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Message / Requirements</label>
-                    <textarea name="Message" rows="3" placeholder="Tell us about your objectives or custom package needs..." class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 outline-none text-sm"></textarea>
+                    <label class="block text-xs font-extrabold text-slate-700 uppercase mb-1">Inquiry / Objective</label>
+                    <textarea name="Message" rows="3" placeholder="Tell us about your sponsorship requirements or custom queries..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-pal-blue focus:ring-2 focus:ring-pal-blue/20 outline-none text-sm"></textarea>
                 </div>
-                <button type="submit" id="sponsor-submit-btn" class="w-full py-3.5 bg-gradient-btn text-white font-extrabold rounded-xl shadow-lg shadow-brand-blue/30 hover:scale-[1.02] active:scale-95 transition-all text-sm">
-                    Submit Inquiry
+                <button type="submit" id="sponsor-submit-btn" class="w-full py-4 bg-gradient-to-r from-pal-navy via-pal-royal to-pal-blue text-white font-black uppercase tracking-wider rounded-xl shadow-lg shadow-pal-navy/20 hover:scale-[1.01] active:scale-95 transition-all text-xs">
+                    Submit Partnership Inquiry
                 </button>
             </form>
         </div>
@@ -1068,14 +1230,14 @@
             const tabs = document.querySelectorAll('.agenda-tab');
 
             tabs.forEach(tab => {
-                tab.classList.remove('bg-brand-navy', 'text-white');
-                tab.classList.add('bg-white', 'text-gray-600');
+                tab.classList.remove('bg-gradient-to-r', 'from-pal-navy', 'to-pal-blue', 'text-white', 'shadow-lg');
+                tab.classList.add('bg-white', 'text-slate-700');
             });
 
             const activeTab = document.getElementById(`tab-${category}`);
             if (activeTab) {
-                activeTab.classList.remove('bg-white', 'text-gray-600');
-                activeTab.classList.add('bg-brand-navy', 'text-white');
+                activeTab.classList.remove('bg-white', 'text-slate-700');
+                activeTab.classList.add('bg-gradient-to-r', 'from-pal-navy', 'to-pal-blue', 'text-white', 'shadow-lg');
             }
 
             items.forEach(item => {
@@ -1111,7 +1273,7 @@
         }
 
         function openSponsorModal(tier) {
-            document.getElementById('sponsor-modal-title').textContent = `${tier} Sponsor Inquiry`;
+            document.getElementById('sponsor-modal-title').textContent = `${tier} Sponsorship Inquiry`;
             document.getElementById('sponsor-tier-input').value = `${tier} Package`;
             document.getElementById('sponsor-subject-input').value = `New ${tier} Sponsorship Inquiry for LEARN37`;
 
@@ -1126,52 +1288,6 @@
             setTimeout(() => {
                 sponsorModal.classList.add('hidden');
             }, 300);
-        }
-
-        // PRE-CONFIGURED GOOGLE APPS SCRIPT URL FOR DIRECT GOOGLE SHEETS RECORDING
-        const GOOGLE_SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwRznr1TES3S4LE9mmjUPUBwlPuMx4OUhQt5mcxgrqAnMAhBPQwJLwKYnNsWH5fuMGb-g/exec';
-
-        // Form Submit Handler for Registrations
-        async function handleRegistration(e) {
-            e.preventDefault();
-            const form = e.target;
-            const btn = document.getElementById('reg-submit-btn');
-            
-            // Gather Selected Sessions
-            const selectedSessions = Array.from(document.querySelectorAll('input[name="session_option"]:checked'))
-                .map(cb => cb.value)
-                .join(', ');
-
-            if (!selectedSessions) {
-                alert('Please select at least one session or category.');
-                return;
-            }
-
-            btn.textContent = 'Submitting to Google Sheet...';
-            btn.disabled = true;
-
-            const formData = new FormData();
-            formData.append('Full Name', form['Full Name'].value);
-            formData.append('Institution', form['Institution'].value);
-            formData.append('Designation', form['Designation'].value);
-            formData.append('Contact Number', form['Contact Number'].value);
-            formData.append('Email', form['Email'].value);
-            formData.append('Sessions', selectedSessions);
-
-            try {
-                await fetch(GOOGLE_SHEET_SCRIPT_URL, {
-                    method: 'POST',
-                    body: formData
-                });
-                form.classList.add('hidden');
-                document.getElementById('modal-success-msg').classList.remove('hidden');
-            } catch (err) {
-                console.error("Submission error:", err);
-                alert('An error occurred submitting your registration. Please try again.');
-            } finally {
-                btn.textContent = 'Submit Registration';
-                btn.disabled = false;
-            }
         }
 
         // Form Submit Handler for Sponsorships
@@ -1191,7 +1307,7 @@
                     headers: { 'Accept': 'application/json' }
                 });
                 if (res.ok) {
-                    alert("Thank you for your interest! The LEARN team will reach out to you with details.");
+                    alert("Thank you for your partnership interest! The LEARN organizing secretariat will contact you shortly.");
                     closeSponsorModal();
                     form.reset();
                 } else {
@@ -1201,7 +1317,7 @@
                 console.error("Submission failed:", err);
                 alert('An error occurred. Please try again.');
             } finally {
-                btn.textContent = 'Submit Inquiry';
+                btn.textContent = 'Submit Partnership Inquiry';
                 btn.disabled = false;
             }
         }
