@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
-
   /* ==================================================
      MOBILE NAVIGATION
      ================================================== */
@@ -25,10 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     menuToggle.textContent = "☰";
 
-    menuToggle.setAttribute(
-      "aria-expanded",
-      "false"
-    );
+    menuToggle.setAttribute("aria-expanded", "false");
 
   }
 
@@ -78,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("resize", function () {
 
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 900) {
 
         closeMenu();
 
@@ -87,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   }
-
 
   /* ==================================================
      COUNTDOWN TIMER
@@ -178,7 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setInterval(updateCountdown, 1000);
 
-
   /* ==================================================
      PROGRAMME DAY TABS
      ================================================== */
@@ -204,10 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         tab.classList.remove("active");
 
-        tab.setAttribute(
-          "aria-pressed",
-          "false"
-        );
+        tab.setAttribute("aria-pressed", "false");
 
       });
 
@@ -221,10 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       button.classList.add("active");
 
-      button.setAttribute(
-        "aria-pressed",
-        "true"
-      );
+      button.setAttribute("aria-pressed", "true");
 
       selectedContent.hidden = false;
 
@@ -233,7 +221,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   });
-
 
   /* ==================================================
      SCROLL REVEAL ANIMATIONS
@@ -280,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    /* Staggered partner entrances */
+    /* STAGGERED PARTNER ENTRANCES */
 
     document.querySelectorAll(".pn-row").forEach(
 
@@ -304,7 +291,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   }
-
 
   /* ==================================================
      PARTNER NETWORK ANIMATION CONTROL
@@ -364,7 +350,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-
   /* ==================================================
      ACTIVE NAVIGATION LINK
      ================================================== */
@@ -373,7 +358,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("section[id]");
 
   const navigationLinks =
-    document.querySelectorAll(".nav-links a");
+    document.querySelectorAll('.nav-links a[href^="#"]');
 
   let scrollTicking = false;
 
@@ -403,10 +388,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (active) {
 
-        link.setAttribute(
-          "aria-current",
-          "location"
-        );
+        link.setAttribute("aria-current", "location");
 
       } else {
 
@@ -442,7 +424,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateActiveNavigation();
 
-
   /* ==================================================
      ANIMATED NETWORK GLOBE
      ================================================== */
@@ -471,7 +452,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let lastTimestamp = 0;
 
   let rotationAngle = 0.5;
-
 
   /* CREATE SPHERICAL NETWORK POINTS */
 
@@ -503,7 +483,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-
   /* CREATE BACKGROUND PARTICLES */
 
   const stars = Array.from(
@@ -529,7 +508,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
   );
-
 
   /* RESPONSIVE CANVAS SIZE */
 
@@ -561,7 +539,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       centerX = width * 0.65;
 
-      centerY = height * 0.73;
+      centerY = height * 0.76;
 
     } else {
 
@@ -577,7 +555,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
   }
-
 
   /* DRAW TWINKLING PARTICLES */
 
@@ -619,7 +596,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   }
-
 
   /* PROJECT 3D POINTS TO 2D */
 
@@ -673,7 +649,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   }
-
 
   /* DRAW GLOBE GLOW */
 
@@ -732,7 +707,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-
   /* DRAW NETWORK CONNECTIONS */
 
   function drawConnections(projectedPoints) {
@@ -770,11 +744,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (distance < maxDistance) {
 
           const opacity =
-
             0.5 * (1 - distance / maxDistance);
 
           ctx.strokeStyle =
-
             "rgba(0,220,255," + opacity + ")";
 
           ctx.lineWidth = 0.8;
@@ -795,7 +767,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-
   /* DRAW GLOWING NETWORK NODES */
 
   function drawNodes(projectedPoints) {
@@ -815,17 +786,14 @@ document.addEventListener("DOMContentLoaded", function () {
     sortedPoints.forEach(function (point) {
 
       const opacity =
-
         0.2 + 0.8 * ((point.z + 1) / 2);
 
       const nodeSize =
-
         1.5 * point.scale;
 
       ctx.beginPath();
 
       ctx.fillStyle =
-
         "rgba(160,255,255," + opacity + ")";
 
       ctx.arc(
@@ -849,7 +817,6 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.beginPath();
 
         ctx.fillStyle =
-
           "rgba(0,224,191,0.12)";
 
         ctx.arc(
@@ -873,7 +840,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   }
-
 
   /* DRAW ANIMATED ORBITAL RINGS */
 
@@ -920,7 +886,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     ctx.restore();
 
-
     ctx.save();
 
     ctx.translate(centerX, centerY);
@@ -958,8 +923,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-
-  /* DRAW THE COMPLETE GLOBE SCENE */
+  /* DRAW COMPLETE GLOBE SCENE */
 
   function drawScene(time) {
 
@@ -984,7 +948,6 @@ document.addEventListener("DOMContentLoaded", function () {
     drawOrbits(time);
 
     const projectedPoints =
-
       projectPoints(rotationAngle);
 
     drawConnections(projectedPoints);
@@ -992,7 +955,6 @@ document.addEventListener("DOMContentLoaded", function () {
     drawNodes(projectedPoints);
 
   }
-
 
   /* ANIMATION LOOP */
 
@@ -1025,11 +987,9 @@ document.addEventListener("DOMContentLoaded", function () {
     drawScene(timestamp);
 
     animationFrame =
-
       requestAnimationFrame(animateGlobe);
 
   }
-
 
   /* START AND STOP ANIMATION */
 
@@ -1052,7 +1012,6 @@ document.addEventListener("DOMContentLoaded", function () {
       lastTimestamp = 0;
 
       animationFrame =
-
         requestAnimationFrame(animateGlobe);
 
     }
@@ -1072,7 +1031,6 @@ document.addEventListener("DOMContentLoaded", function () {
     lastTimestamp = 0;
 
   }
-
 
   /* PAUSE GLOBE WHEN OUTSIDE VIEWPORT */
 
@@ -1110,7 +1068,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-
   /* PAUSE GLOBE WHEN TAB IS INACTIVE */
 
   document.addEventListener(
@@ -1132,7 +1089,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
   );
-
 
   /* RESPONSIVE RESIZING */
 
@@ -1167,7 +1123,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
   );
-
 
   /* INITIALIZE GLOBE */
 
