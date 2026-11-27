@@ -21,10 +21,7 @@
   --border: #DCE7F2;
 }
 
-
-/* ==================================================
-   GLOBAL STYLES
-   ================================================== */
+/* GLOBAL STYLES */
 
 * {
   margin: 0;
@@ -103,7 +100,6 @@ a:focus-visible {
   color: var(--muted);
 }
 
-
 /* ==================================================
    NAVIGATION
    ================================================== */
@@ -122,20 +118,20 @@ a:focus-visible {
   min-height: 78px;
   margin: 0 auto;
   padding: 10px 32px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  background: rgba(255, 255, 255, 0.96);
-
+  gap: 20px;
+  background: rgba(255,255,255,0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255,255,255,0.8);
   border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(3,20,61,0.12);
+}
 
-  box-shadow: 0 10px 40px rgba(3, 20, 61, 0.12);
+.brand {
+  flex-shrink: 0;
 }
 
 .brand img {
@@ -147,7 +143,7 @@ a:focus-visible {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
   list-style: none;
 }
 
@@ -167,13 +163,7 @@ a:focus-visible {
   left: 0;
   width: 0;
   height: 2px;
-
-  background: linear-gradient(
-    90deg,
-    var(--cyan),
-    var(--pink)
-  );
-
+  background: linear-gradient(90deg,var(--cyan),var(--pink));
   transition: width 0.35s ease;
 }
 
@@ -195,7 +185,6 @@ a:focus-visible {
   font-size: 28px;
 }
 
-
 /* ==================================================
    HERO SECTION
    ================================================== */
@@ -204,19 +193,15 @@ a:focus-visible {
   position: relative;
   min-height: 100vh;
   min-height: 100svh;
-
   display: flex;
   align-items: center;
-
   padding: 160px 8% 200px;
-
   color: white;
   overflow: hidden;
-
   background:
     radial-gradient(
       ellipse at 85% 40%,
-      rgba(0, 174, 239, 0.55),
+      rgba(0,174,239,0.55),
       transparent 45%
     ),
     linear-gradient(
@@ -242,13 +227,11 @@ a:focus-visible {
   top: 5%;
   width: 700px;
   height: 700px;
-
   background: radial-gradient(
     circle,
-    rgba(0, 187, 199, 0.22),
+    rgba(0,187,199,0.22),
     transparent 65%
   );
-
   filter: blur(35px);
   animation: glowPulse 7s ease-in-out infinite;
   pointer-events: none;
@@ -264,55 +247,43 @@ a:focus-visible {
   display: inline-block;
   padding: 9px 18px;
   margin-bottom: 28px;
-
-  border: 1px solid rgba(128, 244, 236, 0.35);
+  border: 1px solid rgba(128,244,236,0.35);
   border-radius: 50px;
-
-  background: rgba(0, 187, 199, 0.08);
+  background: rgba(0,187,199,0.08);
   color: #A5F4FF;
-
   font-size: 13px;
   letter-spacing: 2px;
   font-weight: 400;
-
   animation: fadeUp 0.8s both;
 }
 
 .hero-title {
-  font-size: clamp(70px, 12vw, 165px);
+  font-size: clamp(70px,12vw,165px);
   font-weight: 800;
   letter-spacing: -7px;
   line-height: 0.95;
   margin-bottom: 25px;
-
   animation: fadeUp 1s 0.15s both;
 }
 
 .hero-title span {
-  background: linear-gradient(
-    130deg,
-    #00BBC7,
-    #7DFFEB
-  );
-
+  background: linear-gradient(130deg,#00BBC7,#7DFFEB);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .hero h2 {
-  font-size: clamp(23px, 3vw, 40px);
+  font-size: clamp(23px,3vw,40px);
   font-weight: 400;
   line-height: 1.35;
-
   animation: fadeUp 1s 0.3s both;
 }
 
 .theme {
   margin-top: 35px;
-  font-size: clamp(17px, 2vw, 24px);
+  font-size: clamp(17px,2vw,24px);
   font-weight: 400;
-
   animation: fadeUp 1s 0.45s both;
 }
 
@@ -326,7 +297,6 @@ a:focus-visible {
   color: #BDEBFF;
   font-size: 20px;
   font-weight: 300;
-
   animation: fadeUp 1s 0.5s both;
 }
 
@@ -335,7 +305,6 @@ a:focus-visible {
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 35px;
-
   animation: fadeUp 1s 0.65s both;
 }
 
@@ -343,13 +312,10 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   padding: 15px 30px;
   border-radius: 50px;
-
   font-size: 15px;
   font-weight: 500;
-
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease,
@@ -361,30 +327,89 @@ a:focus-visible {
 }
 
 .btn-primary {
-  background: linear-gradient(
-    110deg,
-    #49C9EF,
-    #00DCC8
-  );
-
+  background: linear-gradient(110deg,#49C9EF,#00DCC8);
   color: var(--deep-navy);
-  box-shadow: 0 10px 35px rgba(0, 220, 200, 0.2);
+  box-shadow: 0 10px 35px rgba(0,220,200,0.2);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 15px 40px rgba(0, 220, 200, 0.35);
+  box-shadow: 0 15px 40px rgba(0,220,200,0.35);
 }
 
 .btn-outline {
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.04);
 }
 
 .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255,255,255,0.15);
 }
 
+/* ==================================================
+   NEW — ANIMATED REGISTRATION BUTTONS
+   ================================================== */
+
+.nav-links a.nav-register,
+.btn-register {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(110deg,#49C9EF,#00E0BF);
+  color: var(--deep-navy);
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 5px 20px rgba(0,224,191,0.22);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.nav-links a.nav-register {
+  padding: 12px 23px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.btn-register {
+  padding: 15px 32px;
+  font-size: 15px;
+  animation: registerGlow 3s ease-in-out infinite;
+}
+
+.nav-links a.nav-register::after {
+  display: none;
+}
+
+.nav-links a.nav-register::before,
+.btn-register::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255,255,255,0.65),
+    transparent
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  animation: registerShine 4s ease-in-out infinite;
+}
+
+.nav-links a.nav-register:hover,
+.btn-register:hover {
+  color: var(--deep-navy);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,224,191,0.45);
+}
 
 /* ANIMATED HERO WAVES */
 
@@ -424,7 +449,6 @@ a:focus-visible {
   animation: waveFlow 12s ease-in-out infinite alternate-reverse;
 }
 
-
 /* ==================================================
    COUNTDOWN
    ================================================== */
@@ -439,7 +463,7 @@ a:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: clamp(15px, 5vw, 65px);
+  gap: clamp(15px,5vw,65px);
 }
 
 .countdown-item {
@@ -449,17 +473,15 @@ a:focus-visible {
 
 .countdown-item span {
   display: block;
-  font-size: clamp(42px, 6vw, 76px);
+  font-size: clamp(42px,6vw,76px);
   font-weight: 500;
   line-height: 1.2;
-
   background: linear-gradient(
     130deg,
     var(--navy),
     var(--ocean-blue),
     var(--cyan)
   );
-
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -482,6 +504,126 @@ a:focus-visible {
   color: #B2D5E8;
 }
 
+/* ==================================================
+   THE LEARN37 EXPERIENCE
+   ================================================== */
+
+.experience-section {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0 100px;
+  background: var(--background);
+}
+
+.experience-heading {
+  position: relative;
+  z-index: 2;
+}
+
+.experience-heading h2 {
+  color: var(--navy);
+  font-size: clamp(38px,5vw,72px);
+  font-weight: 600;
+  letter-spacing: -2.5px;
+  line-height: 1.15;
+  margin-bottom: 25px;
+}
+
+.experience-heading h2 span {
+  background: linear-gradient(90deg,#0056B3,#009DBB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.experience-heading > p:last-child {
+  max-width: 650px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.experience-orbit {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  top: -240px;
+  right: -80px;
+  border: 1px solid rgba(0,149,202,0.08);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 40px rgba(0,149,202,0.025),
+    0 0 0 80px rgba(0,149,202,0.025),
+    0 0 0 120px rgba(0,149,202,0.02);
+  pointer-events: none;
+}
+
+.experience-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 45px;
+  margin-top: 75px;
+}
+
+.experience-grid::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--cyan),
+    var(--ocean-blue),
+    var(--pink)
+  );
+}
+
+.experience-item {
+  position: relative;
+  padding-top: 45px;
+}
+
+.experience-node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 0 7px rgba(0,187,199,0.12);
+  animation: experiencePulse 3s ease-in-out infinite;
+}
+
+.experience-item:last-child .experience-node {
+  background: var(--pink);
+}
+
+.experience-item svg {
+  width: 52px;
+  height: 52px;
+  fill: none;
+  stroke: var(--ocean-blue);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-bottom: 18px;
+}
+
+.experience-item h3 {
+  font-size: 27px;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.experience-item p {
+  max-width: 240px;
+  font-size: 15px;
+  color: var(--muted);
+}
 
 /* ==================================================
    THE PARTNERS BEHIND LEARN37
@@ -491,9 +633,7 @@ a:focus-visible {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-
   padding: 100px 0 90px;
-
   background: linear-gradient(
     145deg,
     #FFFFFF 0%,
@@ -506,7 +646,7 @@ a:focus-visible {
 .pn-container {
   position: relative;
   z-index: 2;
-  width: min(1120px, 90%);
+  width: min(1120px,90%);
   margin: 0 auto;
 }
 
@@ -517,7 +657,7 @@ a:focus-visible {
 }
 
 .pn-heading h2 {
-  font-size: clamp(38px, 5.5vw, 72px);
+  font-size: clamp(38px,5.5vw,72px);
   font-weight: 500;
   line-height: 1.12;
   letter-spacing: -2.8px;
@@ -526,19 +666,11 @@ a:focus-visible {
 }
 
 .pn-heading h2 span {
-  background: linear-gradient(
-    110deg,
-    #006DC1,
-    #0095CA,
-    #00BBC7
-  );
-
+  background: linear-gradient(110deg,#006DC1,#0095CA,#00BBC7);
   background-size: 200% 100%;
-
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-
   animation: pnGradientMove 7s ease infinite;
 }
 
@@ -549,7 +681,6 @@ a:focus-visible {
   font-size: 17px;
   line-height: 1.8;
 }
-
 
 /* PARTNER BACKGROUND ORBITS */
 
@@ -563,7 +694,7 @@ a:focus-visible {
 
 .pn-orbit {
   position: absolute;
-  border: 1px solid rgba(0, 149, 202, 0.1);
+  border: 1px solid rgba(0,149,202,0.1);
   border-radius: 50%;
 }
 
@@ -572,12 +703,10 @@ a:focus-visible {
   height: 650px;
   right: -320px;
   top: -220px;
-
   box-shadow:
-    0 0 0 35px rgba(0, 149, 202, 0.025),
-    0 0 0 70px rgba(0, 149, 202, 0.025),
-    0 0 0 105px rgba(0, 149, 202, 0.02);
-
+    0 0 0 35px rgba(0,149,202,0.025),
+    0 0 0 70px rgba(0,149,202,0.025),
+    0 0 0 105px rgba(0,149,202,0.02);
   animation: pnOrbitPulse 12s ease-in-out infinite;
 }
 
@@ -586,14 +715,11 @@ a:focus-visible {
   height: 550px;
   left: -350px;
   top: 45%;
-
   box-shadow:
-    0 0 0 35px rgba(0, 187, 199, 0.025),
-    0 0 0 70px rgba(0, 187, 199, 0.02);
-
+    0 0 0 35px rgba(0,187,199,0.025),
+    0 0 0 70px rgba(0,187,199,0.02);
   animation: pnOrbitPulse 15s ease-in-out infinite;
 }
-
 
 /* PARTNER NETWORK LAYOUT */
 
@@ -630,10 +756,9 @@ a:focus-visible {
   flex: 1;
   height: 1px;
   overflow: hidden;
-
   background: linear-gradient(
     90deg,
-    rgba(0, 149, 202, 0.35),
+    rgba(0,149,202,0.35),
     transparent
   );
 }
@@ -645,29 +770,19 @@ a:focus-visible {
   left: -30%;
   width: 30%;
   height: 100%;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--cyan),
-    transparent
-  );
-
+  background: linear-gradient(90deg,transparent,var(--cyan),transparent);
   animation: pnLineSweep 5s linear infinite;
 }
 
 .pn-row {
   display: grid;
-
   grid-template-columns:
-    minmax(0, 280px)
-    minmax(80px, 180px)
-    minmax(0, 1fr);
-
+    minmax(0,280px)
+    minmax(80px,180px)
+    minmax(0,1fr);
   align-items: center;
   margin-bottom: 65px;
 }
-
 
 /* ORIGINAL PARTNER LOGOS */
 
@@ -677,7 +792,6 @@ a:focus-visible {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   padding: 20px 25px;
   text-align: center;
 }
@@ -687,12 +801,10 @@ a:focus-visible {
   width: 100%;
   max-width: 220px;
   height: 115px;
-
   object-fit: contain;
   object-position: center;
-
   transition:
-    transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.55s cubic-bezier(0.2,0.8,0.2,1),
     filter 0.55s ease;
 }
 
@@ -718,10 +830,7 @@ a:focus-visible {
 
 .pn-brand:hover .pn-logo {
   transform: translateY(-5px) scale(1.06);
-
-  filter: drop-shadow(
-    0 8px 15px rgba(0, 109, 193, 0.12)
-  );
+  filter: drop-shadow(0 8px 15px rgba(0,109,193,0.12));
 }
 
 .pn-role {
@@ -733,7 +842,6 @@ a:focus-visible {
   line-height: 1.7;
   text-transform: uppercase;
 }
-
 
 /* ANIMATED CONNECTIONS */
 
@@ -769,7 +877,6 @@ a:focus-visible {
   stroke-dasharray: 8 35;
   stroke-linecap: round;
   vector-effect: non-scaling-stroke;
-
   animation: pnDataFlow 1.8s linear infinite;
 }
 
@@ -785,10 +892,8 @@ a:focus-visible {
   fill: #00BBC7;
   transform-box: fill-box;
   transform-origin: center;
-
   animation: pnNodePulse 2.4s ease-out infinite;
 }
-
 
 /* SPONSORED EVENTS */
 
@@ -812,23 +917,18 @@ a:focus-visible {
 .pn-event {
   position: relative;
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   min-height: 105px;
   padding: 25px 30px;
-
   border-left: 3px solid var(--cyan);
-
   background: linear-gradient(
     90deg,
-    rgba(217, 239, 252, 0.7),
-    rgba(235, 248, 252, 0.25),
+    rgba(217,239,252,0.7),
+    rgba(235,248,252,0.25),
     transparent
   );
-
   transition:
     transform 0.45s ease,
     background 0.45s ease;
@@ -836,10 +936,9 @@ a:focus-visible {
 
 .pn-event:hover {
   transform: translateX(6px);
-
   background: linear-gradient(
     90deg,
-    rgba(204, 241, 246, 0.9),
+    rgba(204,241,246,0.9),
     transparent
   );
 }
@@ -851,17 +950,14 @@ a:focus-visible {
   left: -100%;
   width: 45%;
   height: 100%;
-
   background: linear-gradient(
     100deg,
     transparent,
-    rgba(255, 255, 255, 0.55),
+    rgba(255,255,255,0.55),
     transparent
   );
-
   transform: skewX(-20deg);
   pointer-events: none;
-
   animation: pnEventShine 9s ease-in-out infinite;
 }
 
@@ -870,7 +966,6 @@ a:focus-visible {
   z-index: 1;
   display: block;
   margin-bottom: 9px;
-
   color: var(--ocean-blue);
   font-size: 10px;
   font-weight: 500;
@@ -881,9 +976,8 @@ a:focus-visible {
 .pn-event h3 {
   position: relative;
   z-index: 1;
-
   color: #071F38;
-  font-size: clamp(21px, 2.4vw, 32px);
+  font-size: clamp(21px,2.4vw,32px);
   font-weight: 500;
   line-height: 1.3;
   letter-spacing: -0.6px;
@@ -892,30 +986,26 @@ a:focus-visible {
 .pn-event p {
   position: relative;
   z-index: 1;
-
   margin-top: 7px;
   color: var(--muted);
   font-size: 17px;
   line-height: 1.5;
 }
 
-
-/* ONECODE LABS — CENTRED */
+/* ONECODE LABS */
 
 .pn-registration {
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin: 65px auto 25px;
   padding: 40px 0;
-
   border-top: 1px solid #D4E5F0;
   border-bottom: 1px solid #D4E5F0;
 }
 
 .pn-registration .pn-brand {
-  width: min(300px, 100%);
+  width: min(300px,100%);
   margin: 0 auto;
   padding: 15px;
 }
@@ -923,7 +1013,6 @@ a:focus-visible {
 .pn-registration .pn-role {
   margin-top: 25px;
 }
-
 
 /* PARTNER APPRECIATION */
 
@@ -947,7 +1036,6 @@ a:focus-visible {
   justify-content: center;
   flex-wrap: wrap;
   gap: 18px;
-
   color: var(--ocean-blue);
   font-size: 12px;
   font-weight: 500;
@@ -960,158 +1048,15 @@ a:focus-visible {
   height: 4px;
   background: var(--cyan);
   border-radius: 50%;
-
   animation: pnThemePulse 3s ease-in-out infinite;
 }
-
-
-/* ==================================================
-   THE LEARN37 EXPERIENCE
-   ================================================== */
-
-.experience-section {
-  position: relative;
-  overflow: hidden;
-  padding: 80px 0 100px;
-  background: var(--background);
-}
-
-.experience-heading {
-  position: relative;
-  z-index: 2;
-}
-
-.experience-heading h2 {
-  color: var(--navy);
-  font-size: clamp(38px, 5vw, 72px);
-  font-weight: 600;
-  letter-spacing: -2.5px;
-  line-height: 1.15;
-  margin-bottom: 25px;
-}
-
-.experience-heading h2 span {
-  background: linear-gradient(
-    90deg,
-    #0056B3,
-    #009DBB
-  );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.experience-heading > p:last-child {
-  max-width: 650px;
-  color: var(--muted);
-  font-size: 17px;
-}
-
-.experience-orbit {
-  position: absolute;
-  width: 480px;
-  height: 480px;
-  top: -240px;
-  right: -80px;
-
-  border: 1px solid rgba(0, 149, 202, 0.08);
-  border-radius: 50%;
-
-  box-shadow:
-    0 0 0 40px rgba(0, 149, 202, 0.025),
-    0 0 0 80px rgba(0, 149, 202, 0.025),
-    0 0 0 120px rgba(0, 149, 202, 0.02);
-
-  pointer-events: none;
-}
-
-.experience-grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 45px;
-  margin-top: 75px;
-}
-
-.experience-grid::before {
-  content: '';
-  position: absolute;
-  top: 6px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-
-  background: linear-gradient(
-    90deg,
-    var(--cyan),
-    var(--ocean-blue),
-    var(--pink)
-  );
-}
-
-.experience-item {
-  position: relative;
-  padding-top: 45px;
-}
-
-.experience-node {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 13px;
-  height: 13px;
-
-  background: var(--cyan);
-  border-radius: 50%;
-
-  box-shadow: 0 0 0 7px rgba(0, 187, 199, 0.12);
-
-  animation: experiencePulse 3s ease-in-out infinite;
-}
-
-.experience-item:last-child .experience-node {
-  background: var(--pink);
-}
-
-.experience-item svg {
-  width: 52px;
-  height: 52px;
-
-  fill: none;
-  stroke: var(--ocean-blue);
-  stroke-width: 1.3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-
-  margin-bottom: 18px;
-}
-
-.experience-item h3 {
-  font-size: 27px;
-  font-weight: 500;
-  color: var(--navy);
-  margin-bottom: 10px;
-}
-
-.experience-item p {
-  max-width: 240px;
-  font-size: 15px;
-  color: var(--muted);
-}
-
 
 /* ==================================================
    EVENT PROGRAMME
    ================================================== */
 
 .programme-section {
-  background: linear-gradient(
-    180deg,
-    #FFFFFF,
-    #F7FBFE
-  );
+  background: linear-gradient(180deg,#FFFFFF,#F7FBFE);
 }
 
 .programme-tabs {
@@ -1124,14 +1069,11 @@ a:focus-visible {
 .tab-button {
   min-width: 210px;
   padding: 20px 30px;
-
   text-align: left;
   color: var(--navy);
   background: white;
-
   border: 1px solid #D4E2F0;
   border-radius: 13px;
-
   transition:
     background 0.3s ease,
     transform 0.3s ease;
@@ -1156,12 +1098,7 @@ a:focus-visible {
 }
 
 .tab-button.active {
-  background: linear-gradient(
-    125deg,
-    var(--navy),
-    var(--royal-blue)
-  );
-
+  background: linear-gradient(125deg,var(--navy),var(--royal-blue));
   border-color: transparent;
   color: white;
 }
@@ -1179,7 +1116,6 @@ a:focus-visible {
   animation: fadeUp 0.45s ease both;
 }
 
-
 /* DAY BANNER */
 
 .day-banner {
@@ -1187,15 +1123,12 @@ a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   overflow: hidden;
   min-height: 180px;
   padding: 35px 40px;
   margin-bottom: 25px;
-
   border-radius: 17px;
   color: white;
-
   background: linear-gradient(
     120deg,
     var(--navy),
@@ -1209,17 +1142,13 @@ a:focus-visible {
   position: absolute;
   right: -70px;
   top: -110px;
-
   width: 350px;
   height: 350px;
-
-  border: 1px solid rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255,255,255,0.13);
   border-radius: 50%;
-
   box-shadow:
-    0 0 0 25px rgba(255, 255, 255, 0.04),
-    0 0 0 50px rgba(255, 255, 255, 0.04);
-
+    0 0 0 25px rgba(255,255,255,0.04),
+    0 0 0 50px rgba(255,255,255,0.04);
   animation: glowPulse 8s infinite;
 }
 
@@ -1237,7 +1166,7 @@ a:focus-visible {
 }
 
 .day-banner h3 {
-  font-size: clamp(27px, 4vw, 46px);
+  font-size: clamp(27px,4vw,46px);
   font-weight: 500;
   line-height: 1.2;
 }
@@ -1254,9 +1183,8 @@ a:focus-visible {
   font-size: 105px;
   font-weight: 700;
   line-height: 1;
-  color: rgba(255, 255, 255, 0.13);
+  color: rgba(255,255,255,0.13);
 }
-
 
 /* DAY 01 TABLE */
 
@@ -1276,7 +1204,6 @@ a:focus-visible {
 .agenda-table {
   width: 100%;
   min-width: 790px;
-
   border-collapse: separate;
   border-spacing: 8px 9px;
   table-layout: fixed;
@@ -1323,27 +1250,15 @@ a:focus-visible {
 }
 
 .track-one {
-  background: linear-gradient(
-    130deg,
-    #070E75,
-    #0042A5
-  );
+  background: linear-gradient(130deg,#070E75,#0042A5);
 }
 
 .track-two {
-  background: linear-gradient(
-    130deg,
-    #0056A9,
-    #0095CA
-  );
+  background: linear-gradient(130deg,#0056A9,#0095CA);
 }
 
 .track-three {
-  background: linear-gradient(
-    130deg,
-    #006C87,
-    #008F91
-  );
+  background: linear-gradient(130deg,#006C87,#008F91);
 }
 
 .track-heading > span {
@@ -1364,7 +1279,6 @@ a:focus-visible {
   display: flex;
   align-items: flex-start;
   gap: 7px;
-
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
@@ -1406,13 +1320,10 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   min-height: 105px;
   padding: 21px 19px;
-
   border-left: 3px solid;
   border-radius: 9px;
-
   transition: filter 0.3s ease;
 }
 
@@ -1445,13 +1356,10 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
-
   padding: 4px 8px;
   margin-top: 10px;
-
   border: 1px solid #D2DFEA;
   border-radius: 5px;
-
   color: var(--muted);
   font-size: 10px;
   font-weight: 400;
@@ -1461,16 +1369,9 @@ a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-
   min-height: 83px;
   padding: 20px;
-
-  background: linear-gradient(
-    90deg,
-    #E7EFF8,
-    #F0F7FC
-  );
-
+  background: linear-gradient(90deg,#E7EFF8,#F0F7FC);
   border-radius: 9px;
   color: var(--royal-blue);
   font-size: 16px;
@@ -1481,36 +1382,29 @@ a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-
   min-height: 105px;
-
   border: 1px dashed #DCE7F2;
   border-radius: 9px;
   color: #A3B3C7;
 }
-
 
 /* EVENING PROGRAMME */
 
 .evening-programme {
   position: relative;
   display: grid;
-  grid-template-columns: 180px minmax(0, 1fr);
+  grid-template-columns: 180px minmax(0,1fr);
   align-items: center;
   gap: 35px;
-
   overflow: hidden;
-
   margin: 20px 8px;
   padding: 35px 40px;
-
   border-radius: 14px;
   border-left: 4px solid var(--pink);
-
   background:
     radial-gradient(
       circle at 100% 0%,
-      rgba(229, 0, 135, 0.18),
+      rgba(229,0,135,0.18),
       transparent 45%
     ),
     linear-gradient(
@@ -1519,19 +1413,16 @@ a:focus-visible {
       var(--navy),
       var(--royal-blue)
     );
-
   color: white;
 }
 
 .evening-times {
   position: relative;
   z-index: 2;
-
   display: flex;
   flex-direction: column;
   gap: 20px;
-
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255,255,255,0.2);
 }
 
 .evening-times strong {
@@ -1559,7 +1450,7 @@ a:focus-visible {
 }
 
 .evening-content h3 {
-  font-size: clamp(27px, 3vw, 40px);
+  font-size: clamp(27px,3vw,40px);
   font-weight: 500;
   line-height: 1.2;
 }
@@ -1597,27 +1488,22 @@ a:focus-visible {
   position: absolute;
   right: -120px;
   top: -120px;
-
   width: 400px;
   height: 400px;
-
-  border: 1px solid rgba(0, 224, 191, 0.2);
+  border: 1px solid rgba(0,224,191,0.2);
   border-radius: 50%;
-
   box-shadow:
-    0 0 0 30px rgba(0, 224, 191, 0.03),
-    0 0 0 60px rgba(0, 224, 191, 0.03);
-
+    0 0 0 30px rgba(0,224,191,0.03),
+    0 0 0 60px rgba(0,224,191,0.03);
   animation: glowPulse 8s infinite;
 }
-
 
 /* ==================================================
    DAY 02 AGENDA
    ================================================== */
 
 .day2-topic {
-  font-size: clamp(24px, 3vw, 36px);
+  font-size: clamp(24px,3vw,36px);
   font-weight: 500;
   color: var(--navy);
   line-height: 1.3;
@@ -1627,7 +1513,6 @@ a:focus-visible {
 #day2 .day2-agenda {
   width: 100%;
   padding: 25px 30px 30px;
-
   background: #F4FAFF;
   border: 1px solid #E1EDF6;
   border-radius: 18px;
@@ -1635,10 +1520,9 @@ a:focus-visible {
 
 #day2 .day2-agenda-heading {
   display: grid;
-  grid-template-columns: 105px minmax(0, 1fr) auto;
+  grid-template-columns: 105px minmax(0,1fr) auto;
   align-items: center;
   gap: 30px;
-
   padding: 8px 0 20px;
   margin-bottom: 5px;
 }
@@ -1656,10 +1540,9 @@ a:focus-visible {
 
 #day2 .day2-row {
   display: grid;
-  grid-template-columns: 105px minmax(0, 1fr);
+  grid-template-columns: 105px minmax(0,1fr);
   align-items: stretch;
   gap: 30px;
-
   padding: 6px 0;
 }
 
@@ -1682,16 +1565,12 @@ a:focus-visible {
   z-index: 2;
   right: -4px;
   top: 50%;
-
   width: 10px;
   height: 10px;
-
   transform: translateY(-50%);
-
   border: 2px solid white;
   border-radius: 50%;
   background: var(--sky-blue);
-
   box-shadow: 0 0 0 3px #D9EFFC;
 }
 
@@ -1717,16 +1596,12 @@ a:focus-visible {
   display: flex;
   align-items: center;
   gap: 18px;
-
   min-width: 0;
   min-height: 82px;
-
   padding: 23px 30px;
-
   border: 1px solid #E1EBF4;
   border-radius: 11px;
   background: white;
-
   transition: transform 0.3s ease;
 }
 
@@ -1751,7 +1626,6 @@ a:focus-visible {
   width: 23px;
   height: 23px;
   flex-shrink: 0;
-
   fill: none;
   stroke: var(--ocean-blue);
   stroke-width: 1.5;
@@ -1761,12 +1635,7 @@ a:focus-visible {
 
 #day2 .day2-break .day2-session {
   min-height: 68px;
-
-  background: linear-gradient(
-    90deg,
-    #E4EFF8,
-    #EDF7FC
-  );
+  background: linear-gradient(90deg,#E4EFF8,#EDF7FC);
 }
 
 #day2 .day2-break .day2-session h4 {
@@ -1774,24 +1643,20 @@ a:focus-visible {
   color: var(--royal-blue);
 }
 
-
 /* MOU SIGNING */
 
 #day2 .day2-signing .day2-session {
   position: relative;
   overflow: hidden;
-
   min-height: 145px;
   padding: 30px;
   gap: 25px;
-
   border: none;
   border-radius: 12px;
-
   background:
     radial-gradient(
       circle at 100% 0%,
-      rgba(0, 224, 191, 0.2),
+      rgba(0,224,191,0.2),
       transparent 55%
     ),
     linear-gradient(
@@ -1813,18 +1678,15 @@ a:focus-visible {
 .signing-icon {
   position: relative;
   z-index: 2;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   flex-shrink: 0;
   width: 70px;
   height: 70px;
-
-  border: 1px solid rgba(128, 244, 236, 0.4);
+  border: 1px solid rgba(128,244,236,0.4);
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255,255,255,0.05);
 }
 
 .signing-icon svg {
@@ -1852,7 +1714,7 @@ a:focus-visible {
 
 #day2 .day2-signing .day2-session h4 {
   color: white;
-  font-size: clamp(19px, 2.5vw, 27px);
+  font-size: clamp(19px,2.5vw,27px);
   font-weight: 500;
 }
 
@@ -1862,17 +1724,13 @@ a:focus-visible {
   top: -110px;
   width: 300px;
   height: 300px;
-
-  border: 1px solid rgba(0, 224, 191, 0.2);
+  border: 1px solid rgba(0,224,191,0.2);
   border-radius: 50%;
-
   box-shadow:
-    0 0 0 25px rgba(0, 224, 191, 0.05),
-    0 0 0 50px rgba(0, 224, 191, 0.04);
-
+    0 0 0 25px rgba(0,224,191,0.05),
+    0 0 0 50px rgba(0,224,191,0.04);
   animation: glowPulse 8s infinite;
 }
-
 
 /* DAY 02 NOTE */
 
@@ -1880,29 +1738,20 @@ a:focus-visible {
   display: flex;
   align-items: center;
   gap: 18px;
-
   padding: 22px 28px;
   margin-top: 22px;
-
   border: 1px solid #CBE8F2;
   border-radius: 12px;
-
-  background: linear-gradient(
-    90deg,
-    #E4F4FB,
-    #EAFBF8
-  );
+  background: linear-gradient(90deg,#E4F4FB,#EAFBF8);
 }
 
 .day2-note-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 46px;
   height: 46px;
   flex-shrink: 0;
-
   background: white;
   border-radius: 50%;
 }
@@ -1910,7 +1759,6 @@ a:focus-visible {
 .day2-note-icon svg {
   width: 26px;
   height: 26px;
-
   fill: none;
   stroke: var(--ocean-blue);
   stroke-width: 1.5;
@@ -1923,7 +1771,6 @@ a:focus-visible {
   color: var(--text);
 }
 
-
 /* ==================================================
    LEARN AWARDS
    ================================================== */
@@ -1932,14 +1779,12 @@ a:focus-visible {
   position: relative;
   overflow: hidden;
   padding: 120px 0;
-
   color: white;
   text-align: center;
-
   background:
     radial-gradient(
       circle at 80% 30%,
-      rgba(0, 187, 199, 0.18),
+      rgba(0,187,199,0.18),
       transparent 45%
     ),
     linear-gradient(
@@ -1963,23 +1808,19 @@ a:focus-visible {
   position: absolute;
   top: -180px;
   right: -180px;
-
   width: 650px;
   height: 650px;
-
-  border: 1px solid rgba(0, 224, 191, 0.15);
+  border: 1px solid rgba(0,224,191,0.15);
   border-radius: 50%;
-
   box-shadow:
-    0 0 0 40px rgba(0, 224, 191, 0.025),
-    0 0 0 80px rgba(0, 224, 191, 0.025),
-    0 0 0 120px rgba(0, 224, 191, 0.02);
-
+    0 0 0 40px rgba(0,224,191,0.025),
+    0 0 0 80px rgba(0,224,191,0.025),
+    0 0 0 120px rgba(0,224,191,0.02);
   animation: pnOrbitPulse 12s ease-in-out infinite;
 }
 
 .awards-title {
-  font-size: clamp(45px, 7vw, 90px);
+  font-size: clamp(45px,7vw,90px);
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -3px;
@@ -1992,7 +1833,7 @@ a:focus-visible {
 }
 
 .awards-theme {
-  font-size: clamp(22px, 3vw, 32px);
+  font-size: clamp(22px,3vw,32px);
   font-weight: 400;
   margin-top: 22px;
 }
@@ -2013,7 +1854,7 @@ a:focus-visible {
 
 .awards-impact strong {
   display: block;
-  font-size: clamp(55px, 8vw, 100px);
+  font-size: clamp(55px,8vw,100px);
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -3px;
@@ -2031,16 +1872,15 @@ a:focus-visible {
 
 .awards-details {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3,minmax(0,1fr));
   gap: 30px;
-
   max-width: 1000px;
   margin: 55px auto 0;
 }
 
 .awards-details > div {
   padding: 25px 15px 0;
-  border-top: 1px solid rgba(0, 224, 191, 0.5);
+  border-top: 1px solid rgba(0,224,191,0.5);
 }
 
 .awards-details small {
@@ -2061,24 +1901,18 @@ a:focus-visible {
   font-size: 14px;
 }
 
-
 /* ==================================================
    EVENT VENUES
    ================================================== */
 
 .venue-section {
-  background: linear-gradient(
-    145deg,
-    #F4FAFF,
-    #EAF5FC
-  );
-
+  background: linear-gradient(145deg,#F4FAFF,#EAF5FC);
   padding-bottom: 150px;
 }
 
 .venue-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3,minmax(0,1fr));
   gap: 25px;
   margin-top: 45px;
 }
@@ -2087,9 +1921,7 @@ a:focus-visible {
   overflow: hidden;
   background: white;
   border-radius: 18px;
-
-  box-shadow: 0 12px 35px rgba(3, 20, 61, 0.07);
-
+  box-shadow: 0 12px 35px rgba(3,20,61,0.07);
   transition:
     transform 0.4s ease,
     box-shadow 0.4s ease;
@@ -2097,7 +1929,7 @@ a:focus-visible {
 
 .venue-card:hover {
   transform: translateY(-7px);
-  box-shadow: 0 20px 45px rgba(3, 20, 61, 0.13);
+  box-shadow: 0 20px 45px rgba(3,20,61,0.13);
 }
 
 .venue-image {
@@ -2156,7 +1988,6 @@ a:focus-visible {
   color: var(--pink);
 }
 
-
 /* ==================================================
    FOOTER
    ================================================== */
@@ -2164,14 +1995,8 @@ a:focus-visible {
 .footer {
   position: relative;
   padding-top: 100px;
-
   color: white;
-
-  background: linear-gradient(
-    125deg,
-    var(--deep-navy),
-    #061B59
-  );
+  background: linear-gradient(125deg,var(--deep-navy),#061B59);
 }
 
 .footer::before {
@@ -2181,7 +2006,6 @@ a:focus-visible {
   left: 0;
   width: 100%;
   height: 65px;
-
   background: linear-gradient(
     90deg,
     var(--pink),
@@ -2189,7 +2013,6 @@ a:focus-visible {
     var(--cyan),
     var(--turquoise)
   );
-
   clip-path: polygon(
     0 35%,
     15% 65%,
@@ -2252,7 +2075,6 @@ a:focus-visible {
   width: 17px;
   height: 17px;
   flex-shrink: 0;
-
   fill: none;
   stroke: var(--turquoise);
   stroke-width: 1.5;
@@ -2272,14 +2094,11 @@ a:focus-visible {
 
 .footer-bottom {
   padding: 25px 5%;
-
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-
+  border-top: 1px solid rgba(255,255,255,0.12);
   color: #A9BDD5;
   font-size: 12px;
   text-align: center;
 }
-
 
 /* ==================================================
    SCROLL REVEAL ANIMATIONS
@@ -2288,19 +2107,16 @@ a:focus-visible {
 .js-ready .reveal {
   opacity: 0;
   transform: translateY(35px);
-
   transition:
     opacity 0.9s ease,
-    transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
-
-  transition-delay: var(--reveal-delay, 0ms);
+    transform 0.9s cubic-bezier(0.2,0.8,0.2,1);
+  transition-delay: var(--reveal-delay,0ms);
 }
 
 .js-ready .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 /* ==================================================
    ANIMATION KEYFRAMES
@@ -2311,7 +2127,6 @@ a:focus-visible {
     opacity: 0;
     transform: translateY(25px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -2319,11 +2134,10 @@ a:focus-visible {
 }
 
 @keyframes glowPulse {
-  0%, 100% {
+  0%,100% {
     opacity: 0.7;
     transform: scale(1);
   }
-
   50% {
     opacity: 1;
     transform: scale(1.1);
@@ -2334,19 +2148,17 @@ a:focus-visible {
   from {
     transform: translateX(-1%) scaleX(1.04) scaleY(1);
   }
-
   to {
     transform: translateX(1%) scaleX(1.04) scaleY(1.12);
   }
 }
 
 @keyframes experiencePulse {
-  0%, 100% {
-    box-shadow: 0 0 0 5px rgba(0, 187, 199, 0.12);
+  0%,100% {
+    box-shadow: 0 0 0 5px rgba(0,187,199,0.12);
   }
-
   50% {
-    box-shadow: 0 0 0 10px rgba(0, 187, 199, 0.04);
+    box-shadow: 0 0 0 10px rgba(0,187,199,0.04);
   }
 }
 
@@ -2354,7 +2166,6 @@ a:focus-visible {
   from {
     stroke-dashoffset: 86;
   }
-
   to {
     stroke-dashoffset: 0;
   }
@@ -2365,7 +2176,6 @@ a:focus-visible {
     opacity: 0.65;
     transform: scale(1);
   }
-
   100% {
     opacity: 0;
     transform: scale(3.5);
@@ -2373,21 +2183,19 @@ a:focus-visible {
 }
 
 @keyframes pnGradientMove {
-  0%, 100% {
+  0%,100% {
     background-position: 0% 50%;
   }
-
   50% {
     background-position: 100% 50%;
   }
 }
 
 @keyframes pnOrbitPulse {
-  0%, 100% {
+  0%,100% {
     transform: scale(1);
     opacity: 0.8;
   }
-
   50% {
     transform: scale(1.12);
     opacity: 0.45;
@@ -2398,32 +2206,48 @@ a:focus-visible {
   from {
     left: -30%;
   }
-
   to {
     left: 130%;
   }
 }
 
 @keyframes pnEventShine {
-  0%, 20% {
+  0%,20% {
     left: -100%;
   }
-
-  65%, 100% {
+  65%,100% {
     left: 150%;
   }
 }
 
 @keyframes pnThemePulse {
-  0%, 100% {
+  0%,100% {
     opacity: 1;
   }
-
   50% {
     opacity: 0.35;
   }
 }
 
+/* REGISTRATION BUTTON ANIMATIONS */
+
+@keyframes registerGlow {
+  0%,100% {
+    box-shadow: 0 5px 20px rgba(0,224,191,0.20);
+  }
+  50% {
+    box-shadow: 0 5px 35px rgba(0,224,191,0.45);
+  }
+}
+
+@keyframes registerShine {
+  0%,25% {
+    left: -100%;
+  }
+  65%,100% {
+    left: 150%;
+  }
+}
 
 /* PAUSE PARTNER ANIMATIONS WHEN NOT VISIBLE */
 
@@ -2432,7 +2256,6 @@ a:focus-visible {
 .partner-network-section.animation-paused *::before {
   animation-play-state: paused !important;
 }
-
 
 /* ==================================================
    TABLET RESPONSIVE
@@ -2449,10 +2272,15 @@ a:focus-visible {
   }
 
   .nav-links {
-    gap: 16px;
+    gap: 12px;
   }
 
   .nav-links a {
+    font-size: 12px;
+  }
+
+  .nav-links a.nav-register {
+    padding: 10px 15px;
     font-size: 12px;
   }
 
@@ -2466,9 +2294,9 @@ a:focus-visible {
 
   .pn-row {
     grid-template-columns:
-      minmax(0, 230px)
-      minmax(60px, 120px)
-      minmax(0, 1fr);
+      minmax(0,230px)
+      minmax(60px,120px)
+      minmax(0,1fr);
   }
 
   .pn-brand {
@@ -2497,12 +2325,11 @@ a:focus-visible {
 
 }
 
-
 /* ==================================================
-   MOBILE RESPONSIVE
+   MOBILE NAVIGATION
    ================================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
 
   html {
     scroll-padding-top: 95px;
@@ -2533,19 +2360,17 @@ a:focus-visible {
     top: calc(100% + 12px);
     left: 0;
     width: 100%;
-
     display: none;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-
     padding: 15px;
-
+    max-height: calc(100dvh - 110px);
+    overflow-y: auto;
     background: white;
     border: 1px solid var(--border);
     border-radius: 14px;
-
-    box-shadow: 0 15px 35px rgba(3, 20, 61, 0.12);
+    box-shadow: 0 15px 35px rgba(3,20,61,0.12);
   }
 
   .nav-links.active {
@@ -2563,6 +2388,21 @@ a:focus-visible {
     display: none;
   }
 
+  .nav-links a.nav-register {
+    display: flex;
+    width: 100%;
+    margin-top: 12px;
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
+}
+
+/* ==================================================
+   MOBILE RESPONSIVE
+   ================================================== */
+
+@media (max-width: 768px) {
 
   /* MOBILE HERO */
 
@@ -2573,7 +2413,7 @@ a:focus-visible {
   }
 
   .hero-title {
-    font-size: clamp(60px, 15vw, 100px);
+    font-size: clamp(60px,15vw,100px);
     letter-spacing: -4px;
   }
 
@@ -2610,10 +2450,16 @@ a:focus-visible {
     font-size: 12px;
   }
 
+  .hero-buttons .btn-register {
+    width: 100%;
+    max-width: 320px;
+    padding: 15px 25px;
+    font-size: 15px;
+  }
+
   .hero-waves {
     height: 95px;
   }
-
 
   /* MOBILE COUNTDOWN */
 
@@ -2646,6 +2492,43 @@ a:focus-visible {
     top: 6px;
   }
 
+  /* MOBILE EXPERIENCE */
+
+  .experience-section {
+    padding: 60px 0 70px;
+  }
+
+  .experience-heading h2 {
+    font-size: 38px;
+    letter-spacing: -1.5px;
+  }
+
+  .experience-heading > p:last-child {
+    font-size: 15px;
+  }
+
+  .experience-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 35px 25px;
+    margin-top: 45px;
+  }
+
+  .experience-grid::before {
+    display: none;
+  }
+
+  .experience-item {
+    padding-top: 30px;
+    border-top: 1px solid #CDE5F0;
+  }
+
+  .experience-item h3 {
+    font-size: 22px;
+  }
+
+  .experience-item p {
+    font-size: 13px;
+  }
 
   /* MOBILE PARTNERS */
 
@@ -2662,7 +2545,7 @@ a:focus-visible {
   }
 
   .pn-heading h2 {
-    font-size: clamp(32px, 7vw, 48px);
+    font-size: clamp(32px,7vw,48px);
     letter-spacing: -1.5px;
   }
 
@@ -2687,10 +2570,9 @@ a:focus-visible {
 
   .pn-row {
     grid-template-columns:
-      minmax(0, 32%)
-      minmax(0, 10%)
-      minmax(0, 58%);
-
+      minmax(0,32%)
+      minmax(0,10%)
+      minmax(0,58%);
     margin-bottom: 45px;
   }
 
@@ -2735,7 +2617,7 @@ a:focus-visible {
   }
 
   .pn-event h3 {
-    font-size: clamp(16px, 3.5vw, 22px);
+    font-size: clamp(16px,3.5vw,22px);
     letter-spacing: -0.2px;
     overflow-wrap: break-word;
   }
@@ -2753,10 +2635,10 @@ a:focus-visible {
     height: 240px;
   }
 
-  .pn-path-flow,
   .pn-flow {
     stroke-width: 2;
     stroke-dasharray: 5 18;
+    animation-name: pnDataFlowMobile;
   }
 
   .pn-registration {
@@ -2791,46 +2673,6 @@ a:focus-visible {
     font-size: 10px;
     letter-spacing: 1px;
   }
-
-
-  /* MOBILE EXPERIENCE */
-
-  .experience-section {
-    padding: 60px 0 70px;
-  }
-
-  .experience-heading h2 {
-    font-size: 38px;
-    letter-spacing: -1.5px;
-  }
-
-  .experience-heading > p:last-child {
-    font-size: 15px;
-  }
-
-  .experience-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 35px 25px;
-    margin-top: 45px;
-  }
-
-  .experience-grid::before {
-    display: none;
-  }
-
-  .experience-item {
-    padding-top: 30px;
-    border-top: 1px solid #CDE5F0;
-  }
-
-  .experience-item h3 {
-    font-size: 22px;
-  }
-
-  .experience-item p {
-    font-size: 13px;
-  }
-
 
   /* MOBILE PROGRAMME */
 
@@ -2915,14 +2757,13 @@ a:focus-visible {
     flex-direction: row;
     gap: 25px;
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
     padding-bottom: 20px;
   }
 
   .evening-times strong {
     font-size: 22px;
   }
-
 
   /* MOBILE DAY 02 */
 
@@ -2931,7 +2772,7 @@ a:focus-visible {
   }
 
   #day2 .day2-agenda-heading {
-    grid-template-columns: 53px minmax(0, 1fr);
+    grid-template-columns: 53px minmax(0,1fr);
     gap: 18px;
   }
 
@@ -2946,7 +2787,7 @@ a:focus-visible {
   }
 
   #day2 .day2-row {
-    grid-template-columns: 53px minmax(0, 1fr);
+    grid-template-columns: 53px minmax(0,1fr);
     gap: 18px;
   }
 
@@ -3028,7 +2869,6 @@ a:focus-visible {
     height: 21px;
   }
 
-
   /* MOBILE AWARDS */
 
   .awards-section {
@@ -3048,7 +2888,6 @@ a:focus-visible {
     font-size: 19px;
   }
 
-
   /* MOBILE VENUES */
 
   .venue-section {
@@ -3063,7 +2902,6 @@ a:focus-visible {
   .venue-image {
     height: 230px;
   }
-
 
   /* MOBILE FOOTER */
 
@@ -3083,6 +2921,14 @@ a:focus-visible {
 
 }
 
+@keyframes pnDataFlowMobile {
+  from {
+    stroke-dashoffset: 46;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
 
 /* SMALL MOBILE DEVICES */
 
@@ -3108,8 +2954,9 @@ a:focus-visible {
     height: 75px;
   }
 
-  #day2 .day2-row {
-    grid-template-columns: 44px minmax(0, 1fr);
+  #day2 .day2-row,
+  #day2 .day2-agenda-heading {
+    grid-template-columns: 44px minmax(0,1fr);
     gap: 13px;
   }
 
@@ -3122,7 +2969,6 @@ a:focus-visible {
   }
 
 }
-
 
 /* ==================================================
    ACCESSIBILITY — REDUCED MOTION
@@ -3151,3 +2997,5 @@ a:focus-visible {
   }
 
 }
+
+/* END OF LEARN37 STYLES */
