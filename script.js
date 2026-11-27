@@ -1,57 +1,66 @@
 
 /* ==================================================
-   LEARN37 — COMPLETE WEBSITE JAVASCRIPT
+   LEARN37 — COMPLETE JAVASCRIPT
    ================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  "use strict";
 
   const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
+
   /* ==================================================
      MOBILE NAVIGATION
      ================================================== */
 
-  const menuToggle = document.getElementById("menuToggle");
-  const navLinks = document.getElementById("navLinks");
+  const menu = document.getElementById("menu");
+  const links = document.getElementById("links");
 
   function closeMenu() {
 
-    if (!menuToggle || !navLinks) return;
+    if (!menu || !links) return;
 
-    navLinks.classList.remove("active");
+    links.classList.remove("active");
 
-    menuToggle.textContent = "☰";
+    menu.textContent = "☰";
 
-    menuToggle.setAttribute("aria-expanded", "false");
+    menu.setAttribute(
+      "aria-expanded",
+      "false"
+    );
 
   }
 
-  if (menuToggle && navLinks) {
+  if (menu && links) {
 
-    menuToggle.addEventListener("click", function () {
+    menu.addEventListener("click", function () {
 
-      const isOpen = navLinks.classList.toggle("active");
+      const isOpen = links.classList.toggle("active");
 
-      menuToggle.textContent = isOpen ? "✕" : "☰";
+      menu.textContent = isOpen ? "✕" : "☰";
 
-      menuToggle.setAttribute(
+      menu.setAttribute(
         "aria-expanded",
         String(isOpen)
       );
 
     });
 
-    navLinks.querySelectorAll("a").forEach(function (link) {
+    links.querySelectorAll("a").forEach(function (link) {
 
       link.addEventListener("click", closeMenu);
 
     });
 
-    document.addEventListener("keydown", function (event) {
+    document.addEventListener("click", function (event) {
 
-      if (event.key === "Escape") {
+      if (
+        !menu.contains(event.target) &&
+        !links.contains(event.target)
+      ) {
 
         closeMenu();
 
@@ -59,12 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    document.addEventListener("click", function (event) {
+    document.addEventListener("keydown", function (event) {
 
-      if (
-        !navLinks.contains(event.target) &&
-        !menuToggle.contains(event.target)
-      ) {
+      if (event.key === "Escape") {
 
         closeMenu();
 
@@ -84,9 +90,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+
   /* ==================================================
-     COUNTDOWN TIMER
+     EVENT COUNTDOWN
      ================================================== */
+
+  const countdown = document.getElementById("countdown");
+
+  const countdownLabel = document.getElementById(
+    "countdownLabel"
+  );
 
   const eventStart = new Date(
     "2026-11-30T08:30:00+05:30"
@@ -96,32 +109,64 @@ document.addEventListener("DOMContentLoaded", function () {
     "2026-12-02T00:00:00+05:30"
   ).getTime();
 
-  const countdownLabel =
-    document.getElementById("countdownLabel");
+  let countdownInterval = null;
 
-  const countdown =
-    document.querySelector(".countdown");
+  function padNumber(number) {
+
+    return String(number).padStart(2, "0");
+
+  }
+
+  if (countdown) {
+
+    countdown.innerHTML = `
+      <div class="countdown-item">
+        <strong id="days">00</strong>
+        <small>Days</small>
+      </div>
+
+      <div class="countdown-item">
+        <strong id="hours">00</strong>
+        <small>Hours</small>
+      </div>
+
+      <div class="countdown-item">
+        <strong id="minutes">00</strong>
+        <small>Minutes</small>
+      </div>
+
+      <div class="countdown-item">
+        <strong id="seconds">00</strong>
+        <small>Seconds</small>
+      </div>
+    `;
+
+  }
 
   function updateCountdown() {
 
+    if (!countdown) return;
+
     const now = Date.now();
 
-    const distance = eventStart - now;
+    const difference = eventStart - now;
 
-    if (distance <= 0) {
+    if (difference <= 0) {
+
+      countdown.hidden = true;
 
       if (countdownLabel) {
 
         countdownLabel.textContent =
           now < eventEnd
             ? "WELCOME TO LEARN37"
-            : "THANK YOU FOR JOINING LEARN37";
+            : "THANK YOU FOR BEING PART OF LEARN37";
 
       }
 
-      if (countdown) {
+      if (countdownInterval !== null) {
 
-        countdown.hidden = true;
+        clearInterval(countdownInterval);
 
       }
 
@@ -130,38 +175,97 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const days = Math.floor(
-      distance / (1000 * 60 * 60 * 24)
+      difference / (1000 * 60 * 60 * 24)
     );
 
     const hours = Math.floor(
-      (distance / (1000 * 60 * 60)) % 24
+      (difference / (1000 * 60 * 60)) % 24
     );
 
     const minutes = Math.floor(
-      (distance / (1000 * 60)) % 60
+      (difference / (1000 * 60)) % 60
     );
 
     const seconds = Math.floor(
-      (distance / 1000) % 60
+      (difference / 1000) % 60
     );
 
-    const values = {
-      days: days,
-      hours: hours,
-      minutes: minutes,
-      seconds: seconds
-    };
+    document.getElementById("days").textContent =
+      padNumber(days);
 
-    Object.entries(values).forEach(function (entry) {
+    document.getElementById("hours").textContent =
+      padNumber(hours);
 
-      const element = document.getElementById(entry[0]);
+    document.getElementById("minutes").textContent =
+      padNumber(minutes);
 
-      if (element) {
+    document.getElementById("seconds").textContent =
+      padNumber(seconds);
 
-        element.textContent = String(entry[1]).padStart(
-          2,
-          "0"
-        );
+  }
+
+  if (countdown) {
+
+    updateCountdown();
+
+    if (Date.now() < eventStart) {
+
+      countdownInterval = setInterval(
+        updateCountdown,
+        1000
+      );
+
+    }
+
+  }
+
+
+  /* ==================================================
+     EQUAL-HEIGHT PARALLEL AGENDA SESSIONS
+     ================================================== */
+
+  function alignAgendaRows() {
+
+    const day1 = document.getElementById("day1");
+
+    if (!day1 || day1.hidden) return;
+
+    const rows = day1.querySelectorAll(
+      ".agenda-table tbody tr"
+    );
+
+    rows.forEach(function (row) {
+
+      const sessions = Array.from(
+        row.querySelectorAll(".network-session")
+      );
+
+      if (!sessions.length) return;
+
+      sessions.forEach(function (session) {
+
+        session.style.height = "auto";
+
+      });
+
+      const maximumHeight = Math.max(
+
+        ...sessions.map(function (session) {
+
+          return session.getBoundingClientRect().height;
+
+        })
+
+      );
+
+      if (maximumHeight > 0) {
+
+        sessions.forEach(function (session) {
+
+          session.style.height =
+            Math.ceil(maximumHeight) + "px";
+
+        });
 
       }
 
@@ -169,19 +273,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-  updateCountdown();
+  alignAgendaRows();
 
-  setInterval(updateCountdown, 1000);
+  window.addEventListener(
+    "load",
+    alignAgendaRows
+  );
+
+  if (document.fonts && document.fonts.ready) {
+
+    document.fonts.ready.then(
+      alignAgendaRows
+    );
+
+  }
+
 
   /* ==================================================
      PROGRAMME DAY TABS
      ================================================== */
 
-  const tabButtons =
-    document.querySelectorAll(".tab-button");
+  const tabButtons = document.querySelectorAll(
+    ".tabs button[data-day]"
+  );
 
-  const programmeContents =
-    document.querySelectorAll(".programme-content");
+  const schedules = document.querySelectorAll(
+    ".schedule"
+  );
 
   tabButtons.forEach(function (button) {
 
@@ -189,45 +307,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const selectedDay = button.dataset.day;
 
-      const selectedContent =
-        document.getElementById(selectedDay);
+      tabButtons.forEach(function (item) {
 
-      if (!selectedContent) return;
-
-      tabButtons.forEach(function (tab) {
-
-        tab.classList.remove("active");
-
-        tab.setAttribute("aria-pressed", "false");
+        item.setAttribute(
+          "aria-pressed",
+          String(item === button)
+        );
 
       });
 
-      programmeContents.forEach(function (content) {
+      schedules.forEach(function (schedule) {
 
-        content.classList.remove("active");
-
-        content.hidden = true;
+        schedule.hidden =
+          schedule.id !== selectedDay;
 
       });
 
-      button.classList.add("active");
+      requestAnimationFrame(function () {
 
-      button.setAttribute("aria-pressed", "true");
+        alignAgendaRows();
 
-      selectedContent.hidden = false;
-
-      selectedContent.classList.add("active");
+      });
 
     });
 
   });
 
+
   /* ==================================================
      SCROLL REVEAL ANIMATIONS
      ================================================== */
 
-  const revealElements =
-    document.querySelectorAll(".reveal");
+  const revealElements = document.querySelectorAll(
+    ".reveal"
+  );
+
+  const agendaElements = document.querySelectorAll(
+
+    ".agenda-table tbody tr, " +
+    ".d2-row, " +
+    ".agenda-awards, " +
+    ".d2-note"
+
+  );
 
   if (
     !reducedMotion &&
@@ -235,6 +357,16 @@ document.addEventListener("DOMContentLoaded", function () {
   ) {
 
     document.body.classList.add("js-ready");
+
+    document.querySelectorAll(".pn-row")
+      .forEach(function (row, index) {
+
+        row.style.setProperty(
+          "--reveal-delay",
+          (index % 3) * 130 + "ms"
+        );
+
+      });
 
     const revealObserver = new IntersectionObserver(
 
@@ -267,20 +399,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    /* STAGGERED PARTNER ENTRANCES */
+    agendaElements.forEach(function (element, index) {
 
-    document.querySelectorAll(".pn-row").forEach(
+      element.classList.add("agenda-enter");
 
-      function (row, index) {
+      element.style.setProperty(
+        "--agenda-delay",
+        (index % 4) * 75 + "ms"
+      );
 
-        row.style.setProperty(
-          "--reveal-delay",
-          (index % 3) * 130 + "ms"
-        );
+      revealObserver.observe(element);
 
-      }
-
-    );
+    });
 
   } else {
 
@@ -290,46 +420,58 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
+    agendaElements.forEach(function (element) {
+
+      element.classList.add("visible");
+
+    });
+
   }
 
+
   /* ==================================================
-     PARTNER NETWORK ANIMATION CONTROL
+     PAUSE OFFSCREEN ANIMATIONS
      ================================================== */
 
-  const partnerSection =
-    document.getElementById("partners");
+  const animatedSections = document.querySelectorAll(
+    ".pn-section, .programme-section"
+  );
 
-  if (
-    partnerSection &&
-    !reducedMotion &&
-    "IntersectionObserver" in window
-  ) {
+  const sectionVisibility = new Map();
 
-    let partnerSectionVisible = false;
+  function updateSectionAnimations() {
 
-    function updatePartnerAnimation() {
+    animatedSections.forEach(function (section) {
 
-      const shouldAnimate =
-        partnerSectionVisible && !document.hidden;
+      const shouldPause =
+        !sectionVisibility.get(section) ||
+        document.hidden;
 
-      partnerSection.classList.toggle(
+      section.classList.toggle(
         "animation-paused",
-        !shouldAnimate
+        shouldPause
       );
 
-    }
+    });
 
-    const partnerObserver = new IntersectionObserver(
+  }
+
+  if ("IntersectionObserver" in window) {
+
+    const sectionObserver = new IntersectionObserver(
 
       function (entries) {
 
         entries.forEach(function (entry) {
 
-          partnerSectionVisible = entry.isIntersecting;
-
-          updatePartnerAnimation();
+          sectionVisibility.set(
+            entry.target,
+            entry.isIntersecting
+          );
 
         });
+
+        updateSectionAnimations();
 
       },
 
@@ -339,28 +481,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
     );
 
-    partnerObserver.observe(partnerSection);
+    animatedSections.forEach(function (section) {
+
+      sectionVisibility.set(section, false);
+
+      sectionObserver.observe(section);
+
+    });
 
     document.addEventListener(
       "visibilitychange",
-      updatePartnerAnimation
+      updateSectionAnimations
     );
 
-    updatePartnerAnimation();
-
   }
+
 
   /* ==================================================
      ACTIVE NAVIGATION LINK
      ================================================== */
 
-  const sections =
-    document.querySelectorAll("section[id]");
+  const sections = Array.from(
+    document.querySelectorAll("main section[id]")
+  );
 
-  const navigationLinks =
-    document.querySelectorAll('.nav-links a[href^="#"]');
+  const navigationLinks = document.querySelectorAll(
+    '#links a[href^="#"]'
+  );
 
-  let scrollTicking = false;
+  let scrollFrame = null;
 
   function updateActiveNavigation() {
 
@@ -368,10 +517,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     sections.forEach(function (section) {
 
-      const sectionTop =
-        section.getBoundingClientRect().top;
-
-      if (sectionTop <= 180) {
+      if (section.getBoundingClientRect().top <= 180) {
 
         currentSection = section.id;
 
@@ -381,14 +527,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     navigationLinks.forEach(function (link) {
 
-      const active =
-        link.getAttribute("href") === "#" + currentSection;
+      const isActive =
+        link.getAttribute("href") ===
+        "#" + currentSection;
 
-      link.classList.toggle("active", active);
+      link.classList.toggle(
+        "active",
+        isActive
+      );
 
-      if (active) {
+      if (isActive) {
 
-        link.setAttribute("aria-current", "location");
+        link.setAttribute(
+          "aria-current",
+          "location"
+        );
 
       } else {
 
@@ -398,8 +551,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    scrollTicking = false;
-
   }
 
   window.addEventListener(
@@ -408,28 +559,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function () {
 
-      if (!scrollTicking) {
+      if (scrollFrame !== null) return;
 
-        requestAnimationFrame(updateActiveNavigation);
+      scrollFrame = requestAnimationFrame(function () {
 
-        scrollTicking = true;
+        updateActiveNavigation();
 
-      }
+        scrollFrame = null;
+
+      });
 
     },
 
-    { passive: true }
+    {
+      passive: true
+    }
 
   );
 
   updateActiveNavigation();
 
+
   /* ==================================================
-     ANIMATED NETWORK GLOBE
+     ANIMATED 3D NETWORK GLOBE
      ================================================== */
 
-  const canvas =
-    document.getElementById("networkCanvas");
+  const canvas = document.getElementById("network");
 
   if (!canvas) return;
 
@@ -445,49 +600,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let radius = 0;
 
+  let rotation = 0.5;
+
   let animationFrame = null;
+
+  let lastTime = 0;
 
   let globeVisible = true;
 
-  let lastTimestamp = 0;
+  let resizeFrame = null;
 
-  let rotationAngle = 0.5;
 
-  /* CREATE SPHERICAL NETWORK POINTS */
-
-  const pointCount = 160;
+  /* CREATE SPHERE POINTS */
 
   const points = [];
+
+  const pointCount = 160;
 
   const goldenAngle =
     Math.PI * (3 - Math.sqrt(5));
 
   for (let i = 0; i < pointCount; i++) {
 
-    const y = 1 - (i / (pointCount - 1)) * 2;
+    const y =
+      1 - (i / (pointCount - 1)) * 2;
 
-    const horizontalRadius =
-      Math.sqrt(Math.max(0, 1 - y * y));
+    const distance =
+      Math.sqrt(1 - y * y);
 
-    const theta = goldenAngle * i;
+    const theta =
+      goldenAngle * i;
 
     points.push({
 
-      x: Math.cos(theta) * horizontalRadius,
+      x: Math.cos(theta) * distance,
 
       y: y,
 
-      z: Math.sin(theta) * horizontalRadius
+      z: Math.sin(theta) * distance
 
     });
 
   }
 
-  /* CREATE BACKGROUND PARTICLES */
+
+  /* BACKGROUND STARS */
 
   const stars = Array.from(
 
-    { length: 75 },
+    {
+      length: 75
+    },
 
     function () {
 
@@ -509,21 +672,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   );
 
-  /* RESPONSIVE CANVAS SIZE */
+
+  /* RESIZE CANVAS */
 
   function resizeCanvas() {
+
+    const bounds = canvas.getBoundingClientRect();
+
+    width = bounds.width;
+    height = bounds.height;
 
     const dpr = Math.min(
       window.devicePixelRatio || 1,
       2
     );
 
-    width = canvas.clientWidth;
-
-    height = canvas.clientHeight;
-
     canvas.width = Math.round(width * dpr);
-
     canvas.height = Math.round(height * dpr);
 
     ctx.setTransform(
@@ -538,8 +702,7 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
       centerX = width * 0.65;
-
-      centerY = height * 0.76;
+      centerY = height * 0.73;
 
     } else {
 
@@ -549,33 +712,77 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
       centerX = width * 0.76;
-
       centerY = height * 0.46;
 
     }
 
+    drawScene(performance.now());
+
   }
 
-  /* DRAW TWINKLING PARTICLES */
+
+  /* PROJECT 3D SPHERE POINTS */
+
+  function projectPoint(point) {
+
+    const cos = Math.cos(rotation);
+    const sin = Math.sin(rotation);
+
+    const x =
+      point.x * cos -
+      point.z * sin;
+
+    const z =
+      point.x * sin +
+      point.z * cos;
+
+    const tilt = 0.2;
+
+    const tiltedY =
+      point.y * Math.cos(tilt) -
+      z * Math.sin(tilt);
+
+    const tiltedZ =
+      point.y * Math.sin(tilt) +
+      z * Math.cos(tilt);
+
+    const scale =
+      3 / (3 - tiltedZ);
+
+    return {
+
+      x: centerX + x * radius * scale,
+
+      y: centerY + tiltedY * radius * scale,
+
+      z: tiltedZ,
+
+      scale: scale
+
+    };
+
+  }
+
+
+  /* DRAW STARS */
 
   function drawStars(time) {
 
     stars.forEach(function (star) {
 
-      const twinkle = reducedMotion
+      const pulse = reducedMotion
 
-        ? 1
+        ? 0.85
 
-        : 0.7 + 0.3 * Math.sin(
+        : 0.75 +
+          Math.sin(
             time * 0.001 + star.phase
-          );
+          ) * 0.25;
+
+      const opacity =
+        star.opacity * pulse;
 
       ctx.beginPath();
-
-      ctx.fillStyle =
-        "rgba(170,235,255," +
-        star.opacity * twinkle +
-        ")";
 
       ctx.arc(
 
@@ -591,171 +798,107 @@ document.addEventListener("DOMContentLoaded", function () {
 
       );
 
+      ctx.fillStyle =
+        `rgba(170, 235, 255, ${opacity})`;
+
       ctx.fill();
 
     });
 
   }
 
-  /* PROJECT 3D POINTS TO 2D */
-
-  function projectPoints(angle) {
-
-    const cosAngle = Math.cos(angle);
-
-    const sinAngle = Math.sin(angle);
-
-    const tilt = 0.2;
-
-    const cosTilt = Math.cos(tilt);
-
-    const sinTilt = Math.sin(tilt);
-
-    return points.map(function (point) {
-
-      const rotatedX =
-        point.x * cosAngle -
-        point.z * sinAngle;
-
-      const rotatedZ =
-        point.x * sinAngle +
-        point.z * cosAngle;
-
-      const tiltedY =
-        point.y * cosTilt -
-        rotatedZ * sinTilt;
-
-      const tiltedZ =
-        point.y * sinTilt +
-        rotatedZ * cosTilt;
-
-      const perspective =
-        3 / (3 - tiltedZ);
-
-      return {
-
-        x: centerX +
-          rotatedX * radius * perspective,
-
-        y: centerY +
-          tiltedY * radius * perspective,
-
-        z: tiltedZ,
-
-        scale: perspective
-
-      };
-
-    });
-
-  }
 
   /* DRAW GLOBE GLOW */
 
-  function drawGlobeGlow() {
+  function drawGlow() {
 
-    const gradient = ctx.createRadialGradient(
-
-      centerX,
-
-      centerY,
-
-      radius * 0.15,
+    const glow = ctx.createRadialGradient(
 
       centerX,
 
       centerY,
 
-      radius * 1.6
+      radius * 0.2,
+
+      centerX,
+
+      centerY,
+
+      radius * 1.7
 
     );
 
-    gradient.addColorStop(
+    glow.addColorStop(
       0,
-      "rgba(0,187,199,0.12)"
+      "rgba(0, 187, 199, 0.15)"
     );
 
-    gradient.addColorStop(
+    glow.addColorStop(
       0.5,
-      "rgba(0,149,202,0.08)"
+      "rgba(0, 149, 202, 0.07)"
     );
 
-    gradient.addColorStop(
+    glow.addColorStop(
       1,
-      "rgba(0,187,199,0)"
+      "rgba(0, 149, 202, 0)"
     );
 
-    ctx.fillStyle = gradient;
+    ctx.fillStyle = glow;
 
-    ctx.beginPath();
-
-    ctx.arc(
-
-      centerX,
-
-      centerY,
-
-      radius * 1.6,
-
+    ctx.fillRect(
       0,
-
-      Math.PI * 2
-
+      0,
+      width,
+      height
     );
-
-    ctx.fill();
 
   }
 
+
   /* DRAW NETWORK CONNECTIONS */
 
-  function drawConnections(projectedPoints) {
+  function drawConnections(projected) {
 
     const maxDistance = radius * 0.32;
 
-    for (
-      let i = 0;
-      i < projectedPoints.length;
-      i++
-    ) {
+    for (let i = 0; i < projected.length; i++) {
 
-      const pointA = projectedPoints[i];
+      const a = projected[i];
 
-      if (pointA.z < -0.25) continue;
+      if (a.z < -0.25) continue;
 
       for (
         let j = i + 1;
-        j < projectedPoints.length;
+        j < projected.length;
         j++
       ) {
 
-        const pointB = projectedPoints[j];
+        const b = projected[j];
 
-        if (pointB.z < -0.25) continue;
+        if (b.z < -0.25) continue;
 
-        const dx = pointA.x - pointB.x;
+        const dx = a.x - b.x;
 
-        const dy = pointA.y - pointB.y;
+        const dy = a.y - b.y;
 
-        const distance = Math.sqrt(
-          dx * dx + dy * dy
-        );
+        const distance =
+          Math.sqrt(dx * dx + dy * dy);
 
         if (distance < maxDistance) {
 
           const opacity =
             0.5 * (1 - distance / maxDistance);
 
-          ctx.strokeStyle =
-            "rgba(0,220,255," + opacity + ")";
-
-          ctx.lineWidth = 0.8;
-
           ctx.beginPath();
 
-          ctx.moveTo(pointA.x, pointA.y);
+          ctx.moveTo(a.x, a.y);
 
-          ctx.lineTo(pointB.x, pointB.y);
+          ctx.lineTo(b.x, b.y);
+
+          ctx.strokeStyle =
+            `rgba(0, 220, 255, ${opacity})`;
+
+          ctx.lineWidth = 0.8;
 
           ctx.stroke();
 
@@ -767,34 +910,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-  /* DRAW GLOWING NETWORK NODES */
 
-  function drawNodes(projectedPoints) {
+  /* DRAW NETWORK NODES */
 
-    const sortedPoints =
+  function drawNodes(projected) {
 
-      projectedPoints.slice().sort(
+    const sorted = projected.slice().sort(
 
-        function (a, b) {
+      function (a, b) {
 
-          return a.z - b.z;
+        return a.z - b.z;
 
-        }
+      }
 
-      );
+    );
 
-    sortedPoints.forEach(function (point) {
+    sorted.forEach(function (point) {
 
       const opacity =
         0.2 + 0.8 * ((point.z + 1) / 2);
 
-      const nodeSize =
+      const size =
         1.5 * point.scale;
 
       ctx.beginPath();
-
-      ctx.fillStyle =
-        "rgba(160,255,255," + opacity + ")";
 
       ctx.arc(
 
@@ -802,7 +941,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         point.y,
 
-        nodeSize,
+        size,
 
         0,
 
@@ -810,14 +949,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
       );
 
+      ctx.fillStyle =
+        `rgba(100, 245, 255, ${opacity})`;
+
       ctx.fill();
 
       if (point.z > 0.75) {
 
         ctx.beginPath();
-
-        ctx.fillStyle =
-          "rgba(0,224,191,0.12)";
 
         ctx.arc(
 
@@ -825,13 +964,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
           point.y,
 
-          nodeSize * 3,
+          size * 2.5,
 
           0,
 
           Math.PI * 2
 
         );
+
+        ctx.fillStyle =
+          "rgba(0, 224, 255, 0.08)";
 
         ctx.fill();
 
@@ -841,21 +983,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-  /* DRAW ANIMATED ORBITAL RINGS */
 
-  function drawOrbits(time) {
+  /* DRAW ORBITAL RINGS */
 
-    const movement = reducedMotion
-
-      ? 0
-
-      : Math.sin(time * 0.0003) * 0.12;
+  function drawOrbits() {
 
     ctx.save();
 
-    ctx.translate(centerX, centerY);
+    ctx.translate(
+      centerX,
+      centerY
+    );
 
-    ctx.rotate(-0.35 + movement);
+    ctx.rotate(-0.35);
 
     ctx.beginPath();
 
@@ -878,7 +1018,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     ctx.strokeStyle =
-      "rgba(0,224,191,0.25)";
+      "rgba(0, 224, 191, 0.35)";
 
     ctx.lineWidth = 1;
 
@@ -886,11 +1026,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     ctx.restore();
 
+
     ctx.save();
 
-    ctx.translate(centerX, centerY);
+    ctx.translate(
+      centerX,
+      centerY
+    );
 
-    ctx.rotate(0.9 - movement);
+    ctx.rotate(0.9);
 
     ctx.beginPath();
 
@@ -913,9 +1057,9 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     ctx.strokeStyle =
-      "rgba(229,0,135,0.18)";
+      "rgba(229, 0, 135, 0.22)";
 
-    ctx.lineWidth = 0.8;
+    ctx.lineWidth = 1;
 
     ctx.stroke();
 
@@ -923,102 +1067,93 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-  /* DRAW COMPLETE GLOBE SCENE */
+
+  /* DRAW COMPLETE SCENE */
 
   function drawScene(time) {
 
-    if (!width || !height || !radius) return;
+    if (!width || !height) return;
 
     ctx.clearRect(
-
       0,
-
       0,
-
       width,
-
       height
-
     );
 
     drawStars(time);
 
-    drawGlobeGlow();
+    drawGlow();
 
-    drawOrbits(time);
+    const projected =
+      points.map(projectPoint);
 
-    const projectedPoints =
-      projectPoints(rotationAngle);
+    drawConnections(projected);
 
-    drawConnections(projectedPoints);
+    drawOrbits();
 
-    drawNodes(projectedPoints);
+    drawNodes(projected);
 
   }
+
 
   /* ANIMATION LOOP */
 
-  function animateGlobe(timestamp) {
-
-    animationFrame = null;
+  function animate(time) {
 
     if (
-      !globeVisible ||
+      reducedMotion ||
       document.hidden ||
-      reducedMotion
+      !globeVisible
     ) {
 
-      lastTimestamp = 0;
+      animationFrame = null;
 
       return;
 
     }
 
-    const delta = lastTimestamp
+    const delta = lastTime
 
-      ? Math.min(timestamp - lastTimestamp, 50)
+      ? Math.min(time - lastTime, 50)
 
-      : 0;
+      : 16;
 
-    lastTimestamp = timestamp;
+    lastTime = time;
 
-    rotationAngle += delta * 0.00015;
+    rotation += delta * 0.00015;
 
-    drawScene(timestamp);
+    drawScene(time);
 
     animationFrame =
-      requestAnimationFrame(animateGlobe);
+      requestAnimationFrame(animate);
 
   }
+
 
   /* START AND STOP ANIMATION */
 
-  function startGlobe() {
+  function startAnimation() {
 
-    if (reducedMotion) {
-
-      drawScene(0);
+    if (
+      reducedMotion ||
+      document.hidden ||
+      !globeVisible ||
+      animationFrame !== null
+    ) {
 
       return;
 
     }
 
-    if (
-      animationFrame === null &&
-      globeVisible &&
-      !document.hidden
-    ) {
+    lastTime = 0;
 
-      lastTimestamp = 0;
-
-      animationFrame =
-        requestAnimationFrame(animateGlobe);
-
-    }
+    animationFrame =
+      requestAnimationFrame(animate);
 
   }
 
-  function stopGlobe() {
+  function stopAnimation() {
 
     if (animationFrame !== null) {
 
@@ -1028,11 +1163,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    lastTimestamp = 0;
-
   }
 
-  /* PAUSE GLOBE WHEN OUTSIDE VIEWPORT */
+
+  /* PAUSE GLOBE WHEN NOT VISIBLE */
 
   if ("IntersectionObserver" in window) {
 
@@ -1046,11 +1180,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
           if (globeVisible) {
 
-            startGlobe();
+            startAnimation();
 
           } else {
 
-            stopGlobe();
+            stopAnimation();
 
           }
 
@@ -1068,7 +1202,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
-  /* PAUSE GLOBE WHEN TAB IS INACTIVE */
+
+  /* PAUSE WHEN BROWSER TAB IS HIDDEN */
 
   document.addEventListener(
 
@@ -1078,11 +1213,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (document.hidden) {
 
-        stopGlobe();
+        stopAnimation();
 
       } else {
 
-        startGlobe();
+        updateCountdown();
+
+        startAnimation();
 
       }
 
@@ -1090,47 +1227,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
   );
 
-  /* RESPONSIVE RESIZING */
 
-  let resizeFrame = null;
+  /* RESPONSIVE RESIZE */
 
-  window.addEventListener(
+  window.addEventListener("resize", function () {
 
-    "resize",
+    if (resizeFrame !== null) {
 
-    function () {
-
-      if (resizeFrame !== null) {
-
-        cancelAnimationFrame(resizeFrame);
-
-      }
-
-      resizeFrame = requestAnimationFrame(
-
-        function () {
-
-          resizeCanvas();
-
-          drawScene(performance.now());
-
-          resizeFrame = null;
-
-        }
-
-      );
+      cancelAnimationFrame(resizeFrame);
 
     }
 
-  );
+    resizeFrame = requestAnimationFrame(function () {
 
-  /* INITIALIZE GLOBE */
+      resizeCanvas();
+
+      alignAgendaRows();
+
+      resizeFrame = null;
+
+    });
+
+  });
+
+
+  /* INITIALISE GLOBE */
 
   resizeCanvas();
 
-  drawScene(0);
+  if (!reducedMotion) {
 
-  startGlobe();
+    startAnimation();
+
+  }
 
 });
 
